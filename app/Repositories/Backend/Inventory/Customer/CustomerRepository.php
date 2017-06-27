@@ -1,0 +1,89 @@
+<?php
+
+namespace App\Repositories\Backend\Inventory\Customer;
+
+use App\Models\Inventory\Customer\Customer;
+use Illuminate\Support\Facades\DB;
+use App\Exceptions\GeneralException;
+use App\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Model;
+use App\Events\Backend\Inventory\Customer\CustomerCreated;
+use App\Events\Backend\Inventory\Customer\CustomerDeleted;
+use App\Events\Backend\Inventory\Customer\CustomerUpdated;
+use App\Events\Backend\Inventory\Customer\CustomerRestored;
+use App\Events\Backend\Inventory\Customer\CustomerPermanentlyDeleted;
+
+/**
+* Class CustomerRepository.
+*/
+class CustomerRepository extends BaseRepository
+{
+   /**
+   * Associated Repository Model.
+   */
+   const MODEL = Customer::class;
+
+   /**
+   * @param        $permissions
+   * @param string $by
+   *
+   * @return mixed
+   */
+   public function getForDataTable($trashed = false)
+   {
+      /**
+      * Note: You must return deleted_at or the User getActionButtonsAttribute won't
+      * be able to differentiate what buttons to show for each row.
+      */
+      $dataTableQuery = $this->query()
+      ->select([
+         config('inventory.customers_table').'.id',
+         config('inventory.customers_table').'.company_name',
+         config('inventory.customers_table').'.contact_number',
+         config('inventory.customers_table').'.email',
+         config('inventory.customers_table').'.note',
+         config('inventory.customers_table').'.other_category',
+         config('inventory.customers_table').'.address',
+         config('inventory.customers_table').'.created_at',
+         config('inventory.customers_table').'.updated_at',
+         config('inventory.customers_table').'.deleted_at',
+      ]);
+
+      if ($trashed == 'true') {
+         return $dataTableQuery->onlyTrashed();
+      }
+
+      return $dataTableQuery;
+   }
+
+   public function create($input)
+   {
+      $data = $input['data'];
+
+      $customer = $this->createCustomerStub($data);
+
+      DB::transaction(function () use ($customer, $data) {
+         if ($customer->save()) {
+            event(new CustomerCreated($customer));
+
+            return true;
+         }
+
+         throw new GeneralException(trans('exceptions.backend.inventory.customers.create_error'));
+      });
+   }
+
+   protected function createCustomerStub($input)
+   {
+      $customer = self::MODEL;
+      $customer = new $customer;
+      $customer->company_name = $input['company_name'];
+      $customer->contact_number = $input['contact_number'];
+      $customer->email = $input['email'];
+      $customer->other_category = $input['other_category'];
+      $customer->note = $input['note'];
+      $customer->address = $input['address'];
+
+      return $customer;
+   }
+}
