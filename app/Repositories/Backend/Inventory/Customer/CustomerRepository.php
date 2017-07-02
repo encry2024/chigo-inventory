@@ -86,4 +86,47 @@ class CustomerRepository extends BaseRepository
 
       return $customer;
    }
+
+   public function delete(Model $customer)
+   {
+      if ($customer->delete()) {
+         event(new CustomerDeleted($customer));
+
+         return true;
+      }
+
+      throw new GeneralException(trans('exceptions.backend.inventory.customer.delete_error'));
+   }
+
+   public function forceDelete(Model $customer)
+   {
+      if (is_null($customer->deleted_at)) {
+         throw new GeneralException(trans('exceptions.backend.inventory.customers.delete_first'));
+      }
+
+      DB::transaction(function () use ($customer) {
+         if ($customer->forceDelete()) {
+            event(new CustomerPermanentlyDeleted($customer));
+
+            return true;
+         }
+
+         throw new GeneralException(trans('exceptions.backend.inventory.customers.delete_error'));
+      });
+   }
+
+   public function restore(Model $customer)
+   {
+      if (is_null($customer->deleted_at)) {
+         throw new GeneralException(trans('exceptions.backend.inventory.customers.cant_restore'));
+      }
+
+      if ($customer->restore()) {
+         event(new CustomerRestored($customer));
+
+         return true;
+      }
+
+      throw new GeneralException(trans('exceptions.backend.inventory.customers.restore_error'));
+   }
 }

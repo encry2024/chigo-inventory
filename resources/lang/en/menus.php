@@ -73,14 +73,27 @@ return [
             'view'      => 'View Peripheral'
          ],
 
-         'customer' => [
-            'title'     => 'Customer Management',
-            'all'       => 'All Customers',
-            'create'    => 'Create Customer',
-            'deleted'   => 'Delete Customer',
-            'edit'      => 'Edit Customer',
-            'view'      => 'View Customer'
-         ]
+         // 'customer' => [
+         //    'title'     => 'Customer Management',
+         //    'all'       => 'All Customers',
+         //    'create'    => 'Create Customer',
+         //    'deleted'   => 'Deleted Customers',
+         //    'edit'      => 'Edit Customer',
+         //    'view'      => 'View Customer'
+         // ]
+      ],
+
+      'workflows' => [
+         'sales' => [
+            'title' => 'Sales Workflow',
+
+            'all' => 'All Sales',
+            'create' => 'Create Sale',
+            'deleted' => 'Deleted Sale',
+            'edit' => 'Edit Sale',
+            'view' => 'View Sale'
+         ],
+         'technical' => 'Technical Workflow',
       ],
 
       'log-viewer' => [
@@ -93,6 +106,7 @@ return [
          'dashboard' => 'Dashboard',
          'general'   => 'General',
          'system'    => 'System',
+         'business_workflow' => 'Workflow Management'
       ],
    ],
 

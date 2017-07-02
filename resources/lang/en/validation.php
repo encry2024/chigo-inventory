@@ -115,8 +115,13 @@ return [
    */
 
    'attributes' => [
-
       'backend' => [
+         'workflow' => [
+            'sales' => [
+               ''
+            ]
+         ]
+
          'inventory' => [
             'customers' => [
                'company_name'             => 'Company/Client Name',

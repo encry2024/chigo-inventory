@@ -40,7 +40,15 @@ return [
                'deleted_permanently' => 'The aircon was deleted permanently.',
                'updated'             => 'The aircon was successfully updated.'
             ],
-         ]
+         ],
+
+         'customers' => [
+            'created'             => 'The customer was successfully created.',
+            'deleted'             => 'The customer was successfully deleted.',
+            'restored'            => 'The customer was successfully restored.',
+            'deleted_permanently' => 'The customer was deleted permanently.',
+            'updated'             => 'The customer was successfully updated.'
+         ],
       ],
 
       'customers' => [

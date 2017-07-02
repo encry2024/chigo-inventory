@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Access\User\User;
 use App\Models\Inventory\Item\Aircon\Aircon;
+use App\Models\Inventory\Customer\Customer;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -46,6 +47,12 @@ class RouteServiceProvider extends ServiceProvider
          $aircon = new Aircon();
 
          return Aircon::withTrashed()->where($aircon->getRouteKeyName(), $value)->first();
+      });
+
+      $this->bind('deletedCustomer', function ($value) {
+         $customer = new Customer();
+
+         return Customer::withTrashed()->where($customer->getRouteKeyName(), $value)->first();
       });
 
       parent::boot();

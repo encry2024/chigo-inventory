@@ -44,73 +44,58 @@ class CustomerEventListener
    // /**
    // * @param $event
    // */
-   // public function onDeleted($event)
-   // {
-   //    history()->withType($this->history_slug)
-   //    ->withEntity($event->user->id)
-   //    ->withText('trans("history.backend.users.deleted") <strong>{user}</strong>')
-   //    ->withIcon('trash')
-   //    ->withClass('bg-maroon')
-   //    ->withAssets([
-   //       'user_link' => ['admin.access.user.show', $event->user->full_name, $event->user->id],
-   //    ])
-   //    ->log();
-   // }
+   public function onDeleted($event)
+   {
+      history()->withType($this->history_slug)
+      ->withEntity($event->customer->id)
+      ->withText('trans("history.backend.customer.deleted") <strong>{customer}</strong>')
+      ->withIcon('trash')
+      ->withClass('bg-maroon')
+      ->withAssets([
+         'customer_link' => ['admin.inventory.customer.show', $event->customer->company_name, $event->customer->id],
+      ])
+      ->log();
+   }
    //
    // /**
    // * @param $event
    // */
-   // public function onRestored($event)
-   // {
-   //    history()->withType($this->history_slug)
-   //    ->withEntity($event->user->id)
-   //    ->withText('trans("history.backend.users.restored") <strong>{user}</strong>')
-   //    ->withIcon('refresh')
-   //    ->withClass('bg-aqua')
-   //    ->withAssets([
-   //       'user_link' => ['admin.access.user.show', $event->user->full_name, $event->user->id],
-   //    ])
-   //    ->log();
-   // }
+   public function onRestored($event)
+   {
+      history()->withType($this->history_slug)
+      ->withEntity($event->customer->id)
+      ->withText('trans("history.backend.customer.restored") <strong>{customer}</strong>')
+      ->withIcon('refresh')
+      ->withClass('bg-aqua')
+      ->withAssets([
+         'customer_link' => ['admin.inventory.customer.show', $event->customer->company_name, $event->customer->id],
+      ])
+      ->log();
+   }
    //
    // /**
    // * @param $event
    // */
-   // public function onPermanentlyDeleted($event)
-   // {
-   //    history()->withType($this->history_slug)
-   //    ->withEntity($event->user->id)
-   //    ->withText('trans("history.backend.users.permanently_deleted") <strong>{user}</strong>')
-   //    ->withIcon('trash')
-   //    ->withClass('bg-maroon')
-   //    ->withAssets([
-   //       'user_string' => $event->user->full_name,
-   //    ])
-   //    ->log();
-   //
-   //    history()->withType($this->history_slug)
-   //    ->withEntity($event->user->id)
-   //    ->withAssets([
-   //       'user_string' => $event->user->full_name,
-   //    ])
-   //    ->updateUserLinkAssets();
-   // }
-   //
-   // /**
-   // * @param $event
-   // */
-   // public function onPasswordChanged($event)
-   // {
-   //    history()->withType($this->history_slug)
-   //    ->withEntity($event->user->id)
-   //    ->withText('trans("history.backend.users.changed_password") <strong>{user}</strong>')
-   //    ->withIcon('lock')
-   //    ->withClass('bg-blue')
-   //    ->withAssets([
-   //       'user_link' => ['admin.access.user.show', $event->user->full_name, $event->user->id],
-   //    ])
-   //    ->log();
-   // }
+   public function onPermanentlyDeleted($event)
+   {
+      history()->withType($this->history_slug)
+      ->withEntity($event->customer->id)
+      ->withText('trans("history.backend.customer.permanently_deleted") <strong>{customer}</strong>')
+      ->withIcon('trash')
+      ->withClass('bg-maroon')
+      ->withAssets([
+         'customer_string' => $event->customer->company_name,
+      ])
+      ->log();
+
+      history()->withType($this->history_slug)
+      ->withEntity($event->customer->id)
+      ->withAssets([
+         'customer_string' => $event->customer->company_name,
+      ])
+      ->updateUserLinkAssets();
+   }
+
    //
    // /**
    // * @param $event
@@ -161,20 +146,20 @@ class CustomerEventListener
       //    'App\Listeners\Backend\Access\User\UserEventListener@onUpdated'
       // );
       //
-      // $events->listen(
-      //    \App\Events\Backend\Access\User\UserDeleted::class,
-      //    'App\Listeners\Backend\Access\User\UserEventListener@onDeleted'
-      // );
+      $events->listen(
+         \App\Events\Backend\Inventory\Customer\CustomerDeleted::class,
+         'App\Listeners\Backend\Inventory\Customer\CustomerEventListener@onDeleted'
+      );
       //
-      // $events->listen(
-      //    \App\Events\Backend\Access\User\UserRestored::class,
-      //    'App\Listeners\Backend\Access\User\UserEventListener@onRestored'
-      // );
-      //
-      // $events->listen(
-      //    \App\Events\Backend\Access\User\UserPermanentlyDeleted::class,
-      //    'App\Listeners\Backend\Access\User\UserEventListener@onPermanentlyDeleted'
-      // );
+      $events->listen(
+         \App\Events\Backend\Inventory\Customer\CustomerRestored::class,
+         'App\Listeners\Backend\Inventory\Customer\CustomerEventListener@onRestored'
+      );
+
+      $events->listen(
+         \App\Events\Backend\Inventory\Customer\CustomerPermanentlyDeleted::class,
+         'App\Listeners\Backend\Inventory\Customer\CustomerEventListener@onPermanentlyDeleted'
+      );
       //
       // $events->listen(
       //    \App\Events\Backend\Access\User\UserPasswordChanged::class,

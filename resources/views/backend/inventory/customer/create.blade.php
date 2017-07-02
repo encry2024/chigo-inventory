@@ -22,6 +22,11 @@
    </div><!-- /.box-header -->
 
    <div class="box-body">
+      <div class="alert alert-info">
+         <i class="fa fa-info-circle"></i> You will be redirected to <b>Create Workflow</b> page after creating a customer.
+      </div>
+
+
       <div class="form-group">
          {{ Form::label('company_name', trans('validation.attributes.backend.inventory.customers.company_name'), ['class' => 'col-lg-2 control-label']) }}
 

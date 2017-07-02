@@ -23,6 +23,7 @@ return [
          'deleted' => 'deleted role',
          'updated' => 'updated role',
       ],
+
       'users' => [
          'changed_password'    => 'changed password for user',
          'created'             => 'created user',
@@ -40,12 +41,16 @@ return [
                'created'             => 'created aircon',
                'deleted'             => 'deleted aircon',
                'restored'            => 'restored aircon',
+               'permanently_deleted' => 'permanently deleted aircon',
             ],
          ],
       ],
 
       'customer' => [
-         'created'              => 'created customer/client'
+         'created'             => 'created customer/client',
+         'deleted'             => 'deleted customer',
+         'restored'            => 'restored customer',
+         'permanently_deleted' => 'permanently deleted customer',
       ]
    ],
 ];

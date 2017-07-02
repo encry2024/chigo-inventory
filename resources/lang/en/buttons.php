@@ -18,7 +18,7 @@ return [
          'users' => [
             'activate'           => 'Activate',
             'change_password'    => 'Change Password',
-            'clear_session'         => 'Clear Session',
+            'clear_session'      => 'Clear Session',
             'deactivate'         => 'Deactivate',
             'delete_permanently' => 'Delete Permanently',
             'login_as'           => 'Login As :user',
@@ -34,6 +34,12 @@ return [
                'restore_aircon'     => 'Restore Aircon',
                'activate'           => 'Activate'
             ]
+         ],
+
+         'customers' => [
+            'delete_permanently' => 'Delete Permanently',
+            'restore_customer'   => 'Restore Customer',
+            'activate'           => 'Activate'
          ]
       ]
    ],

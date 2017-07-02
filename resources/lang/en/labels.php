@@ -29,10 +29,56 @@ return [
       'none'              => 'None',
       'show'              => 'Show',
       'toggle_navigation' => 'Toggle Navigation',
-      'deployable'        => 'Deployable'
+      'deployable'        => 'Deployable',
+      'processed'         => 'Processed'
    ],
 
    'backend' => [
+      'workflow' => [
+         'sale' => [
+            'management' => 'Sales Management',
+
+            'current_sales' => 'Current Sales',
+
+            'create' => 'Create Sale',
+            'edit'   => 'Edit Sale',
+            'delete' => 'Delete Sale',
+            'cancel' => 'Cancel Sale',
+
+            'deleted' => 'Deleted Sales',
+            'view'    => 'View :sale',
+
+            'table' => [
+               'id' => 'ID',
+               'reference_number' => 'Reference Number',
+               'customer_name' => 'Customer Name',
+               'sales_agent' => 'Sales Agent',
+               'status' => 'Status',
+               'date_created' => 'Date Created',
+               'last_updated' => 'Last Updated'
+            ],
+
+            'tabs' => [
+               'titles' => [
+                  'overview' => 'Overview',
+                  'history' => 'History'
+               ],
+
+               'content' => [
+                  'overview' => [
+                     'id' => 'ID',
+                     'reference_number' => 'Reference Number',
+                     'customer_name' => 'Customer Name',
+                     'sales_agent' => 'Sales Agent',
+                     'status' => 'Status',
+                     'date_created' => 'Date Created',
+                     'last_updated' => 'Last Updated'
+                  ],
+               ],
+            ],
+         ]
+      ],
+
       'inventory' => [
          'aircon' => [
             'management'   => 'Aircon Management',
@@ -82,6 +128,9 @@ return [
             'edit'         => 'Edit Customer',
             'delete'       => 'Delete Customer',
 
+            'deleted'      => 'Deleted Customers',
+            'view'         => 'View :customer',
+
             'table' => [
                'id'                 => 'ID',
                'company_name'       => 'Company Name',
@@ -92,7 +141,27 @@ return [
                'address'            => 'address',
                'date_created'       => 'Date Created',
                'last_updated'       => 'Last Updated',
-            ]
+            ],
+
+            'tabs' => [
+               'titles' => [
+                  'overview' => 'Overview',
+                  'history'  => 'History',
+               ],
+
+               'content' => [
+                  'overview' => [
+                     'created_at'          => 'Created At',
+                     'deleted_at'          => 'Deleted At',
+                     'company_address'     => 'Company Address',
+                     'last_updated'        => 'Last Updated',
+                     'company_name'        => 'Company Name',
+                     'email'               => 'Email',
+                     'note'                => 'Note',
+                     'address'             => 'Address'
+                  ],
+               ],
+            ],
          ]
       ],
 

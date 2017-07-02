@@ -61,6 +61,15 @@
             </a>
          </li>
 
+         <li class="header">{{ trans('menus.backend.sidebar.business_workflow') }}</li>
+
+         <li class="{{ active_class(Active::checkUriPattern('admin/workflow/sale*')) }}">
+            <a href="{{ route('admin.workflow.sale.index') }}">
+               <i class="fa fa-money"></i>
+               <span>{{ trans('menus.backend.workflows.sales.title') }}</span>
+            </a>
+         </li>
+
          <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
 
          @role(1)

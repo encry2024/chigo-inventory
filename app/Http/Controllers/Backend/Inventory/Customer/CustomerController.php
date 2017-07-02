@@ -65,9 +65,9 @@ class CustomerController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function show($id)
+   public function show(Customer $customer, ManageCustomerRequest $request)
    {
-      //
+      return view('backend.inventory.customer.show')->withCustomer($customer);
    }
 
    /**
@@ -99,8 +99,10 @@ class CustomerController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function destroy($id)
+   public function destroy(Customer $customer, ManageCustomerRequest $request)
    {
-      //
+      $this->customers->delete($customer);
+
+      return redirect()->route('admin.inventory.customer.deleted')->withFlashSuccess(trans('alerts.backend.inventory.customers.deleted'));
    }
 }

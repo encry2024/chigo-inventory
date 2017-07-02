@@ -56,6 +56,14 @@ return [
                'restore_error'         => 'There was a problem restoring this aircon. Please try again.',
                'delete_first'          => 'This aircon must be deleted first before it can be destroyed permanently.'
             ]
+         ],
+
+         'customers' => [
+            'create_error'          => 'There was a problem creating this customer. Please try again.',
+            'delete_error'          => 'There was a problem deleting this customer. Please try again.',
+            'cant_restore'          => 'This customer is not deleted so it can not be restored.',
+            'restore_error'         => 'There was a problem restoring this customer. Please try again.',
+            'delete_first'          => 'This customer must be deleted first before it can be destroyed permanently.'
          ]
       ]
    ],

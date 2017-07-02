@@ -31,14 +31,18 @@ Route::group([
    });
 
    Route::group([
-      'prefix' => 'customer',
-      'as'     => 'customer.',
       'namespace' => 'Customer',
    ], function() {
       //Route::get('/', 'CustomerController@index')->name('index');
+      Route::get('customer/deleted', 'CustomerStatusController@getDeleted')->name('customer.deleted');
 
-      Route::resource('/', 'CustomerController');
+      Route::post('/get', 'CustomerTableController')->name('customer.get');
 
-      Route::post('get', 'CustomerTableController')->name('get');
+      Route::resource('customer', 'CustomerController');
+
+      Route::group(['prefix' => 'customer/{deletedCustomer}'], function () {
+         Route::get('delete', 'CustomerStatusController@delete')->name('customer.delete-permanently');
+         Route::get('restore', 'CustomerStatusController@restore')->name('customer.restore');
+      });
    });
 });
