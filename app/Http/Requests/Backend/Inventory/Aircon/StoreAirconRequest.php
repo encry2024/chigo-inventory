@@ -27,11 +27,11 @@ class StoreAirconRequest extends Request
       return [
          'name'           => ['required', 'max:191', Rule::unique('aircons')],
          'serial_number'  => ['required', 'max:191', Rule::unique('aircons')],
-         'manufacturer'   => 'required',
-         'voltage'        => 'required',
-         'horsepower'     => 'required',
-         'size'           => 'required',
-         'feature'        => 'required',
+         'manufacturer'   => ['max:30'],
+         'voltage'        => ['max:30'],
+         'horsepower'     => ['max:30'],
+         'size'           => ['max:30'],
+         'feature'        => ['max:191'],
       ];
    }
 }

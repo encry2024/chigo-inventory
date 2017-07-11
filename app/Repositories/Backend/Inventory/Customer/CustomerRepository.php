@@ -73,6 +73,28 @@ class CustomerRepository extends BaseRepository
       });
    }
 
+   public function update(Model $customer, array $input)
+   {
+      $data = $input['data'];
+
+      $customer->company_name = $data['company_name'];
+      $customer->contact_number = $data['contact_number'];
+      $customer->address = $data['address'];
+      $customer->email = $data['email'];
+      $customer->note = $data['note'];
+      $customer->other_category = $data['other_category'];
+
+      DB::transaction(function () use ($customer, $data) {
+         if ($customer->save()) {
+            event(new CustomerUpdated($customer));
+
+            return true;
+         }
+
+         throw new GeneralException(trans('exceptions.backend.inventory.customers.update_error'));
+      });
+   }
+
    protected function createCustomerStub($input)
    {
       $customer = self::MODEL;

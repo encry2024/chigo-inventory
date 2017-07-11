@@ -38,7 +38,7 @@ return [
          'sale' => [
             'management' => 'Sales Management',
 
-            'current_sales' => 'Current Sales',
+            'current_sales' => 'Current Sales Workflow',
 
             'create' => 'Create Sale',
             'edit'   => 'Edit Sale',
@@ -60,19 +60,68 @@ return [
 
             'tabs' => [
                'titles' => [
-                  'overview' => 'Overview',
-                  'history' => 'History'
+                  'overview'     => 'Overview',
+                  'history'      => 'History',
+                  'note_history' => 'Note History'
                ],
 
                'content' => [
                   'overview' => [
-                     'id' => 'ID',
-                     'reference_number' => 'Reference Number',
-                     'customer_name' => 'Customer Name',
-                     'sales_agent' => 'Sales Agent',
-                     'status' => 'Status',
-                     'date_created' => 'Date Created',
-                     'last_updated' => 'Last Updated'
+                     'id'                 => 'ID',
+                     'reference_number'   => 'Reference Number',
+                     'customer_name'      => 'Customer Name',
+                     'sales_agent'        => 'Sales Agent',
+                     'status'             => 'Status',
+                     'date_created'       => 'Date Created',
+                     'last_updated'       => 'Last Updated',
+                     'note'               => 'Note'
+                  ],
+               ],
+            ],
+         ],
+
+         'technical' => [
+            'management' => 'Technical Management',
+
+            'current_technicals' => 'Current Technicals Workflow',
+
+            'check_date_time' => 'Check Date & Time For Available Technicians',
+
+            'create' => 'Create Technical Workflow',
+            'edit'   => 'Edit Technical Workflow',
+            'delete' => 'Delete Technical Workflow',
+            'cancel' => 'Cancel Technical Workflow',
+
+            'deleted' => 'Deleted Technical',
+            'view'    => 'View :technical',
+
+            'table' => [
+               'id'                 => 'ID',
+               'reference_number'   => 'Reference Number',
+               'customer_name'      => 'Customer Name',
+               'technical_agent'    => 'Technical Agent',
+               'status'             => 'Status',
+               'date_created'       => 'Date Created',
+               'last_updated'       => 'Last Updated'
+            ],
+
+            'tabs' => [
+               'titles' => [
+                  'overview'     => 'Overview',
+                  'history'      => 'History',
+                  'note_history' => 'Note History'
+               ],
+
+               'content' => [
+                  'overview' => [
+                     'id'                 => 'ID',
+                     'reference_number'   => 'Reference Number',
+                     'customer_name'      => 'Customer Name',
+                     'technical_agent'    => 'Technical Agent',
+                     'status'             => 'Status',
+                     'date_created'       => 'Date Created',
+                     'last_updated'       => 'Last Updated',
+                     'note'               => 'Note'
                   ],
                ],
             ],
@@ -80,6 +129,28 @@ return [
       ],
 
       'inventory' => [
+         'technician' => [
+            'management' => 'Technician Management',
+            'availables' => 'Available Technicians',
+
+            'create'    => 'Create Technician',
+            'edit'      => 'Edit Technician',
+            'deleted'   => 'Delete Technician',
+
+            'deleted'   => 'Deleted Technician',
+            'view'      => 'View Technician',
+
+            'table' => [
+               'id'                 => 'ID',
+               'name'               => 'Name',
+               'email'              => 'Email',
+               'contact_number'     => 'Contact Number',
+               'status'             => 'Status',
+               'date_created'       => 'Date Created',
+               'last_updated'       => 'Last Updated',
+            ],
+         ],
+
          'aircon' => [
             'management'   => 'Aircon Management',
             'availables'   => 'Available Aircons',
@@ -109,12 +180,20 @@ return [
 
                'content' => [
                   'overview' => [
-                     'created_at'   => 'Created At',
-                     'deleted_at'   => 'Deleted At',
-                     'category'     => 'Category',
-                     'last_updated' => 'Last Updated',
-                     'name'         => 'Name',
-                     'status'       => 'Status',
+                     'created_at'      => 'Created At',
+                     'deleted_at'      => 'Deleted At',
+                     'category'        => 'Category',
+                     'last_updated'    => 'Last Updated',
+                     'name'            => 'Name',
+                     'status'          => 'Status',
+                     'serial_number'   => 'Serial Number',
+                     'manufacturer'    => 'Manufacturer',
+                     'horsepower'      => 'Horsepower',
+                     'size'            => 'Size',
+                     'brand_name'      => 'Brand Name',
+                     'voltage'         => 'Voltage',
+                     'feature'         => 'Feature',
+                     'price'           => 'Price'
                   ],
                ],
             ],

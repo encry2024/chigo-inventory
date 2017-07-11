@@ -41,6 +41,36 @@ class HistoryTypeTableSeeder extends Seeder
             'name'       => 'Aircon',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
+         ],
+         [
+            'id'         => 4,
+            'name'       => 'Customer',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+         ],
+         [
+            'id'         => 5,
+            'name'       => 'Sale',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+         ],
+         [
+            'id'         => 6,
+            'name'       => 'Technical',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+         ],
+         [
+            'id'         => 7,
+            'name'       => 'Cleaning',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+         ],
+         [
+            'id'         => 8,
+            'name'       => 'Technician',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
          ]
       ];
 

@@ -4,6 +4,7 @@ use App\Models\Inventory\Item\Aircon\Aircon;
 use App\Models\Inventory\Item\Category\Category;
 use App\Models\Inventory\Item\Peripherals\Peripheral;
 use App\Models\Inventory\Customer\Customer;
+use App\Models\Inventory\Technician\Technician;
 
 return [
    'customers_table' => 'customers',
@@ -48,5 +49,9 @@ return [
    */
    'aircon_peripheral_table' => 'aircon_peripheral',
 
+   'technician' => [
+      'technician' => Technician::class,
 
+      'technicians_table' => 'technicians',
+   ]
 ];

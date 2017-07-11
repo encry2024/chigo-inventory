@@ -40,6 +40,27 @@ return [
             'delete_permanently' => 'Delete Permanently',
             'restore_customer'   => 'Restore Customer',
             'activate'           => 'Activate'
+         ],
+
+         'technicians' => [
+            'delete_permanently' => 'Delete Permanently',
+            'restore_customer'   => 'Restore Technician',
+            'activate'           => 'Activate'
+         ]
+      ],
+
+      'workflows' => [
+         'sales' => [
+            'delete_permanently' => 'Delete Permanently',
+            'restore_sale'       => 'Restore Sale Workflow',
+            'activate'           => 'Activate'
+         ],
+
+         'technicals' => [
+            'delete_permanently'             => 'Delete Permanently',
+            'restore_technical'              => 'Restore Technical Workflow',
+            'activate'                       => 'Activate',
+            'get_technician_schedule'      => 'Get Technician Schedules'
          ]
       ]
    ],

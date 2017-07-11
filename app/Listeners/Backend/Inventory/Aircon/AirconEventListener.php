@@ -28,18 +28,18 @@ class AirconEventListener
    // /**
    // * @param $event
    // */
-   // public function onUpdated($event)
-   // {
-   //    history()->withType($this->history_slug)
-   //    ->withEntity($event->user->id)
-   //    ->withText('trans("history.backend.users.updated") <strong>{user}</strong>')
-   //    ->withIcon('save')
-   //    ->withClass('bg-aqua')
-   //    ->withAssets([
-   //       'user_link' => ['admin.access.user.show', $event->user->full_name, $event->user->id],
-   //    ])
-   //    ->log();
-   // }
+   public function onUpdated($event)
+   {
+      history()->withType($this->history_slug)
+      ->withEntity($event->aircon->id)
+      ->withText('trans("history.backend.inventory.items.aircons.updated") <strong>{aircon}</strong>')
+      ->withIcon('save')
+      ->withClass('bg-aqua')
+      ->withAssets([
+         'aircon_link' => ['admin.inventory.item.aircon.show', $event->aircon->name, $event->aircon->id],
+      ])
+      ->log();
+   }
    //
    // /**
    // * @param $event
@@ -99,22 +99,6 @@ class AirconEventListener
    // /**
    // * @param $event
    // */
-   // public function onPasswordChanged($event)
-   // {
-   //    history()->withType($this->history_slug)
-   //    ->withEntity($event->user->id)
-   //    ->withText('trans("history.backend.users.changed_password") <strong>{user}</strong>')
-   //    ->withIcon('lock')
-   //    ->withClass('bg-blue')
-   //    ->withAssets([
-   //       'user_link' => ['admin.access.user.show', $event->user->full_name, $event->user->id],
-   //    ])
-   //    ->log();
-   // }
-   //
-   // /**
-   // * @param $event
-   // */
    // public function onDeactivated($event)
    // {
    //    history()->withType($this->history_slug)
@@ -156,11 +140,11 @@ class AirconEventListener
          'App\Listeners\Backend\Inventory\Aircon\AirconEventListener@onCreated'
       );
 
-      // $events->listen(
-      //    \App\Events\Backend\Access\User\UserUpdated::class,
-      //    'App\Listeners\Backend\Access\User\UserEventListener@onUpdated'
-      // );
-      //
+      $events->listen(
+         \App\Events\Backend\Inventory\Aircon\AirconUpdated::class,
+         'App\Listeners\Backend\Inventory\Aircon\AirconEventListener@onUpdated'
+      );
+
       $events->listen(
          \App\Events\Backend\Inventory\Aircon\AirconDeleted::class,
          'App\Listeners\Backend\Inventory\Aircon\AirconEventListener@onDeleted'

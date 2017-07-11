@@ -71,6 +71,32 @@ class AirconRepository extends BaseRepository
       });
    }
 
+   public function update(Model $aircon, array $input)
+   {
+      $data = $input['data'];
+
+      $aircon->name = $data['name'];
+      $aircon->serial_number = $data['serial_number'];
+      $aircon->manufacturer = $data['manufacturer'];
+      $aircon->price = $data['price'];
+      $aircon->horsepower = $data['horsepower'];
+      $aircon->voltage = $data['voltage'];
+      $aircon->size = $data['size'];
+      $aircon->brand_name = $data['brand_name'];
+      $aircon->feature = $data['feature'];
+      $aircon->manufacturer = $data['manufacturer'];
+
+      DB::transaction(function () use ($aircon, $data) {
+         if ($aircon->save()) {
+            event(new AirconUpdated($aircon));
+
+            return true;
+         }
+
+         throw new GeneralException(trans('exceptions.backend.inventory.items.aircons.update_error'));
+      });
+   }
+
    protected function createAirconStub($input)
    {
       $aircon = self::MODEL;

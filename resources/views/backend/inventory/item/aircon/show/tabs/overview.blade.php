@@ -4,6 +4,42 @@
       <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.name') }}</th>
       <td>{{ $aircon->name }}</td>
    </tr>
+
+   <tr>
+      <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.serial_number') }}</th>
+      <td>{{ $aircon->serial_number }}</td>
+   </tr>
+
+   <tr>
+      <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.manufacturer') }}</th>
+      <td>{{ $aircon->manufacturer }}</td>
+   </tr>
+
+   <tr>
+      <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.horsepower') }}</th>
+      <td>{{ $aircon->horsepower }}</td>
+   </tr>
+
+   <tr>
+      <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.size') }}</th>
+      <td>{{ $aircon->size }}</td>
+   </tr>
+
+   <tr>
+      <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.feature') }}</th>
+      <td>{{ $aircon->feature }}</td>
+   </tr>
+
+   <tr>
+      <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.brand_name') }}</th>
+      <td>{{ $aircon->brand_name }}</td>
+   </tr>
+
+   <tr>
+      <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.price') }}</th>
+      <td>{{ $aircon->price }}</td>
+   </tr>
+
    <tr>
       <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.status') }}</th>
       <td>{!! $aircon->active_label !!}</td>

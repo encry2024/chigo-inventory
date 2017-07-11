@@ -10,7 +10,7 @@
          <div class="pull-left info">
             <p>{{ access()->user()->full_name }}</p>
             <!-- Status -->
-            <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('strings.backend.general.status.online') }}</a>
+            <p>{{ access()->user()->roles[0]->name }}<p>
          </div><!--pull-left-->
       </div><!--user-panel-->
 
@@ -39,6 +39,12 @@
 
          <li class="header">{{ trans('menus.backend.inventory.title') }}</li>
 
+         <li class="{{ active_class(Active::checkUriPattern('admin/inventory/technician*')) }}">
+            <a href="{{ route('admin.inventory.technician.index') }}">
+               <i class="fa fa-wrench"></i>
+               <span>{{ trans('menus.backend.inventory.technicians.title') }}</span>
+            </a>
+         </li>
 
          <li class="{{ active_class(Active::checkUriPattern('admin/inventory/item/aircon*')) }}">
             <a href="{{ route('admin.inventory.item.aircon.index') }}">
@@ -46,13 +52,6 @@
                <span>{{ trans('menus.backend.inventory.aircon.title') }}</span>
             </a>
          </li>
-
-         <!-- <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
-            <a href="{{ route('admin.dashboard') }}">
-               <i class="fa fa-circle-o"></i>
-               <span>{{ trans('menus.backend.inventory.peripherals.title') }}</span>
-            </a>
-         </li> -->
 
          <li class="{{ active_class(Active::checkUriPattern('admin/inventory/customer*')) }}">
             <a href="{{ route('admin.inventory.customer.index') }}">
@@ -67,6 +66,13 @@
             <a href="{{ route('admin.workflow.sale.index') }}">
                <i class="fa fa-money"></i>
                <span>{{ trans('menus.backend.workflows.sales.title') }}</span>
+            </a>
+         </li>
+
+         <li class="{{ active_class(Active::checkUriPattern('admin/workflow/technical*')) }}">
+            <a href="{{ route('admin.workflow.technical.index') }}">
+               <i class="fa fa-cogs"></i>
+               <span>{{ trans('menus.backend.workflows.technicals.title') }}</span>
             </a>
          </li>
 

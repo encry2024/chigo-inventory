@@ -30,6 +30,16 @@ return [
          ],
       ],
 
+      'workflow' => [
+         'sales' => [
+            'delete_sale_confirm'  => 'Are you sure you want to delete this sale permanently? Anywhere in the application that references this sale\'s id will most likely cause an error. Proceed at your own risk. This can not be un-done.',
+         ],
+
+         'technicals' => [
+            'delete_technical_confirm'  => 'Are you sure you want to delete this technical permanently? Anywhere in the application that references this technical\'s id will most likely cause an error. Proceed at your own risk. This can not be un-done.',
+         ],
+      ],
+
       'dashboard' => [
          'title'   => 'Administrative Dashboard',
          'welcome' => 'Welcome',

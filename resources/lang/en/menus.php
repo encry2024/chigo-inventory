@@ -73,27 +73,36 @@ return [
             'view'      => 'View Peripheral'
          ],
 
-         // 'customer' => [
-         //    'title'     => 'Customer Management',
-         //    'all'       => 'All Customers',
-         //    'create'    => 'Create Customer',
-         //    'deleted'   => 'Deleted Customers',
-         //    'edit'      => 'Edit Customer',
-         //    'view'      => 'View Customer'
-         // ]
+         'technicians' => [
+            'title'     => 'Technician Management',
+            'all'       => 'All Techncians',
+            'create'    => 'Create Techncian',
+            'deleted'   => 'Deleted Techncians',
+            'edit'      => 'Edit Techncian',
+            'view'      => 'View Techncian'
+         ]
       ],
 
       'workflows' => [
          'sales' => [
             'title' => 'Sales Workflow',
 
-            'all' => 'All Sales',
-            'create' => 'Create Sale',
-            'deleted' => 'Deleted Sale',
-            'edit' => 'Edit Sale',
-            'view' => 'View Sale'
+            'all'       => 'All Sales',
+            'create'    => 'Create Sale Workflow',
+            'deleted'   => 'Deleted Sale Workflow',
+            'edit'      => 'Edit Sale Workflow',
+            'view'      => 'View Sale Workflow'
          ],
-         'technical' => 'Technical Workflow',
+
+         'technicals' => [
+            'title'     => 'Technicals Workflow',
+
+            'all'       => 'All Technicals',
+            'create'    => 'Create Technical Workflow',
+            'deleted'   => 'Deleted Technical Workflow',
+            'edit'      => 'Edit Technical Workflow',
+            'view'      => 'View Technical Workflow'
+         ]
       ],
 
       'log-viewer' => [

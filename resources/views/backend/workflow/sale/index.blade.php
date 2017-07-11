@@ -30,8 +30,8 @@
                <tr>
                   <th>{{ trans('labels.backend.workflow.sale.table.id') }}</th>
                   <th>{{ trans('labels.backend.workflow.sale.table.reference_number') }}</th>
-                  <th>{{ trans('labels.backend.workflow.sale.table.customer_name') }}</th>
                   <th>{{ trans('labels.backend.workflow.sale.table.sales_agent') }}</th>
+                  <th>{{ trans('labels.backend.workflow.sale.table.customer_name') }}</th>
                   <th>{{ trans('labels.backend.workflow.sale.table.status') }}</th>
                   <th>{{ trans('labels.backend.workflow.sale.table.date_created') }}</th>
                   <th>{{ trans('labels.backend.workflow.sale.table.last_updated') }}</th>
@@ -67,16 +67,16 @@ $(function () {
       ajax: {
          url: '{{ route("admin.workflow.sale.get") }}',
          type: 'post',
-         data: {status: 1, trashed: false}
+         data: {trashed: false}
       },
       columns: [
-         {data: 'id', name: '{{config('workflow.sales_table')}}.id'},
-         {data: 'reference_number', name: '{{config('workflow.sales_table')}}.name'},
-         {data: 'customer_id', name: '{{config('workflow.sales_table')}}.customer_id'},
-         {data: 'user_id', name: '{{config('workflow.sales_table')}}.user_id'},
-         {data: 'status_id', name: '{{config('workflow.sales_table')}}.status'},
-         {data: 'created_at', name: '{{config('workflow.sales_table')}}.created_at'},
-         {data: 'updated_at', name: '{{config('workflow.sales_table')}}.updated_at'},
+         {data: 'id', name: '{{config('workflow.sale_config.sales_table')}}.id'},
+         {data: 'reference_number', name: '{{config('workflow.sale_config.sales_table')}}.reference_number'},
+         {data: 'user', name: '{{config('workflow.sale_config.user_table')}}.jl'},
+         {data: 'customer', name: '{{config('workflow.sale_config.customer_table')}}.company_name'},
+         {data: 'status', name: '{{config('workflow.sale_config.sales_table')}}.status', searchable: false},
+         {data: 'created_at', name: '{{config('workflow.sale_config.sales_table')}}.created_at'},
+         {data: 'updated_at', name: '{{config('workflow.sale_config.sales_table')}}.updated_at'},
          {data: 'actions', name: 'actions', searchable: false, sortable: false}
       ],
       order: [[0, "asc"]],

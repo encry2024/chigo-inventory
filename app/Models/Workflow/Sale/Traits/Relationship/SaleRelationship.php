@@ -14,12 +14,16 @@ trait SaleRelationship
    */
    public function user()
    {
-      return $this->belongsTo(config('workflow.user'));
+      return $this->belongsTo(config('auth.providers.users.model'));
    }
 
    public function customer()
    {
-      return $this->belongsTo(config('workflow.customer'));
+      return $this->belongsTo(config('workflow.sale_config.customer'));
    }
 
+   public function aircons()
+   {
+      return $this->hasMany(config('workflow.sale_config.sales'));
+   }
 }

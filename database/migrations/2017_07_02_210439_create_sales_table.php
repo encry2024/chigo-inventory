@@ -21,6 +21,7 @@ class CreateSalesTable extends Migration
          $table->boolean('parts')->default(0);
          $table->string('status');
          $table->string('reference_number')->unique();
+         $table->string('note');
          $table->timestamps();
          $table->softDeletes();
       });

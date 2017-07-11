@@ -40,8 +40,13 @@ class EventServiceProvider extends ServiceProvider
       */
       \App\Listeners\Backend\Access\User\UserEventListener::class,
       \App\Listeners\Backend\Access\Role\RoleEventListener::class,
+      
       \App\Listeners\Backend\Inventory\Aircon\AirconEventListener::class,
-      \App\Listeners\Backend\Inventory\Customer\CustomerEventListener::class
+      \App\Listeners\Backend\Inventory\Customer\CustomerEventListener::class,
+      \App\Listeners\Backend\Inventory\Technician\TechnicianEventListener::class,
+
+      \App\Listeners\Backend\Workflow\Sale\SaleEventListener::class,
+      \App\Listeners\Backend\Workflow\Technical\TechnicalEventListener::class
    ];
 
    /**

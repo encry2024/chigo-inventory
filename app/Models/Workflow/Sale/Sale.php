@@ -5,6 +5,7 @@ namespace App\Models\Workflow\Sale;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Workflow\Sale\Traits\Scope\SaleScope;
 use App\Models\Workflow\Sale\Traits\Attribute\SaleAttribute;
+use App\Models\Workflow\Sale\Traits\Relationship\SaleRelationship;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Sale extends Model
@@ -12,6 +13,7 @@ class Sale extends Model
 
    use SaleScope,
    SoftDeletes,
+   SaleRelationship,
    SaleAttribute;
 
    /**
@@ -25,6 +27,6 @@ class Sale extends Model
    public function __construct(array $attributes = [])
    {
       parent::__construct($attributes);
-      $this->table = config('inventory.sales_table');
+      $this->table = config('workflow.sale_config.sales_table');
    }
 }

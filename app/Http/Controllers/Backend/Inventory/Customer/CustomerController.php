@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Inventory\Customer\CustomerRepository;
 use App\Http\Requests\Backend\Inventory\Customer\ManageCustomerRequest;
 use App\Http\Requests\Backend\Inventory\Customer\StoreCustomerRequest;
+use App\Http\Requests\Backend\Inventory\Customer\UpdateCustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -56,7 +57,7 @@ class CustomerController extends Controller
          )
       ]);
 
-      return redirect()->route('admin.inventory.customer.index')->withFlashSuccess(trans('alerts.backend.customers.created'));
+      return redirect()->route('admin.inventory.customer.index')->withFlashSuccess(trans('alerts.backend.inventory.customers.created'));
    }
 
    /**
@@ -76,9 +77,9 @@ class CustomerController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function edit($id)
+   public function edit(Customer $customer, ManageCustomerRequest $request)
    {
-      //
+      return view('backend.inventory.customer.edit')->withCustomer($customer);
    }
 
    /**
@@ -88,9 +89,21 @@ class CustomerController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function update(Request $request, $id)
+   public function update(Customer $customer, UpdateCustomerRequest $request)
    {
-      //
+      $this->customers->update($customer,
+      [
+         'data' => $request->only(
+            'company_name',
+            'contact_number',
+            'email',
+            'note',
+            'other_category',
+            'address'
+         )
+      ]);
+
+      return redirect()->route('admin.inventory.customer.index')->withFlashSuccess(trans('alerts.backend.inventory.customers.updated'));
    }
 
    /**

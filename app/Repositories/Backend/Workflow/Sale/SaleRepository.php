@@ -3,6 +3,7 @@
 namespace App\Repositories\Backend\Workflow\Sale;
 
 use App\Models\Workflow\Sale\Sale;
+use App\Models\Workflow\Sale\AirconSale\AirconSale;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
@@ -12,6 +13,7 @@ use App\Events\Backend\Workflow\Sale\SaleDeleted;
 use App\Events\Backend\Workflow\Sale\SaleUpdated;
 use App\Events\Backend\Workflow\Sale\SaleRestored;
 use App\Events\Backend\Workflow\Sale\SalePermanentlyDeleted;
+use App\Repositories\Backend\Access\User\UserRepository;
 
 /**
 * Class SaleRepository.
@@ -23,29 +25,52 @@ class SaleRepository extends BaseRepository
    */
    const MODEL = Sale::class;
 
+   protected $user;
+
+   /**
+   * @param RoleRepository $user
+   */
+   public function __construct(UserRepository $user)
+   {
+      $this->user = $user;
+   }
+
+   function getReferenceNumber($lenght = 8) {
+      // uniqid gives 13 chars, but you could adjust it to your needs.
+      if (function_exists("random_bytes")) {
+         $bytes = random_bytes(ceil($lenght / 2));
+      } elseif (function_exists("openssl_random_pseudo_bytes")) {
+         $bytes = openssl_random_pseudo_bytes(ceil($lenght / 2));
+      } else {
+         throw new Exception("no cryptographically secure random function available");
+      }
+      return strtoupper(substr(bin2hex($bytes), 0, $lenght));
+   }
+
    /**
    * @param        $permissions
    * @param string $by
    *
    * @return mixed
    */
-   public function getForDataTable($status = 1, $trashed = false)
+   public function getForDataTable($status = 'Processed', $trashed = false)
    {
       /**
       * Note: You must return deleted_at or the User getActionButtonsAttribute won't
       * be able to differentiate what buttons to show for each row.
       */
       $dataTableQuery = $this->query()
-      ->with(['users', 'customers'])
+      ->with(['user', 'customer'])
       ->select([
-         config('inventory.sales_table').'.id',
-         config('inventory.sales_table').'.reference_number',
-         config('inventory.sales_table').'.customer_id',
-         config('inventory.sales_table').'.user_id',
-         config('inventory.sales_table').'.status',
-         config('inventory.sales_table').'.created_at',
-         config('inventory.sales_table').'.updated_at',
-         config('inventory.sales_table').'.deleted_at',
+         config('workflow.sale_config.sales_table').'.id',
+         config('workflow.sale_config.sales_table').'.reference_number',
+         config('workflow.sale_config.sales_table').'.customer_id',
+         config('workflow.sale_config.sales_table').'.user_id',
+         config('workflow.sale_config.sales_table').'.status',
+         config('workflow.sale_config.sales_table').'.note',
+         config('workflow.sale_config.sales_table').'.created_at',
+         config('workflow.sale_config.sales_table').'.updated_at',
+         config('workflow.sale_config.sales_table').'.deleted_at',
       ]);
 
       if ($trashed == 'true') {
@@ -53,7 +78,7 @@ class SaleRepository extends BaseRepository
       }
 
       // active() is a scope on the UserScope trait
-      return $dataTableQuery->active($status);
+      return $dataTableQuery;
    }
 
    public function create($input)
@@ -64,12 +89,17 @@ class SaleRepository extends BaseRepository
 
       DB::transaction(function () use ($sale, $data) {
          if ($sale->save()) {
+            $aircon_sale = new AirconSale();
+            $aircon_sale->aircon_id = $data['aircon'];
+            $aircon_sale->sale_id   = $sale->id;
+            $aircon_sale->save();
+
             event(new SaleCreated($sale));
 
             return true;
          }
 
-         throw new GeneralException(trans('exceptions.backend.inventory.items.aircons.create_error'));
+         throw new GeneralException(trans('exceptions.backend.workflow.sales.create_error'));
       });
    }
 
@@ -77,62 +107,56 @@ class SaleRepository extends BaseRepository
    {
       $sale = self::MODEL;
       $sale = new $sale;
-      $sale->customer_id = $input['customer_id'];
-      $sale->user_id = 0;
-      $sale->reference_number = $input['reference_number'];
-      $sale->manufacturer = $input['manufacturer'];
-      $sale->price = $input['price'];
-      $sale->status = isset($input['status']) ? 1 : 0;
-      $sale->horsepower = $input['horsepower'];
-      $sale->voltage = $input['voltage'];
-      $sale->size = $input['size'];
-      $sale->brand_name = $input['brand_name'];
-      $sale->feature = $input['feature'];
-      $sale->manufacturer = $input['manufacturer'];
+      $sale->customer_id = $input['customer'];
+      $sale->user_id = $input['user_id'];
+      $sale->aircon = isset($input['aircon']) ? 1 : 0;
+      $sale->reference_number = $this->getReferenceNumber();
+      $sale->status = "Processing";
+      $sale->note = $input['note'];
 
-      return $aircon;
+      return $sale;
    }
 
-   public function delete(Model $aircon)
+   public function delete(Model $sale)
    {
-      if ($aircon->delete()) {
-         event(new AirconDeleted($aircon));
+      if ($sale->delete()) {
+         event(new SaleDeleted($sale));
 
          return true;
       }
 
-      throw new GeneralException(trans('exceptions.backend.inventory.items.aircons.delete_error'));
+      throw new GeneralException(trans('exceptions.backend.workflows.sales.delete_error'));
    }
 
-   public function forceDelete(Model $aircon)
+   public function forceDelete(Model $sale)
    {
-      if (is_null($aircon->deleted_at)) {
-         throw new GeneralException(trans('exceptions.backend.inventory.items.aircons.delete_first'));
+      if (is_null($sale->deleted_at)) {
+         throw new GeneralException(trans('exceptions.backend.workflows.sales.delete_first'));
       }
 
-      DB::transaction(function () use ($aircon) {
-         if ($aircon->forceDelete()) {
-            event(new AirconPermanentlyDeleted($aircon));
+      DB::transaction(function () use ($sale) {
+         if ($sale->forceDelete()) {
+            event(new SalePermanentlyDeleted($sale));
 
             return true;
          }
 
-         throw new GeneralException(trans('exceptions.backend.inventory.items.aircons.delete_error'));
+         throw new GeneralException(trans('exceptions.backend.workflows.sales.delete_error'));
       });
    }
 
-   public function restore(Model $aircon)
+   public function restore(Model $sale)
    {
-      if (is_null($aircon->deleted_at)) {
-         throw new GeneralException(trans('exceptions.backend.inventory.items.aircons.cant_restore'));
+      if (is_null($sale->deleted_at)) {
+         throw new GeneralException(trans('exceptions.backend.workflows.sales.cant_restore'));
       }
 
-      if ($aircon->restore()) {
-         event(new AirconRestored($aircon));
+      if ($sale->restore()) {
+         event(new SaleRestored($sale));
 
          return true;
       }
 
-      throw new GeneralException(trans('exceptions.backend.inventory.items.aircons.restore_error'));
+      throw new GeneralException(trans('exceptions.backend.workflows.sales.restore_error'));
    }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Inventory\Aircon\AirconRepository;
 use App\Http\Requests\Backend\Inventory\Aircon\ManageAirconRequest;
 use App\Http\Requests\Backend\Inventory\Aircon\StoreAirconRequest;
+use App\Http\Requests\Backend\Inventory\Aircon\UpdateAirconRequest;
 
 class AirconController extends Controller
 {
@@ -92,9 +93,24 @@ class AirconController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-      public function update(Request $request, $id)
+      public function update(Aircon $aircon, UpdateAirconRequest $request)
       {
-         //
+         $this->aircons->update($aircon,
+         [
+            'data' => $request->only(
+               'name',
+               'serial_number',
+               'manufacturer',
+               'horsepower',
+               'price',
+               'voltage',
+               'size',
+               'brand_name',
+               'feature'
+            )
+         ]);
+
+         return redirect()->route('admin.inventory.item.aircon.index')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.updated'));
       }
 
       /**
@@ -107,6 +123,6 @@ class AirconController extends Controller
       {
          $this->aircons->delete($aircon);
 
-         return redirect()->route('admin.inventory.item.aircon.deleted')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.deleted'));
+         return redirect()->route('admin.inventory.item.aircon.deleted')->withFlashSuccess(trans('alerts.backend.workflow.sales.deleted'));
       }
    }

@@ -5,6 +5,10 @@ namespace App\Providers;
 use App\Models\Access\User\User;
 use App\Models\Inventory\Item\Aircon\Aircon;
 use App\Models\Inventory\Customer\Customer;
+use App\Models\Inventory\Technician\Technician;
+use App\Models\Workflow\Sale\Sale;
+use App\Models\Workflow\Technical\Technical;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -53,6 +57,24 @@ class RouteServiceProvider extends ServiceProvider
          $customer = new Customer();
 
          return Customer::withTrashed()->where($customer->getRouteKeyName(), $value)->first();
+      });
+
+      $this->bind('deletedSale', function ($value) {
+         $sale = new Sale();
+
+         return Sale::withTrashed()->where($sale->getRouteKeyName(), $value)->first();
+      });
+
+      $this->bind('deletedTechnical', function ($value) {
+         $technical = new Technical();
+
+         return Technical::withTrashed()->where($technical->getRouteKeyName(), $value)->first();
+      });
+
+      $this->bind('deletedTechnician', function ($value) {
+         $technician = new Technician();
+
+         return Technician::withTrashed()->where($technician->getRouteKeyName(), $value)->first();
       });
 
       parent::boot();

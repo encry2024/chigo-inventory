@@ -28,18 +28,18 @@ class CustomerEventListener
    // /**
    // * @param $event
    // */
-   // public function onUpdated($event)
-   // {
-   //    history()->withType($this->history_slug)
-   //    ->withEntity($event->user->id)
-   //    ->withText('trans("history.backend.users.updated") <strong>{user}</strong>')
-   //    ->withIcon('save')
-   //    ->withClass('bg-aqua')
-   //    ->withAssets([
-   //       'user_link' => ['admin.access.user.show', $event->user->full_name, $event->user->id],
-   //    ])
-   //    ->log();
-   // }
+   public function onUpdated($event)
+   {
+      history()->withType($this->history_slug)
+      ->withEntity($event->customer->id)
+      ->withText('trans("history.backend.customer.updated") <strong>{customer}</strong>')
+      ->withIcon('save')
+      ->withClass('bg-aqua')
+      ->withAssets([
+         'customer_link' => ['admin.inventory.customer.show', $event->customer->company_name, $event->customer->id],
+      ])
+      ->log();
+   }
    //
    // /**
    // * @param $event
@@ -141,11 +141,11 @@ class CustomerEventListener
          'App\Listeners\Backend\Inventory\Customer\CustomerEventListener@onCreated'
       );
 
-      // $events->listen(
-      //    \App\Events\Backend\Access\User\UserUpdated::class,
-      //    'App\Listeners\Backend\Access\User\UserEventListener@onUpdated'
-      // );
-      //
+      $events->listen(
+         \App\Events\Backend\Inventory\Customer\CustomerUpdated::class,
+         'App\Listeners\Backend\Inventory\Customer\CustomerEventListener@onUpdated'
+      );
+
       $events->listen(
          \App\Events\Backend\Inventory\Customer\CustomerDeleted::class,
          'App\Listeners\Backend\Inventory\Customer\CustomerEventListener@onDeleted'

@@ -36,7 +36,7 @@ Route::group([
       //Route::get('/', 'CustomerController@index')->name('index');
       Route::get('customer/deleted', 'CustomerStatusController@getDeleted')->name('customer.deleted');
 
-      Route::post('/get', 'CustomerTableController')->name('customer.get');
+      Route::post('customer/get', 'CustomerTableController')->name('customer.get');
 
       Route::resource('customer', 'CustomerController');
 
@@ -44,5 +44,13 @@ Route::group([
          Route::get('delete', 'CustomerStatusController@delete')->name('customer.delete-permanently');
          Route::get('restore', 'CustomerStatusController@restore')->name('customer.restore');
       });
+   });
+
+   Route::group([
+      'namespace' => 'Technician',
+   ], function() {
+      Route::post('/get', 'TechnicianTableController')->name('technician.get');
+
+      Route::resource('technician', 'TechnicianController');
    });
 });

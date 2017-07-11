@@ -54,7 +54,8 @@ return [
                'delete_error'          => 'There was a problem deleting this aircon. Please try again.',
                'cant_restore'          => 'This aircon is not deleted so it can not be restored.',
                'restore_error'         => 'There was a problem restoring this aircon. Please try again.',
-               'delete_first'          => 'This aircon must be deleted first before it can be destroyed permanently.'
+               'delete_first'          => 'This aircon must be deleted first before it can be destroyed permanently.',
+               'update_error'          => 'There was a problem updating this user. Please try again.',
             ]
          ],
 
@@ -64,6 +65,32 @@ return [
             'cant_restore'          => 'This customer is not deleted so it can not be restored.',
             'restore_error'         => 'There was a problem restoring this customer. Please try again.',
             'delete_first'          => 'This customer must be deleted first before it can be destroyed permanently.'
+         ],
+
+         'technicians' => [
+            'create_error'          => 'There was a problem creating this technician. Please try again.',
+            'delete_error'          => 'There was a problem deleting this technician. Please try again.',
+            'cant_restore'          => 'This technician is not deleted so it can not be restored.',
+            'restore_error'         => 'There was a problem restoring this technician. Please try again.',
+            'delete_first'          => 'This technician must be deleted first before it can be destroyed permanently.'
+         ]
+      ],
+
+      'workflows' => [
+         'sales' => [
+            'create_error'          => 'There was a problem creating this sale. Please try again.',
+            'delete_error'          => 'There was a problem deleting this sale. Please try again.',
+            'cant_restore'          => 'This sale is not deleted so it can not be restored.',
+            'restore_error'         => 'There was a problem restoring this sale. Please try again.',
+            'delete_first'          => 'This sale must be deleted first before it can be destroyed permanently.'
+         ],
+
+         'technicals' => [
+            'create_error'          => 'There was a problem creating this technical. Please try again.',
+            'delete_error'          => 'There was a problem deleting this technical. Please try again.',
+            'cant_restore'          => 'This technical is not deleted so it can not be restored.',
+            'restore_error'         => 'There was a problem restoring this technical. Please try again.',
+            'delete_first'          => 'This technical must be deleted first before it can be destroyed permanently.'
          ]
       ]
    ],

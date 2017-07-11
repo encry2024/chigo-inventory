@@ -1,4 +1,4 @@
-   @extends ('backend.layouts.app')
+@extends ('backend.layouts.app')
 
 @section ('title', trans('labels.backend.inventory.aircon.management') . ' | ' . trans('labels.backend.inventory.aircon.create'))
 
@@ -111,7 +111,7 @@
    <div class="box box-info">
       <div class="box-body">
          <div class="pull-left">
-            {{ link_to_route('admin.access.user.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
+            {{ link_to_route('admin.inventory.item.aircon.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
          </div><!--pull-left-->
 
          <div class="pull-right">

@@ -25,7 +25,7 @@ trait SaleAttribute
    */
    public function isActive()
    {
-      return $this->status == 1;
+      return $this->status == "Processed";
    }
 
    public function getShowButtonAttribute()
@@ -94,7 +94,7 @@ trait SaleAttribute
    */
    public function getRestoreButtonAttribute()
    {
-      return '<a href="'.route('admin.workflow.sale.restore', $this).'" name="aircon" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.inventory.items.aircons.restore_aircon').'"></i></a> ';
+      return '<a href="'.route('admin.workflow.sale.restore', $this).'" name="aircon" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.workflows.sales.restore_sale').'"></i></a> ';
    }
 
    /**
@@ -103,7 +103,7 @@ trait SaleAttribute
    public function getDeletePermanentlyButtonAttribute()
    {
       if(access()->id() == 1) {
-         return '<a href="'.route('admin.workflow.sale.delete-permanently', $this).'" name="delete_sale_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.inventory.items.aircons.delete_permanently').'"></i></a> ';
+         return '<a href="'.route('admin.workflow.sale.delete-permanently', $this).'" name="delete_sale_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.workflows.sales.delete_permanently').'"></i></a> ';
       }
    }
 

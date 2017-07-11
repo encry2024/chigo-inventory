@@ -31,6 +31,24 @@ return [
          'updated_password'    => "The user's password was successfully updated.",
       ],
 
+      'workflow' => [
+         'sales' => [
+            'created'             => 'The sale was successfully created.',
+            'deleted'             => 'The sale was successfully deleted.',
+            'restored'            => 'The sale was successfully restored.',
+            'deleted_permanently' => 'The sale was deleted permanently.',
+            'updated'             => 'The sale was successfully updated.'
+         ],
+
+         'technicals' => [
+            'created'             => 'The technical was successfully created.',
+            'deleted'             => 'The technical was successfully deleted.',
+            'restored'            => 'The technical was successfully restored.',
+            'deleted_permanently' => 'The technical was deleted permanently.',
+            'updated'             => 'The technical was successfully updated.'
+         ],
+      ],
+
       'inventory' => [
          'items' => [
             'aircons' => [
@@ -49,14 +67,14 @@ return [
             'deleted_permanently' => 'The customer was deleted permanently.',
             'updated'             => 'The customer was successfully updated.'
          ],
-      ],
 
-      'customers' => [
-         'created'             => 'The customer was successfully created.',
-         'deleted'             => 'The customer was successfully deleted.',
-         'deleted_permanently' => 'The customer was deleted permanently.',
-         'restored'            => 'The customer was successfully restored.',
-         'updated'             => 'The customer was successfully updated.'
-      ]
+         'technicians' => [
+            'created'             => 'The technician was successfully created.',
+            'deleted'             => 'The technician was successfully deleted.',
+            'restored'            => 'The technician was successfully restored.',
+            'deleted_permanently' => 'The technician was deleted permanently.',
+            'updated'             => 'The technician was successfully updated.'
+         ]
+      ],
    ],
 ];

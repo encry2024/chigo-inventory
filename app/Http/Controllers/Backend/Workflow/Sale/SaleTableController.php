@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend\Workflow\Sale;
 
-use App\Models\Workflow\Sale\Sale;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;
 use App\Repositories\Backend\Workflow\Sale\SaleRepository;
@@ -35,9 +34,16 @@ class SaleTableController extends Controller
    {
       return Datatables::of(
          $this->sales->getForDataTable($request->get('status'), $request->get('trashed')))
-         ->escapeColumns(['reference_number'])
-         ->editColumn('status', function ($sale) {
-            return $sale->active_label;
+         ->escapeColumns([])
+         ->addColumn('user', function ($sale) {
+            return $sale->user->count() ?
+            $sale->user->full_name :
+            trans('labels.general.none');
+         })
+         ->addColumn('customer', function ($sale) {
+            return $sale->customer->count() ?
+            $sale->customer->company_name :
+            trans('labels.general.none');
          })
          ->addColumn('actions', function ($user) {
             return $user->action_buttons;

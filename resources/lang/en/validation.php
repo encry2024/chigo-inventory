@@ -118,9 +118,16 @@ return [
       'backend' => [
          'workflow' => [
             'sales' => [
-               ''
+               'customer_id' => 'Customer Name'
+            ],
+
+            'technicals' => [
+               'customer_id'     => 'Customer',
+               'date_schedule'   => 'Schedule Date',
+               'time_schedule'   => 'Schedule Time',
+               'technician_id'   => 'Technician',
             ]
-         ]
+         ],
 
          'inventory' => [
             'customers' => [
@@ -133,7 +140,7 @@ return [
             ],
 
             'aircons' => [
-               'name'                     => 'Name',
+               'name'                     => 'Aircon Name',
                'active'                   => 'Active',
                'serial_number'            => 'Serial Number',
                'manufacturer'             => 'Manufacturer',
@@ -145,7 +152,14 @@ return [
                'feature'                  => 'Feature',
                'status'                   => 'Status',
                'type'                     => 'Type of Aircon'
-            ]
+            ],
+
+            'technicians' => [
+               'name'                     => 'Technician Name',
+               'address'                  => 'Address',
+               'contact_number'           => 'Contact Number',
+               'email'                    => 'Email'
+            ],
          ],
 
          'access' => [

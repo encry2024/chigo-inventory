@@ -42,15 +42,41 @@ return [
                'deleted'             => 'deleted aircon',
                'restored'            => 'restored aircon',
                'permanently_deleted' => 'permanently deleted aircon',
+               'updated'             => 'updated aircon',
             ],
          ],
       ],
 
       'customer' => [
          'created'             => 'created customer/client',
-         'deleted'             => 'deleted customer',
-         'restored'            => 'restored customer',
-         'permanently_deleted' => 'permanently deleted customer',
-      ]
+         'deleted'             => 'deleted customer/client',
+         'restored'            => 'restored customer/client',
+         'permanently_deleted' => 'permanently deleted customer/client',
+         'updated'             => 'updated customer/client',
+      ],
+
+      'technician' => [
+         'created'             => 'created technician',
+         'deleted'             => 'deleted technician',
+         'restored'            => 'restored technician',
+         'permanently_deleted' => 'permanently deleted technician',
+         'updated'             => 'updated technician',
+      ],
+
+      'workflows' => [
+         'sales' => [
+            'created'             => 'created sale workflow',
+            'deleted'             => 'deleted sale workflow',
+            'restored'            => 'restored sale workflow',
+            'permanently_deleted' => 'permanently deleted sale workflow',
+         ],
+
+         'technicals' => [
+            'created'             => 'created technical workflow',
+            'deleted'             => 'deleted technical workflow',
+            'restored'            => 'restored technical workflow',
+            'permanently_deleted' => 'permanently deleted technical workflow',
+         ]
+      ],
    ],
 ];
