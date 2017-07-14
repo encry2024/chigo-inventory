@@ -28,13 +28,13 @@
          <table id="sales-table" class="table table-condensed table-hover">
             <thead>
                <tr>
-                  <th>{{ trans('labels.backend.workflow.sale.table.id') }}</th>
-                  <th>{{ trans('labels.backend.workflow.sale.table.reference_number') }}</th>
-                  <th>{{ trans('labels.backend.workflow.sale.table.sales_agent') }}</th>
-                  <th>{{ trans('labels.backend.workflow.sale.table.customer_name') }}</th>
-                  <th>{{ trans('labels.backend.workflow.sale.table.status') }}</th>
-                  <th>{{ trans('labels.backend.workflow.sale.table.date_created') }}</th>
-                  <th>{{ trans('labels.backend.workflow.sale.table.last_updated') }}</th>
+                  <th>{{ trans('labels.backend.workflow.technical.table.id') }}</th>
+                  <th>{{ trans('labels.backend.workflow.technical.table.reference_id') }}</th>
+                  <th>{{ trans('labels.backend.workflow.technical.table.technical_agent') }}</th>
+                  <th>{{ trans('labels.backend.workflow.technical.table.customer_name') }}</th>
+                  <th>{{ trans('labels.backend.workflow.technical.table.status') }}</th>
+                  <th>{{ trans('labels.backend.workflow.technical.table.date_created') }}</th>
+                  <th>{{ trans('labels.backend.workflow.technical.table.last_updated') }}</th>
                   <th>{{ trans('labels.general.actions') }}</th>
                </tr>
             </thead>
@@ -70,13 +70,13 @@ $(function () {
          data: {trashed: false}
       },
       columns: [
-         {data: 'id', name: '{{config('workflow.sales_table')}}.id'},
-         {data: 'reference_number', name: '{{config('workflow.sales_table')}}.reference_number'},
-         {data: 'user', name: '{{config('workflow.user_table')}}.jl'},
+         {data: 'id', name: '{{config('workflow.technicals_table')}}.id'},
+         {data: 'reference_id', name: '{{config('workflow.technicals_table')}}.reference_id'},
+         {data: 'user', name: '{{config('workflow.user_table')}}.last_name'},
          {data: 'customer', name: '{{config('workflow.customer_table')}}.company_name'},
-         {data: 'status', name: '{{config('workflow.sales_table')}}.status', searchable: false},
-         {data: 'created_at', name: '{{config('workflow.sales_table')}}.created_at'},
-         {data: 'updated_at', name: '{{config('workflow.sales_table')}}.updated_at'},
+         {data: 'status', name: '{{config('workflow.technicals_table')}}.status', searchable: false},
+         {data: 'created_at', name: '{{config('workflow.technicals_table')}}.created_at'},
+         {data: 'updated_at', name: '{{config('workflow.technicals_table')}}.updated_at'},
          {data: 'actions', name: 'actions', searchable: false, sortable: false}
       ],
       order: [[0, "asc"]],

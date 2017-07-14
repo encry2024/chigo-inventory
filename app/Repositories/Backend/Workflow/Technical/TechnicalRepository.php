@@ -13,6 +13,7 @@ use App\Events\Backend\Workflow\Technical\TechnicalUpdated;
 use App\Events\Backend\Workflow\Technical\TechnicalRestored;
 use App\Events\Backend\Workflow\Technical\TechnicalPermanentlyDeleted;
 use App\Repositories\Backend\Access\User\UserRepository;
+use Auth;
 
 /**
 * Class SaleRepository.
@@ -67,8 +68,10 @@ class TechnicalRepository extends BaseRepository
          config('workflow.technical_config.technicals_table').'.user_id',
          config('workflow.technical_config.technicals_table').'.status',
          config('workflow.technical_config.technicals_table').'.note',
-         config('workflow.technical_config.technicals_table').'.date_schedule',
-         config('workflow.technical_config.technicals_table').'.time_schedule',
+         config('workflow.technical_config.technicals_table').'.start_date_schedule',
+         config('workflow.technical_config.technicals_table').'.start_time_schedule',
+         config('workflow.technical_config.technicals_table').'.end_date_schedule',
+         config('workflow.technical_config.technicals_table').'.end_time_schedule',
          config('workflow.technical_config.technicals_table').'.created_at',
          config('workflow.technical_config.technicals_table').'.updated_at',
          config('workflow.technical_config.technicals_table').'.deleted_at',
@@ -101,17 +104,20 @@ class TechnicalRepository extends BaseRepository
 
    protected function createTechnicalStub($input)
    {
-      $technical = self::MODEL;
-      $technical = new $technical;
-      $technical->customer_id = $input['customer'];
-      $technical->user_id = $input['user_id'];
-      $technical->reference_id = $this->getReferenceNumber();
-      $technical->status = "Processing";
-      $technical->note = $input['note'];
-      $technical->date_schedule = $input['date_schedule'];
-      $technical->time_schedule = $input['time_schedule'];
+      $technical                       = self::MODEL;
+      $technical                       = new $technical;
+      $technical->technician_id        = $input['technician'];
+      $technical->customer_id          = $input['customer'];
+      $technical->user_id              = Auth::user()->id;
+      $technical->reference_id         = $this->getReferenceNumber();
+      $technical->status               = "Processing";
+      $technical->note                 = $input['note'];
+      $technical->start_date_schedule  = date('Y-m-d', strtotime($input['start_date_schedule']));
+      $technical->start_time_schedule  = date('H:i', strtotime($input['start_time_schedule']));
+      $technical->end_date_schedule    = date('Y-m-d', strtotime($input['end_date_schedule']));
+      $technical->end_time_schedule    = date('H:i', strtotime($input['end_time_schedule']));
 
-      return $technicals;
+      return $technical;
    }
 
    // public function delete(Model $aircon)

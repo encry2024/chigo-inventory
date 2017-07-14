@@ -122,10 +122,13 @@ return [
             ],
 
             'technicals' => [
-               'customer_id'     => 'Customer',
-               'date_schedule'   => 'Schedule Date',
-               'time_schedule'   => 'Schedule Time',
-               'technician_id'   => 'Technician',
+               'customer_id'           => 'Customer',
+               'start_date_schedule'   => 'Starting Date',
+               'start_time_schedule'   => 'Starting Time',
+               'end_date_schedule'     => 'Ending Date',
+               'end_time_schedule'     => 'Ending Time',
+               'technician_id'         => 'Technician',
+               'note'                => 'Note'
             ]
          ],
 

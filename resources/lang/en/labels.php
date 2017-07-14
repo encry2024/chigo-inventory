@@ -97,7 +97,7 @@ return [
 
             'table' => [
                'id'                 => 'ID',
-               'reference_number'   => 'Reference Number',
+               'reference_id'   => 'Reference ID',
                'customer_name'      => 'Customer Name',
                'technical_agent'    => 'Technical Agent',
                'status'             => 'Status',

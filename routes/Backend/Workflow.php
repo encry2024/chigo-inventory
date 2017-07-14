@@ -27,6 +27,7 @@ Route::group([
       'namespace' => 'Technical',
    ], function() {
       Route::post('technical/get', 'TechnicalTableController')->name('technical.get');
+      Route::get('technical/schedule/{schedule}', 'TechnicalController@create')->name('technical.process_technical_workflow');
 
       Route::get('technical/get/schedule', 'TechnicalController@validateDateTime')->name('technical.valdiate_schedule');
       Route::post('technical/confirm_schedules', 'TechnicalController@confirmSchedules')->name('technical.confirm_schedules');

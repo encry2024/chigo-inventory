@@ -26,4 +26,9 @@ trait TechnicalRelationship
    {
       return $this->hasMany(config('workflow.technical_config.sales'));
    }
+
+   public function technicians()
+   {
+      return $this->hasMany(config('workflow.technical_config.technicians'));
+   }
 }

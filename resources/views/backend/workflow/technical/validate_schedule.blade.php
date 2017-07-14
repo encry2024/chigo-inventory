@@ -10,39 +10,44 @@
 @endsection
 
 @section('content')
-{{ Form::open(['route' => 'admin.workflow.technical.confirm_schedules', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+<form class="form-horizontal">
 
-<div class="box box-success">
-   <div class="box-header with-border">
-      <h3 class="box-title">{{ trans('labels.backend.workflow.technical.check_date_time') }}</h3>
+   <div class="box box-success">
+      <div class="box-header with-border">
+         <h3 class="box-title">{{ trans('labels.backend.workflow.technical.check_date_time') }}</h3>
 
-      <div class="box-tools pull-right">
-         @include('backend.workflow.technical.partials.technical-header-buttons')
-      </div><!--box-tools pull-right-->
-   </div><!-- /.box-header -->
+         <div class="box-tools pull-right">
+            @include('backend.workflow.technical.partials.technical-header-buttons')
+         </div><!--box-tools pull-right-->
+      </div><!-- /.box-header -->
 
-   <div class="box-body">
-      <div id="calendar"></div>
-   </div>
-</div><!--box-->
+      <div class="box-body">
+         <div id="calendar"></div>
+      </div>
+   </div><!--box-->
 
-<div class="box box-info">
-   <div class="box-body">
-      <div class="pull-left">
-         {{ link_to_route('admin.workflow.technical.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
-      </div><!--pull-left-->
+   <div class="box box-info">
+      <div class="box-body">
+         <div class="pull-left">
+            {{ link_to_route('admin.workflow.technical.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
+         </div><!--pull-left-->
 
-      <div class="pull-right">
-         {{ Form::submit(trans('buttons.backend.workflows.technicals.get_technician_schedule'), ['class' => 'btn btn-success btn-xs']) }}
-      </div><!--pull-right-->
+         <div class="pull-right">
+            <a id="processTechnicalWorkflow" class="btn btn-success btn-xs">{{ trans('buttons.backend.workflows.technicals.get_technician_schedule') }}</a>
+         </div><!--pull-right-->
 
-      <div class="clearfix"></div>
-   </div><!-- /.box-body -->
-</div><!--box-->
-{{ Form::close() }}
+         <div class="clearfix"></div>
+      </div><!-- /.box-body -->
+   </div><!--box-->
+
+   <input type="hidden" id="schedule" name="schedule">
+
+</form>
 
 
 <script>
+
+
 $('#calendar').fullCalendar({
    selectable: true,
    header: {
@@ -50,23 +55,31 @@ $('#calendar').fullCalendar({
       center: 'title',
       right: 'month'
    },
-
    dayClick: function(date, jsEvent, view) {
 
-      $('#calendar').fullCalendar('gotoDate',date);
+      $('#calendar').fullCalendar('gotoDate', date);
       $('#calendar').fullCalendar('changeView','agendaDay');
 
    },
-   slotDuration: '00:05:00',
-   eventLimit: true,
-   editable: true,
    businessHours: [ // specify an array instead
       {
          dow: [ 1, 2, 3, 4, 5 ], // Monday, Tuesday, Wednesday
-         start: '06:00', // 8am
-         end: '19:00' // 5pm
+         startTime: '08:00', // 8am
+         endTime: '17:00' // 5pm
       }
    ],
+   select: function( start, end) {
+      var check = start.format();
+      var today = moment().format();
+
+      var redirect_url = "{{ route('admin.workflow.technical.process_technical_workflow', ':schedule') }}";
+      redirect_url = redirect_url.replace(':schedule', start.format()+'&'+end.format());
+
+      document.getElementById("processTechnicalWorkflow").href =  redirect_url;
+   },
+   eventLimit: true,
+   editable: true,
+
 })
 </script>
 @endsection

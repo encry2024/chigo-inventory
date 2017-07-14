@@ -70,11 +70,11 @@ return [
       /*
       * Workflow Technical table used to make Relationship with Technician
       */
-      'technician' => Technician::class,
+      'technicians' => Technician::class,
 
       /*
       * Workflow Technical table used to make Relationship with Technician
       */
-      'technician_table' => 'technician',
+      'technicians_table' => 'technicians',
    ]
 ];
