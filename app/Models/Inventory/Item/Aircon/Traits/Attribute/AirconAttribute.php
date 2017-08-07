@@ -13,19 +13,15 @@ trait AirconAttribute
    */
    public function getActiveLabelAttribute()
    {
-      if ($this->isActive()) {
-         return "<label class='label label-success'>".trans('labels.general.deployable').'</label>';
+      if ($this->status == 1) {
+         return "<label class='label label-primary'>".trans('labels.general.checked_in').'</label>';
+      } elseif ($this->status == 2) {
+         return "<label class='label label-warning'>".trans('labels.general.pending').'</label>';
+      } elseif ($this->status == 0) {
+         return "<label class='label label-success'>".trans('labels.general.checked_out').'</label>';
       }
 
-      return "<label class='label label-danger'>".trans('labels.general.no').'</label>';
-   }
 
-   /**
-   * @return bool
-   */
-   public function isActive()
-   {
-      return $this->status == 1;
    }
 
    public function getShowButtonAttribute()
@@ -95,6 +91,14 @@ trait AirconAttribute
    public function getRestoreButtonAttribute()
    {
       return '<a href="'.route('admin.inventory.item.aircon.restore', $this).'" name="aircon" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.inventory.items.aircons.restore_aircon').'"></i></a> ';
+   }
+
+   /**
+   * @return string
+   */
+   public function getLogButtonAttribute()
+   {
+      return '<a href="'.route('admin.inventory.item.aircon.log', $this).'" name="aircon" class="btn btn-xs btn-info"><i class="fa fa-flag" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.inventory.items.aircons.log_aircon').'"></i></a> ';
    }
 
    /**

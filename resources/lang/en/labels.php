@@ -29,8 +29,10 @@ return [
       'none'              => 'None',
       'show'              => 'Show',
       'toggle_navigation' => 'Toggle Navigation',
-      'deployable'        => 'Deployable',
-      'processed'         => 'Processed'
+      'checked_in'        => 'Checked-In',
+      'checked_out'       => 'Checked-Out',
+      'processed'         => 'Processed',
+      'pending'           => 'Pending'
    ],
 
    'backend' => [

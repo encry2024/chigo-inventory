@@ -32,7 +32,9 @@ return [
             'aircons' => [
                'delete_permanently' => 'Delete Permanently',
                'restore_aircon'     => 'Restore Aircon',
-               'activate'           => 'Activate'
+               'activate'           => 'Activate',
+               'import'             => 'Import',
+               'log_aircon'         => 'Check-in/Check-out Aircon'
             ]
          ],
 

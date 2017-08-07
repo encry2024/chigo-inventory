@@ -154,7 +154,8 @@ return [
                'brand_name'               => 'Brand Name',
                'feature'                  => 'Feature',
                'status'                   => 'Status',
-               'type'                     => 'Type of Aircon'
+               'type'                     => 'Type of Aircon',
+               'aircon_file'              => 'Import Aircon Excel'
             ],
 
             'technicians' => [

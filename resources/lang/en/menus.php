@@ -62,6 +62,11 @@ return [
             'edit'         => 'Edit Aircon',
             'view'         => 'View Aircon',
             'deactivated'  => 'Deactivated Aircons',
+            'import'       => 'Import Aircon Excel',
+            'pendings'     => 'Pending Aircons',
+            'log_pending_aircon' => 'Log Pending Aircons',
+            'checked_out_aircons' => 'View Checked-Out Aircons',
+            'view_pending_aircons'  => 'View Pending Aircons'
          ],
 
          'peripherals' => [

@@ -72,7 +72,7 @@ $(function () {
       columns: [
          {data: 'id', name: '{{config('workflow.sale_config.sales_table')}}.id'},
          {data: 'reference_number', name: '{{config('workflow.sale_config.sales_table')}}.reference_number'},
-         {data: 'user', name: '{{config('workflow.sale_config.user_table')}}.jl'},
+         {data: 'user', name: '{{config('workflow.sale_config.user_table')}}.last_name'},
          {data: 'customer', name: '{{config('workflow.sale_config.customer_table')}}.company_name'},
          {data: 'status', name: '{{config('workflow.sale_config.sales_table')}}.status', searchable: false},
          {data: 'created_at', name: '{{config('workflow.sale_config.sales_table')}}.created_at'},

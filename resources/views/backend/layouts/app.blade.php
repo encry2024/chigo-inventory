@@ -15,6 +15,7 @@
    <link rel="stylesheet" href="{{ asset('js/backend/plugin/chosen_v1.6.2/chosen.css') }}">
    <link rel="stylesheet" href="{{ asset('js/backend/plugin/chosen_v1.6.2/chosen-bootstrap-css.css') }}">
    <link rel="stylesheet" href="{{ asset('js/fullcalendar-2.4.0/fullcalendar.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
 
 

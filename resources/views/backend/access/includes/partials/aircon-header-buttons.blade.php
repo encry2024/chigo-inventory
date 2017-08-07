@@ -1,7 +1,11 @@
 <div class="pull-right mb-10 hidden-sm hidden-xs">
    {{ link_to_route('admin.inventory.item.aircon.index', trans('menus.backend.inventory.aircon.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
+   {{ link_to_route('admin.inventory.item.aircon.log_pending_aircon', trans('menus.backend.inventory.aircon.log_pending_aircon'), [], ['class' => 'btn btn-primary btn-xs']) }}
+   {{ link_to_route('admin.inventory.item.aircon.checked_out_aircons', trans('menus.backend.inventory.aircon.checked_out_aircons'), [], ['class' => 'btn btn-primary btn-xs']) }}
+   {{ link_to_route('admin.inventory.item.aircon.import', trans('menus.backend.inventory.aircon.import'), [], ['class' => 'btn btn-success btn-xs']) }}
    {{ link_to_route('admin.inventory.item.aircon.create', trans('menus.backend.inventory.aircon.create'), [], ['class' => 'btn btn-success btn-xs']) }}
    {{ link_to_route('admin.inventory.item.aircon.deactivated', trans('menus.backend.inventory.aircon.deactivated'), [], ['class' => 'btn btn-warning btn-xs']) }}
+   {{ link_to_route('admin.inventory.item.aircon.view.pending', trans('menus.backend.inventory.aircon.view_pending_aircons'), [], ['class' => 'btn btn-warning btn-xs']) }}
    {{ link_to_route('admin.inventory.item.aircon.deleted', trans('menus.backend.inventory.aircon.deleted'), [], ['class' => 'btn btn-danger btn-xs']) }}
 </div><!--pull right-->
 

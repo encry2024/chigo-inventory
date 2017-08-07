@@ -56,6 +56,7 @@ return [
                'restore_error'         => 'There was a problem restoring this aircon. Please try again.',
                'delete_first'          => 'This aircon must be deleted first before it can be destroyed permanently.',
                'update_error'          => 'There was a problem updating this user. Please try again.',
+               'upload_error'          => 'There was a problem uploading this excel file. Please try again or contact the developers'
             ]
          ],
 

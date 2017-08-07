@@ -45,6 +45,15 @@
       </div><!--form control-->
 
       <div class="form-group">
+         {{ Form::label('contact_number', 'Alternative Contact',
+         ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-10">
+            {{ Form::text('contact_number', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.backend.inventory.customers.contact_number')]) }}
+         </div><!--col-lg-10-->
+      </div><!--form control-->
+
+      <div class="form-group">
          {{ Form::label('email', trans('validation.attributes.backend.inventory.customers.email'), ['class' => 'col-lg-2 control-label']) }}
 
          <div class="col-lg-10">

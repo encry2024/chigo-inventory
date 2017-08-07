@@ -72,6 +72,20 @@ class AirconEventListener
       ])
       ->log();
    }
+
+   public function onUploaded($event)
+   {
+      history()->withType($this->history_slug)
+      ->withEntity($event->aircon->id)
+      ->withText('trans("history.backend.inventory.items.aircons.uploaded") <strong>{aircon}</strong>')
+      ->withIcon('flag')
+      ->withClass('bg-aqua')
+      ->withAssets([
+         'aircon_link' => ['admin.inventory.item.aircon.show', $event->aircon->name, $event->aircon->id],
+      ])
+      ->log();
+   }
+
    //
    // /**
    // * @param $event
@@ -156,10 +170,14 @@ class AirconEventListener
       );
       //
       $events->listen(
-         \App\Events\Backend\Inventory\Aircon\UserPermanentlyDeleted::class,
+         \App\Events\Backend\Inventory\Aircon\AirconPermanentlyDeleted::class,
          'App\Listeners\Backend\Inventory\Aircon\AirconEventListener@onPermanentlyDeleted'
       );
       //
+      $events->listen(
+         \App\Events\Backend\Inventory\Aircon\AirconUploaded::class,
+         'App\Listeners\Backend\Inventory\Aircon\AirconEventListener@onUploaded'
+      );
       // $events->listen(
       //    \App\Events\Backend\Access\User\UserPasswordChanged::class,
       //    'App\Listeners\Backend\Access\User\UserEventListener@onPasswordChanged'

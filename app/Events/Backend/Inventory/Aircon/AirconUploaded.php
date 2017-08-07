@@ -5,9 +5,9 @@ namespace App\Events\Backend\Inventory\Aircon;
 use Illuminate\Queue\SerializesModels;
 
 /**
-* Class AirconUpdated.
+* Class AirconUploaded.
 */
-class AirconUpdated
+class AirconUploaded
 {
    use SerializesModels;
 

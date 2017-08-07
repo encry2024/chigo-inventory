@@ -56,7 +56,9 @@ return [
                'deleted'             => 'The aircon was successfully deleted.',
                'restored'            => 'The aircon was successfully restored.',
                'deleted_permanently' => 'The aircon was deleted permanently.',
-               'updated'             => 'The aircon was successfully updated.'
+               'updated'             => 'The aircon was successfully updated.',
+               'uploaded'            => 'The excel file for aircons was successfully uploaded.',
+               'change_log'          => 'Aircon :aircon was successfully :changed_log'
             ],
          ],
 

@@ -38,13 +38,13 @@
       </div><!--form control-->
 
       <div class="form-group">
-         {{ Form::label('aircon', trans('validation.attributes.backend.inventory.aircons.name'), ['class' => 'col-lg-2 control-label']) }}
+         {{ Form::label('aircon', trans('validation.attributes.backend.inventory.aircons.serial_number'), ['class' => 'col-lg-2 control-label']) }}
 
          <div class="col-lg-10">
             <select data-placeholder="Choose an Aircon..." id="airconDropdown" name="aircon" class="form-control chosen-select">
                <option value=""></option>
                @foreach($aircons as $aircon)
-               <option value="{{ $aircon->id }}">{{ $aircon->name }}</option>
+               <option value="{{ $aircon->id }}">{{ $aircon->serial_number }}</option>
                @endforeach
             </select>
          </div><!--col-lg-10-->

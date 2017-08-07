@@ -53,7 +53,7 @@ $('#calendar').fullCalendar({
    header: {
       left: 'prev,next,today',
       center: 'title',
-      right: 'month'
+      right: 'month,listDay'
    },
    dayClick: function(date, jsEvent, view) {
 
