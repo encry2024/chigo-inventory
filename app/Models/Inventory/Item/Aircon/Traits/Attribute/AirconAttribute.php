@@ -20,8 +20,6 @@ trait AirconAttribute
       } elseif ($this->status == 0) {
          return "<label class='label label-success'>".trans('labels.general.checked_out').'</label>';
       }
-
-
    }
 
    public function getShowButtonAttribute()
@@ -126,5 +124,4 @@ trait AirconAttribute
       $this->getEditButtonAttribute().
       $this->getDeleteButtonAttribute();
    }
-
 }

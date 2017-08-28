@@ -3,8 +3,6 @@
 @section('content')
     <div class="row">
 
-        <example></example>
-
         <div class="col-xs-12">
 
             <div class="panel panel-default">

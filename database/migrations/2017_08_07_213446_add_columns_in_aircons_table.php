@@ -14,9 +14,9 @@ class AddColumnsInAirconsTable extends Migration
    public function up()
    {
       Schema::table('aircons', function (Blueprint $table) {
-         $table->string('container_number')->nullable();
-         $table->string('batch_code')->unique();
-         $table->string('door_type');
+         $table->string('container_number')->after('status')->nullable();
+         $table->string('batch_code')->after('container_number')->unique();
+         $table->string('door_type')->after('batch_code');
       });
    }
 
@@ -28,7 +28,9 @@ class AddColumnsInAirconsTable extends Migration
    public function down()
    {
       Schema::table('aircons', function (Blueprint $table) {
-         //
+         $table->dropColumn('container_number');
+         $table->dropColumn('batch_code');
+         $table->dropColumn('door_type');
       });
    }
 }

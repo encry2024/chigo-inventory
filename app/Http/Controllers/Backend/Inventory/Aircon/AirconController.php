@@ -152,7 +152,22 @@ class AirconController extends Controller
          return view('backend.inventory.item.aircon.log');
       }
 
-      public function changeAirconLog(LogPendingAirconRequest $request)
+      public function checkedOutAircon()
+      {
+         return view('backend.inventory.item.aircon.checked-out-aircons');
+      }
+
+      public function pendingAircons()
+      {
+         return view('backend.inventory.item.aircon.pending');
+      }
+
+      public function checkInAircon()
+      {
+         return view('backend.inventory.item.aircon.check_in');
+      }
+
+      public function postCheckInAircon(Request $request)
       {
          $aircon = Aircon::whereSerialNumber($request->get('serial_number'))->first();
          $log = "";
@@ -162,25 +177,30 @@ class AirconController extends Controller
 
             $log = "checked-in.";
          } elseif ($aircon->status == 1) {
-            $aircon->update(['status' => 0]);
-
-            $log = "checked-out.";
-         } elseif ($aircon->status == 0) {
-            $aircon->update(['status' => 1]);
-
-            $log = "checked-in.";
+            $log = "already checked-in.";
          }
 
          return redirect()->route('admin.inventory.item.aircon.log_pending_aircon')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.change_log', ['aircon' => $aircon->serial_number, 'changed_log' => $log]));
       }
 
-      public function checkedOutAircon()
+      public function checkOutAircon()
       {
-         return view('backend.inventory.item.aircon.checked-out-aircons');
+         return view('backend.inventory.item.aircon.check_out');
       }
 
-      public function pendingAircons()
+      public function postCheckOutAircon(Request $request)
       {
-         return view('backend.inventory.item.aircon.pending');
+         $aircon = Aircon::whereSerialNumber($request->get('serial_number'))->first();
+         $log = "";
+
+         if($aircon->status == 1) {
+            $aircon->update(['status' => 0, 'philippines_serial_number' => $request->get('philippines_serial_number')]);
+
+            $log = "checked-out.";
+         } elseif ($aircon->status == 0) {
+            $log = "already checked-out.";
+         }
+
+         return redirect()->route('admin.inventory.item.aircon.index')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.change_log', ['aircon' => $aircon->serial_number, 'changed_log' => $log]));
       }
    }

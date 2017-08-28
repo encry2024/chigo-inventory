@@ -47,39 +47,45 @@
 
 <script>
 
+   $(document).ready(function() {
+      $('#calendar').fullCalendar({
+         selectable: true,
+         header:
+         {
+            left: 'prev,next,today',
+            center: 'title',
+            right: 'month,listWeek'
 
-$('#calendar').fullCalendar({
-   selectable: true,
-   header: {
-      left: 'prev,next,today',
-      center: 'title',
-      right: 'month,listDay'
-   },
-   dayClick: function(date, jsEvent, view) {
+         },
+         dayClick: function(date, jsEvent, view) {
+            $('#calendar').fullCalendar('gotoDate', date);
+            $('#calendar').fullCalendar('changeView','agendaDay');
+         },
+         views:
+         {
+            listWeek:{buttonText: 'List Week'},
+            month:{buttonText: 'Month'}
+         },
+         businessHours: [ // specify an array instead
+         {
+            dow: [ 1, 2, 3, 4, 5 ], // Monday, Tuesday, Wednesday
+            startTime: '08:00', // 8am
+            endTime: '17:00' // 5pm
+         }
+         ],
+         select: function( start, end) 
+         {
+            var check = start.format();
+            var today = moment().format();
 
-      $('#calendar').fullCalendar('gotoDate', date);
-      $('#calendar').fullCalendar('changeView','agendaDay');
+            var redirect_url = "{{ route('admin.workflow.technical.process_technical_workflow', ':schedule') }}";
+            redirect_url = redirect_url.replace(':schedule', start.format()+'&'+end.format());
 
-   },
-   businessHours: [ // specify an array instead
-      {
-         dow: [ 1, 2, 3, 4, 5 ], // Monday, Tuesday, Wednesday
-         startTime: '08:00', // 8am
-         endTime: '17:00' // 5pm
-      }
-   ],
-   select: function( start, end) {
-      var check = start.format();
-      var today = moment().format();
-
-      var redirect_url = "{{ route('admin.workflow.technical.process_technical_workflow', ':schedule') }}";
-      redirect_url = redirect_url.replace(':schedule', start.format()+'&'+end.format());
-
-      document.getElementById("processTechnicalWorkflow").href =  redirect_url;
-   },
-   eventLimit: true,
-   editable: true,
-
-})
+            document.getElementById("processTechnicalWorkflow").href =  redirect_url;
+         },
+         eventLimit: true,
+         editable: true
+      })
+   });
 </script>
 @endsection

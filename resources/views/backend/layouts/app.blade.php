@@ -14,7 +14,7 @@
 
    <link rel="stylesheet" href="{{ asset('js/backend/plugin/chosen_v1.6.2/chosen.css') }}">
    <link rel="stylesheet" href="{{ asset('js/backend/plugin/chosen_v1.6.2/chosen-bootstrap-css.css') }}">
-   <link rel="stylesheet" href="{{ asset('js/fullcalendar-2.4.0/fullcalendar.css') }}">
+   <link rel="stylesheet" href="{{ asset('js/fullcalendar-3.4.0/fullcalendar.css') }}">
    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
 
@@ -51,7 +51,7 @@
    <script type="text/javascript" src="{{ asset('jquery.min.js') }}"></script>
    <script type="text/javascript" src="{{ asset('moment.js') }}"></script>
    <script type="text/javascript" src="{{ asset('js/backend/plugin/chosen_v1.6.2/chosen.jquery.min.js') }}"></script>
-   <script type="text/javascript" src="{{ asset('js/fullcalendar-2.4.0/fullcalendar.js') }}"></script>
+   <script type="text/javascript" src="{{ asset('js/fullcalendar-3.4.0/fullcalendar.js') }}"></script>
 
 </head>
 <body class="skin-{{ config('backend.theme') }} {{ config('backend.layout') }}">

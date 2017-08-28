@@ -155,7 +155,9 @@ return [
                'feature'                  => 'Feature',
                'status'                   => 'Status',
                'type'                     => 'Type of Aircon',
-               'aircon_file'              => 'Import Aircon Excel'
+               'aircon_file'              => 'Import Aircon Excel',
+               'china_serial_number'      => 'China Serial Number',
+               'philippines_serial_number'   => 'Philippines Serial Number'
             ],
 
             'technicians' => [
