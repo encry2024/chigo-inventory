@@ -33,6 +33,8 @@
 
    <div class="box box-info">
       <div class="box-body">
+         <button type="submit" name="button">Checkin</button>
+
          <div class="pull-left">
             {{ link_to_route('admin.inventory.item.aircon.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
          </div><!--pull-left-->

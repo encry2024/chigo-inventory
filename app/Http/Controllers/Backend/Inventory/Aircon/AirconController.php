@@ -180,7 +180,7 @@ class AirconController extends Controller
             $log = "already checked-in.";
          }
 
-         return redirect()->route('admin.inventory.item.aircon.log_pending_aircon')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.change_log', ['aircon' => $aircon->serial_number, 'changed_log' => $log]));
+         return redirect()->route('admin.inventory.item.aircon.index')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.change_log', ['aircon' => $aircon->serial_number, 'changed_log' => $log]));
       }
 
       public function checkOutAircon()
