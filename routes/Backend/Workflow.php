@@ -32,6 +32,8 @@ Route::group([
       Route::get('technical/get/schedule', 'TechnicalController@validateDateTime')->name('technical.valdiate_schedule');
       Route::post('technical/confirm_schedules', 'TechnicalController@confirmSchedules')->name('technical.confirm_schedules');
 
+      Route::get('technical/schedules', 'TechnicalController@fetchTechnicalSchedules')->name('technical.fetch_technical_schedules');
+
       Route::resource('/technical', 'TechnicalController');
    });
 

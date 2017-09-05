@@ -70,6 +70,7 @@ return [
                'content' => [
                   'overview' => [
                      'id'                 => 'ID',
+                     'aircons'            => 'Aircons',
                      'reference_number'   => 'Reference Number',
                      'customer_name'      => 'Customer Name',
                      'sales_agent'        => 'Sales Agent',
@@ -150,6 +151,29 @@ return [
                'status'             => 'Status',
                'date_created'       => 'Date Created',
                'last_updated'       => 'Last Updated',
+            ],
+
+            'tabs' => [
+               'titles' => [
+                  'overview'     => 'Overview',
+                  'history'      => 'History',
+                  'note_history' => 'Note History'
+               ],
+
+               'content' => [
+                  'overview' => [
+                     'id'                 => 'ID',
+                     'name'               => 'Name',
+                     'email'              => 'E-mail',
+                     'address'            => 'Address',
+                     'contact_number'     => 'Contact Number',
+                     'status'             => 'Status',
+                     'created_at'         => 'Date Created',
+                     'last_updated'       => 'Last Updated',
+                     'deleted_at'         => 'Date Deleted',
+                     'note'               => 'Note'
+                  ],
+               ],
             ],
          ],
 

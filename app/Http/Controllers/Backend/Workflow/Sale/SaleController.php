@@ -39,7 +39,7 @@ class SaleController extends Controller
    public function create()
    {
       $customers = Customer::all();
-      $aircons = Aircon::all();
+      $aircons = Aircon::whereCustomerId(0)->get();
 
       return view('backend.workflow.sale.create', compact('customers', 'aircons'));
    }
@@ -57,57 +57,60 @@ class SaleController extends Controller
             'customer',
             'user_id',
             'aircon',
-            'note'
+            'note',
+            'terms',
+            'date_needed'
             )
-         ]);
+         ]
+      );
 
-         return redirect()->route('admin.workflow.sale.index')->withFlashSuccess(trans('alerts.backend.workflow.sales.created'));
-      }
-
-      /**
-      * Display the specified resource.
-      *
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-      public function show(Sale $sale, ManageSalesWorkflowRequest $request)
-      {
-         return view('backend.workflow.sale.show')->withSale($sale);
-      }
-
-      /**
-      * Show the form for editing the specified resource.
-      *
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-      public function edit($id)
-      {
-         //
-      }
-
-      /**
-      * Update the specified resource in storage.
-      *
-      * @param  \Illuminate\Http\Request  $request
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-      public function update(Request $request, $id)
-      {
-         //
-      }
-
-      /**
-      * Remove the specified resource from storage.
-      *
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-      public function destroy(Sale $sale, ManageSalesWorkflowRequest $request)
-      {
-         $this->sales->delete($sale);
-
-         return redirect()->route('admin.inventory.workflow.sale.deleted')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.deleted'));
-      }
+      return redirect()->route('admin.workflow.sale.index')->withFlashSuccess(trans('alerts.backend.workflow.sales.created'));
    }
+
+   /**
+   * Display the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function show(Sale $sale, ManageSalesWorkflowRequest $request)
+   {
+      return view('backend.workflow.sale.show')->withSale($sale);
+   }
+
+   /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function edit($id)
+   {
+      //
+   }
+
+   /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function update(Request $request, $id)
+   {
+      //
+   }
+
+   /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function destroy(Sale $sale, ManageSalesWorkflowRequest $request)
+   {
+      $this->sales->delete($sale);
+
+      return redirect()->route('admin.inventory.workflow.sale.deleted')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.deleted'));
+   }
+}

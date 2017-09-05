@@ -29,6 +29,7 @@ class UpdateTechnicianRequest extends Request
          'contact_number'  => ['required', 'max:191', 'unique:technicians,contact_number,' . Request::get('technician_id')],
          'email'           => ['required', 'max:191', 'unique:technicians,email,' . Request::get('technician_id')],
          'address'         => ['required', 'max:191'],
+         'note'            => ['max:200']
       ];
    }
 }

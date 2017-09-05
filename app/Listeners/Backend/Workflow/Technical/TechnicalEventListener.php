@@ -20,7 +20,7 @@ class TechnicalEventListener
       ->withIcon('plus')
       ->withClass('bg-green')
       ->withAssets([
-         'technical_link' => ['admin.workflow.technical.show', $event->technical->reference_number, $event->technical->id],
+         'technical_link' => ['admin.workflow.technical.show', $event->technical->reference_id, $event->technical->id],
       ])
       ->log();
    }

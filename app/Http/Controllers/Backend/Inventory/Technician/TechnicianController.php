@@ -66,9 +66,9 @@ class TechnicianController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function show($id)
+   public function show(Technician $technician, ManageTechnicianRequest $request)
    {
-      //
+      return view('backend.inventory.technician.show')->withTechnician($technician);
    }
 
    /**
@@ -77,9 +77,9 @@ class TechnicianController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function edit($id)
+   public function edit(Technician $technician, ManageTechnicianRequest $request)
    {
-      //
+      return view('backend.inventory.technician.edit')->withTechnician($technician);
    }
 
    /**
@@ -89,9 +89,22 @@ class TechnicianController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-   public function update(Request $request, $id)
+   public function update(Technician $technician, UpdateTechnicianRequest $request)
    {
-      //
+      $this->technicians->update($technician,
+      [
+         'data' => $request->only(
+            'name',
+            'email',
+            'address',
+            'contact_number',
+            'note',
+            'status'
+            )
+         ]
+      );
+
+      return redirect()->back()->withFlashSuccess(trans('alerts.backend.inventory.technicians.updated'));
    }
 
    /**

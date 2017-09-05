@@ -21,7 +21,6 @@ class StoreSalesWorkflowRequest extends Request
    {
       return [
          'customer'    => ['required'],
-         'aircon'      => ['required'],
          'user_id'     => 'required',
          'note'        => 'max:191'
       ];

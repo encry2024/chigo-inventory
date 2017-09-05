@@ -31,7 +31,7 @@
             <select data-placeholder="Choose a Customer..." id="customerDropdown" name="customer" class="form-control chosen-select">
                <option value=""></option>
                @foreach($customers as $customer)
-               <option value="{{ $customer->id }}">{{ $customer->company_name }}</option>
+               <option value="{{ $customer->id }}">{{ $customer->company_name }} {{ $customer->note }}</option>
                @endforeach
             </select>
          </div><!--col-lg-10-->
@@ -41,20 +41,36 @@
          {{ Form::label('aircon', trans('validation.attributes.backend.inventory.aircons.serial_number'), ['class' => 'col-lg-2 control-label']) }}
 
          <div class="col-lg-10">
-            <select data-placeholder="Choose an Aircon..." id="airconDropdown" name="aircon" class="form-control chosen-select">
+            <select data-placeholder="Choose an Aircon..." id="airconDropdown" name="aircon[]" multiple class="form-control chosen-select">
                <option value=""></option>
                @foreach($aircons as $aircon)
-               <option value="{{ $aircon->id }}">{{ $aircon->serial_number }}</option>
+               <option value="{{ $aircon->id }}">{{ $aircon->name }} - {{ $aircon->serial_number }} - {{ $aircon->door_type }}</option>
                @endforeach
             </select>
          </div><!--col-lg-10-->
       </div><!--form control-->
 
       <div class="form-group">
-         {{ Form::label('agent_name', 'Sales Agent', ['class' => 'col-lg-2 control-label']) }}
+         {{ Form::label('agent_name', trans('validation.attributes.backend.workflow.sales.sales_agent'), ['class' => 'col-lg-2 control-label']) }}
 
          <div class="col-lg-10">
             {{ Form::text('agent_name', access()->user()->full_name, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'disabled' => 'disabled']) }}
+         </div><!--col-lg-1-->
+      </div><!--form control-->
+
+      <div class="form-group">
+         {{ Form::label('terms', trans('validation.attributes.backend.workflow.sales.terms'), ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-10">
+            {{ Form::text('terms', '', ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.workflow.sales.terms')]) }}
+         </div><!--col-lg-1-->
+      </div><!--form control-->
+
+      <div class="form-group">
+         {{ Form::label('date_needed', trans('validation.attributes.backend.workflow.sales.date_needed'), ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-10">
+            {{ Form::text('date_needed', '', ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.workflow.sales.date_needed')]) }}
          </div><!--col-lg-1-->
       </div><!--form control-->
 
@@ -70,7 +86,7 @@
          {{ Form::label('note', 'Note', ['class' => 'col-lg-2 control-label']) }}
 
          <div class="col-lg-10">
-            {{ Form::text('note', null, ['class' => 'form-control', 'maxlength' => '191', 'autofocus' => 'autofocus']) }}
+            {{ Form::text('note', null, ['class' => 'form-control', 'maxlength' => '191', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.workflow.sales.notes')]) }}
          </div><!--col-lg-1-->
       </div><!--form control-->
    </div><!--box-->

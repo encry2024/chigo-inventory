@@ -1,11 +1,11 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.workflow.sale.management') . ' | ' . trans('labels.backend.workflow.sale.create'))
+@section ('title', trans('labels.backend.inventory.technician.management') . ' | ' . trans('labels.backend.inventory.technician.create'))
 
 @section('page-header')
 <h1>
-   {{ trans('labels.backend.workflow.sale.management') }}
-   <small>{{ trans('labels.backend.workflow.sale.view', ['sale' => $sale->reference_number]) }}</small>
+   {{ trans('labels.backend.inventory.technician.management') }}
+   <small>{{ trans('labels.backend.inventory.technician.view', ['technician' => $technician->name]) }}</small>
 </h1>
 @endsection
 
@@ -14,10 +14,10 @@
 
 <div class="box box-success">
    <div class="box-header with-border">
-      <h3 class="box-title">{{ trans('labels.backend.workflow.sale.view', ['sale' => $sale->reference_number]) }}</h3>
+      <h3 class="box-title">{{ trans('labels.backend.inventory.technician.view') }}</h3>
 
       <div class="box-tools pull-right">
-         @include('backend.workflow.sale.partials.sale-header-buttons')
+         @include('backend.inventory.technician.includes.partials.technician-header-buttons')
       </div><!--box-tools pull-right-->
    </div><!-- /.box-header -->
 
@@ -32,31 +32,20 @@
             </li>
 
             <li role="presentation">
-               <a href="#note_history" aria-controls="overview" role="tab" data-toggle="tab">{{ trans('labels.backend.workflow.sale.tabs.titles.note_history') }}</a>
-            </li>
-
-            <li role="presentation">
                <a href="#history" aria-controls="history" role="tab" data-toggle="tab">{{ trans('labels.backend.workflow.sale.tabs.titles.history') }}</a>
             </li>
          </ul>
 
          <div class="tab-content">
-
             <div role="tabpanel" class="tab-pane mt-30 active" id="overview">
-               @include('backend.workflow.sale.show.tabs.overview')
-            </div><!--tab overview profile-->
-
-            <div role="tabpanel" class="tab-pane mt-30 active" id="note_history">
-               @include('backend.workflow.sale.show.tabs.note_history')
+               @include('backend.inventory.technician.show.tabs.overview')
             </div><!--tab overview profile-->
 
             <div role="tabpanel" class="tab-pane mt-30" id="history">
-               @include('backend.workflow.sale.show.tabs.history')
+               @include('backend.inventory.technician.show.tabs.history')
             </div><!--tab panel history-->
-
-         </div><!--tab content-->
+          </div><!--tab content-->
 
       </div><!--tab panel-->
-
    </div><!-- /.box-body -->
 @endsection

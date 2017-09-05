@@ -22,6 +22,14 @@
 
       <div class="box-body">
          <div class="form-group">
+            {{ Form::label('philippines_serial_number', trans('validation.attributes.backend.inventory.aircons.philippines_serial_number'), ['class' => 'col-lg-2 control-label']) }}
+
+            <div class="col-lg-10">
+               {{ Form::text('philippines_serial_number', null, ['class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.inventory.aircons.philippines_serial_number')]) }}
+            </div><!--col-lg-10-->
+         </div><!--form control-->
+
+         <div class="form-group">
             {{ Form::label('serial_number', trans('validation.attributes.backend.inventory.aircons.china_serial_number'), ['class' => 'col-lg-2 control-label']) }}
 
             <div class="col-lg-10">
@@ -29,13 +37,7 @@
             </div><!--col-lg-10-->
          </div><!--form control-->
 
-         <div class="form-group">
-            {{ Form::label('philippines_serial_number', trans('validation.attributes.backend.inventory.aircons.philippines_serial_number'), ['class' => 'col-lg-2 control-label']) }}
 
-            <div class="col-lg-10">
-               {{ Form::text('philippines_serial_number', null, ['class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.inventory.aircons.philippines_serial_number')]) }}
-            </div><!--col-lg-10-->
-         </div><!--form control-->
       </div><!--box-->
 
       <div class="box box-info">

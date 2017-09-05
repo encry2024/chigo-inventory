@@ -4,6 +4,8 @@ use App\Models\Workflow\Sale\Sale;
 use App\Models\Inventory\Customer\Customer;
 use App\Models\Inventory\Item\Aircon\Aircon;
 use App\Models\Workflow\Technical\Technical;
+use App\Models\Inventory\Technician\Technician;
+use App\Models\Workflow\Sale\AirconSale\AirconSale;
 
 return [
    'sale_config' => [
@@ -39,6 +41,14 @@ return [
       * Workflow Sales table used to make Relationship with Aircons
       */
       'aircons_table' => 'aircons',
+
+      'aircon_sales' => AirconSale::class,
+      'aircon_sales_table' => 'aircon_sales'
+   ],
+
+   'aircon_sale_config' => [
+      'aircon' => Aircon::class,
+      'aircons_table' => 'aircons'
    ],
 
    'technical_config' => [
@@ -70,7 +80,7 @@ return [
       /*
       * Workflow Technical table used to make Relationship with Technician
       */
-      'technicians' => Technician::class,
+      'technician' => Technician::class,
 
       /*
       * Workflow Technical table used to make Relationship with Technician

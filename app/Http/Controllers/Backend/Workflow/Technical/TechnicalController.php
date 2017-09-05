@@ -108,9 +108,9 @@ class TechnicalController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-      public function show($id)
+      public function show(Technical $technical, ManageTechnicalWorkflowRequest $request)
       {
-         //
+         return view('backend.workflow.technical.view')->withTechnical($technical);
       }
 
       /**
@@ -145,5 +145,22 @@ class TechnicalController extends Controller
       public function destroy($id)
       {
          //
+      }
+
+      public function fetchTechnicalSchedules()
+      {
+         $jsonData = array();
+         $technicals = Technical::all();
+
+         foreach($technicals as $technical) {
+            $jsonData[] = array(
+               'title'  => $technical->customer->company_name,
+               'start'  => $technical->start_date_schedule . ' ' . date('H:i:s', strtotime($technical->start_time_schedule)),
+               'end'    => $technical->end_date_schedule . ' ' . date('H:i:s', strtotime($technical->end_time_schedule)),
+               'url'    => route('admin.workflow.technical.show', $technical->id)
+            );
+         }
+
+         return json_encode($jsonData);
       }
    }

@@ -26,4 +26,9 @@ trait SaleRelationship
    {
       return $this->hasMany(config('workflow.sale_config.sales'));
    }
+
+   public function aircon_sales()
+   {
+      return $this->hasMany(config('workflow.sale_config.aircon_sales'));
+   }
 }

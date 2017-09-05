@@ -118,7 +118,16 @@ return [
       'backend' => [
          'workflow' => [
             'sales' => [
-               'customer_id' => 'Customer Name'
+               'customer_id'     => 'Customer Name',
+
+               'date_needed'     => 'Date Needed',
+               'terms'           => 'Terms',
+               'sales_agent'     => 'Sales Agent',
+               'aircons'         => 'Aircons',
+               'created_at'      => 'Date Added',
+               'updated_at'      => 'Last Update',
+               'notes'           => 'Notes',
+               'date_needed'     => 'Date Needed'
             ],
 
             'technicals' => [
@@ -128,7 +137,7 @@ return [
                'end_date_schedule'     => 'Ending Date',
                'end_time_schedule'     => 'Ending Time',
                'technician_id'         => 'Technician',
-               'note'                => 'Note'
+               'note'                  => 'Note'
             ]
          ],
 
@@ -164,7 +173,9 @@ return [
                'name'                     => 'Technician Name',
                'address'                  => 'Address',
                'contact_number'           => 'Contact Number',
-               'email'                    => 'Email'
+               'email'                    => 'Email',
+               'status'                   => 'Status',
+               'note'                     => 'Note'
             ],
          ],
 

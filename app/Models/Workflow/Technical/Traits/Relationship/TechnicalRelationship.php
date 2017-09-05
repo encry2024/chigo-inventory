@@ -27,8 +27,8 @@ trait TechnicalRelationship
       return $this->hasMany(config('workflow.technical_config.sales'));
    }
 
-   public function technicians()
+   public function technician()
    {
-      return $this->hasMany(config('workflow.technical_config.technicians'));
+      return $this->belongsTo(config('workflow.technical_config.technician'));
    }
 }

@@ -15,6 +15,17 @@
    </tr>
 
    <tr>
+      <th>{{ trans('labels.backend.workflow.sale.tabs.content.overview.aircons') }}</th>
+
+      <td>
+      @foreach($sale->aircon_sales as $aircon_sale)
+         {{ $aircon_sale->aircon->name }} - {{ $aircon_sale->aircon->serial_number }} - {{ $aircon_sale->aircon->door_type }}
+         <br>
+      @endforeach
+      </td>
+   </tr>
+
+   <tr>
       <th>{{ trans('labels.backend.workflow.sale.tabs.content.overview.note') }}</th>
       <td>{{ $sale->note }}</td>
    </tr>

@@ -123,7 +123,7 @@ class AirconRepository extends BaseRepository
                      'size' => '0.0',
                      'brand_name' => '-',
                      'feature' => '-',
-                     'status' => 3,
+                     'status' => 2,
                      'container_number' => $value['container_number'],
                      'batch_code' => $value['batch_code'],
                      'door_type' => $value['door_type'],

@@ -77,12 +77,12 @@ class TechnicianRepository extends BaseRepository
    {
       $data = $input['data'];
 
-      $technician->company_name = $data['company_name'];
-      $technician->contact_number = $data['contact_number'];
-      $technician->address = $data['address'];
+      $technician->name = $data['name'];
       $technician->email = $data['email'];
+      $technician->address = $data['address'];
+      $technician->contact_number = $data['contact_number'];
       $technician->note = $data['note'];
-      $technician->other_category = $data['other_category'];
+      $technician->status = $data['status'];
 
       DB::transaction(function () use ($technician, $data) {
          if ($technician->save()) {

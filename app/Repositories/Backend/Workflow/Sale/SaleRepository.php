@@ -89,10 +89,15 @@ class SaleRepository extends BaseRepository
 
       DB::transaction(function () use ($sale, $data) {
          if ($sale->save()) {
-            $aircon_sale = new AirconSale();
-            $aircon_sale->aircon_id = $data['aircon'];
-            $aircon_sale->sale_id   = $sale->id;
-            $aircon_sale->save();
+            foreach((array) $data['aircon'] as $aircon ) {
+               $aircon_sale = new AirconSale();
+               $aircon_sale->aircon_id = $aircon;
+               $aircon_sale->sale_id   = $sale->id;
+
+               if($aircon_sale->save()) {
+                  $aircon = Aircon::find($aircon_sale->aircon_id)->update('customer_id', '=', $data['customer']);
+               }
+            }
 
             event(new SaleCreated($sale));
 
@@ -109,10 +114,11 @@ class SaleRepository extends BaseRepository
       $sale = new $sale;
       $sale->customer_id = $input['customer'];
       $sale->user_id = $input['user_id'];
-      $sale->aircon = isset($input['aircon']) ? 1 : 0;
       $sale->reference_number = $this->getReferenceNumber();
-      $sale->status = "Processing";
+      $sale->status = "OPEN";
       $sale->note = $input['note'];
+      $sale->date_needed = $input['date_needed'];
+      $sale->terms = $input['terms'];
 
       return $sale;
    }
