@@ -17,8 +17,6 @@
    <link rel="stylesheet" href="{{ asset('js/fullcalendar-3.4.0/fullcalendar.css') }}">
    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
-
-
    @yield('meta')
 
    <!-- Styles -->
@@ -49,9 +47,7 @@
    </script>
 
    <script type="text/javascript" src="{{ asset('jquery.min.js') }}"></script>
-   <script type="text/javascript" src="{{ asset('moment.js') }}"></script>
-   <script type="text/javascript" src="{{ asset('js/backend/plugin/chosen_v1.6.2/chosen.jquery.min.js') }}"></script>
-   <script type="text/javascript" src="{{ asset('js/fullcalendar-3.4.0/fullcalendar.js') }}"></script>
+
 
 </head>
 <body class="skin-{{ config('backend.theme') }} {{ config('backend.layout') }}">
@@ -83,9 +79,11 @@
 
    <!-- JavaScripts -->
    @yield('before-scripts')
-   @if(!active_class(Active::checkUriPattern('admin/workflow/technical/get/schedule')))
    {{ Html::script(mix('js/backend.js')) }}
-   @endif
    @yield('after-scripts')
+   <script type="text/javascript" src="{{ asset('js/backend/plugin/chosen_v1.6.2/chosen.jquery.min.js') }}"></script>
+   <script type="text/javascript" src="{{ asset('moment.js') }}"></script>
+
+   <script type="text/javascript" src="{{ asset('js/fullcalendar-3.4.0/fullcalendar.js') }}"></script>
 </body>
 </html>

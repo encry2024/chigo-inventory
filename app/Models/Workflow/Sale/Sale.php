@@ -16,6 +16,8 @@ class Sale extends Model
    SaleRelationship,
    SaleAttribute;
 
+   protected $fillable = ['status'];
+
    /**
    * The database table used by the model.
    *

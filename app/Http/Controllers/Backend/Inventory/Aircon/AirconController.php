@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Inventory\Aircon;
 
 use App\Models\Inventory\Item\Aircon\Aircon;
+use App\Models\Inventory\Customer\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Inventory\Aircon\AirconRepository;
@@ -202,5 +203,12 @@ class AirconController extends Controller
          }
 
          return redirect()->route('admin.inventory.item.aircon.index')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.change_log', ['aircon' => $aircon->serial_number, 'changed_log' => $log]));
+      }
+
+      public function fetchAirconByCustomerId($customer)
+      {
+         $aircons = Aircon::whereCustomerId($customer)->get();
+
+         return $aircons;
       }
    }

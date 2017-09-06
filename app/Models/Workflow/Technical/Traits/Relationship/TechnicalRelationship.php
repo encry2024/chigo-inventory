@@ -31,4 +31,9 @@ trait TechnicalRelationship
    {
       return $this->belongsTo(config('workflow.technical_config.technician'));
    }
+
+   public function aircon_technicals()
+   {
+      return $this->hasMany(config('workflow.technical_config.aircon_technicals'));
+   }
 }

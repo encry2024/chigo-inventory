@@ -3,6 +3,7 @@
 namespace App\Repositories\Backend\Workflow\Technical;
 
 use App\Models\Workflow\Technical\Technical;
+use App\Models\Workflow\Technical\AirconTechnical;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
@@ -93,6 +94,16 @@ class TechnicalRepository extends BaseRepository
 
       DB::transaction(function () use ($technical, $data) {
          if ($technical->save()) {
+
+            foreach((array) $data['aircons'] as $aircon ) {
+               $aircon_technical                 = new AirconTechnical();
+               $aircon_technical->aircon_id      = $aircon;
+               $aircon_technical->technical_id   = $technical->id;
+               $aircon_technical->type           = "Repair";
+               $aircon_technical->note           = "-";
+               $aircon_technical->save();
+            }
+
             event(new TechnicalCreated($technical));
 
             return true;
@@ -110,7 +121,7 @@ class TechnicalRepository extends BaseRepository
       $technical->customer_id          = $input['customer'];
       $technical->user_id              = Auth::user()->id;
       $technical->reference_id         = $this->getReferenceNumber();
-      $technical->status               = "Processing";
+      $technical->status               = "Open";
       $technical->note                 = $input['note'];
       $technical->start_date_schedule  = date('Y-m-d', strtotime($input['start_date_schedule']));
       $technical->start_time_schedule  = date('H:i', strtotime($input['start_time_schedule']));

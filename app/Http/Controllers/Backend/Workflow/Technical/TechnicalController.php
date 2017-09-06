@@ -87,6 +87,7 @@ class TechnicalController extends Controller
    */
    public function store(StoreTechnicalWorkflowRequest $request)
    {
+      // dd($request->all());
       $this->technicals->create([
          'data' => $request->only(
             'technician',
@@ -95,72 +96,74 @@ class TechnicalController extends Controller
             'start_date_schedule',
             'start_time_schedule',
             'end_date_schedule',
-            'end_time_schedule'
+            'end_time_schedule',
+            'aircons'
             )
-         ]);
+         ]
+      );
 
-         return redirect()->route('admin.workflow.technical.index')->withFlashSuccess(trans('alerts.backend.workflow.technicals.created'));
-      }
-
-      /**
-      * Display the specified resource.
-      *
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-      public function show(Technical $technical, ManageTechnicalWorkflowRequest $request)
-      {
-         return view('backend.workflow.technical.view')->withTechnical($technical);
-      }
-
-      /**
-      * Show the form for editing the specified resource.
-      *
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-      public function edit($id)
-      {
-         //
-      }
-
-      /**
-      * Update the specified resource in storage.
-      *
-      * @param  \Illuminate\Http\Request  $request
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-      public function update(Request $request, $id)
-      {
-         //
-      }
-
-      /**
-      * Remove the specified resource from storage.
-      *
-      * @param  int  $id
-      * @return \Illuminate\Http\Response
-      */
-      public function destroy($id)
-      {
-         //
-      }
-
-      public function fetchTechnicalSchedules()
-      {
-         $jsonData = array();
-         $technicals = Technical::all();
-
-         foreach($technicals as $technical) {
-            $jsonData[] = array(
-               'title'  => $technical->customer->company_name,
-               'start'  => $technical->start_date_schedule . ' ' . date('H:i:s', strtotime($technical->start_time_schedule)),
-               'end'    => $technical->end_date_schedule . ' ' . date('H:i:s', strtotime($technical->end_time_schedule)),
-               'url'    => route('admin.workflow.technical.show', $technical->id)
-            );
-         }
-
-         return json_encode($jsonData);
-      }
+      return redirect()->route('admin.workflow.technical.index')->withFlashSuccess(trans('alerts.backend.workflow.technicals.created'));
    }
+
+   /**
+   * Display the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function show(Technical $technical, ManageTechnicalWorkflowRequest $request)
+   {
+      return view('backend.workflow.technical.view')->withTechnical($technical);
+   }
+
+   /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function edit($id)
+   {
+      //
+   }
+
+   /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function update(Request $request, $id)
+   {
+      //
+   }
+
+   /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+   public function destroy($id)
+   {
+      //
+   }
+
+   public function fetchTechnicalSchedules()
+   {
+      $jsonData = array();
+      $technicals = Technical::all();
+
+      foreach($technicals as $technical) {
+         $jsonData[] = array(
+            'title'  => $technical->customer->company_name,
+            'start'  => $technical->start_date_schedule . ' ' . date('H:i:s', strtotime($technical->start_time_schedule)),
+            'end'    => $technical->end_date_schedule . ' ' . date('H:i:s', strtotime($technical->end_time_schedule)),
+            'url'    => route('admin.workflow.technical.show', $technical->id)
+         );
+      }
+
+      return json_encode($jsonData);
+   }
+}

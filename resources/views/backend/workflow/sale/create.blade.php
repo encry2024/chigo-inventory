@@ -108,6 +108,8 @@
    {{ Form::close() }}
 
    <script type="text/javascript">
-   $('.chosen-select').chosen();
+   $(document).ready(function() {
+      $('.chosen-select').chosen();
+   });
    </script>
    @endsection

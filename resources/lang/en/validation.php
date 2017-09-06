@@ -148,7 +148,9 @@ return [
                'contact_number'           => 'Contact Number',
                'other_category'           => 'Other Category',
                'note'                     => 'Note',
-               'email'                    => 'Email'
+               'email'                    => 'Email',
+               'aircons'                  => 'Aircons',
+               'customer_type'            => 'Customer Type'
             ],
 
             'aircons' => [

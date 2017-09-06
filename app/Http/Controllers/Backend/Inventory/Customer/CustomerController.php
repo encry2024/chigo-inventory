@@ -53,7 +53,8 @@ class CustomerController extends Controller
             'address',
             'note',
             'other_category',
-            'email'
+            'email',
+            'customer_type'
          )
       ]);
 

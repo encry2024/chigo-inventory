@@ -3,6 +3,7 @@
 namespace App\Repositories\Backend\Workflow\Sale;
 
 use App\Models\Workflow\Sale\Sale;
+use App\Models\Inventory\Item\Aircon\Aircon;
 use App\Models\Workflow\Sale\AirconSale\AirconSale;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
@@ -95,7 +96,7 @@ class SaleRepository extends BaseRepository
                $aircon_sale->sale_id   = $sale->id;
 
                if($aircon_sale->save()) {
-                  $aircon = Aircon::find($aircon_sale->aircon_id)->update('customer_id', '=', $data['customer']);
+                  $aircon = Aircon::find($aircon_sale->aircon_id)->update(['customer_id', '=', $data['customer']]);
                }
             }
 
@@ -115,7 +116,7 @@ class SaleRepository extends BaseRepository
       $sale->customer_id = $input['customer'];
       $sale->user_id = $input['user_id'];
       $sale->reference_number = $this->getReferenceNumber();
-      $sale->status = "OPEN";
+      $sale->status = 0;
       $sale->note = $input['note'];
       $sale->date_needed = $input['date_needed'];
       $sale->terms = $input['terms'];

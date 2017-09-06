@@ -50,6 +50,17 @@
       </div><!--form control-->
 
       <div class="form-group">
+         {{ Form::label('company_name', trans('validation.attributes.backend.inventory.customers.aircons'),
+         ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-10">
+            <select data-placeholder="Choose an Aircon..." id="airconDropdown" multiple name="aircons[]" class="form-control chosen-select">
+               <option value=""></option>
+            </select>
+         </div><!--col-lg-10-->
+      </div><!--form control-->
+
+      <div class="form-group">
          {{ Form::label('start_date_schedule', trans('validation.attributes.backend.workflow.technicals.start_date_schedule'), ['class' => 'col-lg-2 control-label']) }}
 
          <div class="col-lg-10">
@@ -107,6 +118,23 @@
    {{ Form::close() }}
 
    <script type="text/javascript">
-   $('.chosen-select').chosen();
+   $(document).ready(function() {
+      $('#technicianDropdown').chosen();
+      $("#airconDropdown").chosen()
+      $("#customerDropdown").chosen().change(function() {
+         var customerId = $(this).val();
+         var fetchAirconBaseOnCustomerId = "{{ route('admin.inventory.item.aircon.fetch_by_customer', ':customer_id') }}";
+         fetchAirconBaseOnCustomerId = fetchAirconBaseOnCustomerId.replace(':customer_id', customerId);
+
+         $.getJSON(fetchAirconBaseOnCustomerId, function (data) {
+            $.each(data, function(key, val) {
+               $("#airconDropdown").append('<option value="' + val.id + '">' + val.name + '</option>');
+            });
+            $("#airconDropdown").chosen().trigger('chosen:updated');
+         });
+
+
+      });
+   });
    </script>
    @endsection

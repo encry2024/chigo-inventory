@@ -64,7 +64,8 @@ $(document).ready(function() {
       views:
       {
          listWeek:{buttonText: 'List Week'},
-         month:{buttonText: 'Month'}
+         month:{buttonText: 'Month'},
+         listDay:{buttonText: 'Today\'s Sale'}
       },
       businessHours: [ // specify an array instead
          {
@@ -86,59 +87,6 @@ $(document).ready(function() {
       eventSources: [
          "{{ route('admin.workflow.technical.fetch_technical_schedules') }}"
       ],
-      // events: [
-      //    {
-      //       title: 'swefwefwfwed',
-      //       start: '2017-09-05 09:00:00',
-      //       end: '2017-09-05 10:30:00',
-      //       url: '{{ route('admin.workflow.technical.show', 1) }}'
-      //    },
-      //    {
-      //       id: 999,
-      //       title: 'Repeating Event',
-      //       start: '2017-09-09T16:00:00'
-      //    },
-      //    {
-      //       id: 999,
-      //       title: 'Repeating Event',
-      //       start: '2017-09-16T16:00:00'
-      //    },
-      //    {
-      //       title: 'Conference',
-      //       start: '2017-09-11',
-      //       end: '2017-09-13'
-      //    },
-      //    {
-      //       title: 'Meeting',
-      //       start: '2017-09-12T10:30:00',
-      //       end: '2017-09-12T12:30:00'
-      //    },
-      //    {
-      //       title: 'Lunch',
-      //       start: '2017-09-12T12:00:00'
-      //    },
-      //    {
-      //       title: 'Meeting',
-      //       start: '2017-09-12T14:30:00'
-      //    },
-      //    {
-      //       title: 'Happy Hour',
-      //       start: '2017-09-12T17:30:00'
-      //    },
-      //    {
-      //       title: 'Dinner',
-      //       start: '2017-09-12T20:00:00'
-      //    },
-      //    {
-      //       title: 'Birthday Party',
-      //       start: '2017-09-13T07:00:00'
-      //    },
-      //    {
-      //       title: 'Click for Google',
-      //       url: 'http://google.com/',
-      //       start: '2017-09-28'
-      //    }
-      // ],
       eventLimit: true,
       editable: true
    })

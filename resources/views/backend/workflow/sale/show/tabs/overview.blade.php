@@ -18,10 +18,10 @@
       <th>{{ trans('labels.backend.workflow.sale.tabs.content.overview.aircons') }}</th>
 
       <td>
-      @foreach($sale->aircon_sales as $aircon_sale)
+         @foreach($sale->aircon_sales as $aircon_sale)
          {{ $aircon_sale->aircon->name }} - {{ $aircon_sale->aircon->serial_number }} - {{ $aircon_sale->aircon->door_type }}
          <br>
-      @endforeach
+         @endforeach
       </td>
    </tr>
 
@@ -38,6 +38,27 @@
    <tr>
       <th>{{ trans('labels.backend.workflow.sale.tabs.content.overview.last_updated') }}</th>
       <td>{{ date('F d, Y h:i A', strtotime($sale->updated_at)) }} ({{ $sale->updated_at->diffForHumans() }})</td>
+   </tr>
+
+   <tr>
+      <th>{{ trans('labels.backend.workflow.sale.tabs.content.overview.status') }}</th>
+      <td>
+         <form action="{{ route('admin.workflow.sale.update_status', $sale->id) }}" class="form-horizontal" method="POST">
+            {{ csrf_field() }}
+            {{ method_field('PATCH') }}
+
+            <div class="form-group">
+               <div class="col-lg-4">
+               <select class="form-control" name="status">
+                  <option value="0" {{ $sale->status == 0 ? 'selected' : "" }}>Open</option>
+                  <option value="1" {{ $sale->status == 1 ? 'selected' : "" }}>Incomplete Payment</option>
+                  <option value="2" {{ $sale->status == 2 ? 'selected' : "" }}>Close</option>
+               </select>
+               </div>
+               <button class="btn btn-sm btn-primary">Update</button>
+            </div>
+         </form>
+      </td>
    </tr>
 
    @if ($sale->trashed())

@@ -11,8 +11,11 @@
 <div class="box box-success">
    <div class="box-header with-border">
       <h3 class="box-title">{{ trans('strings.backend.dashboard.welcome') }} {{ $logged_in_user->name }}!</h3>
-
    </div><!-- /.box-header -->
+
+   <div class="box-body">
+      <div id="calendar"></div>
+   </div>
 </div><!--box box-success-->
 
 <div class="box box-info">
@@ -26,4 +29,38 @@
       {!! history()->render() !!}
    </div><!-- /.box-body -->
 </div><!--box box-success-->
+
+
+<script>
+$(document).ready(function() {
+   $('#calendar').fullCalendar({
+      selectable: true,
+      header:
+      {
+         left: 'prev,next,today',
+         center: 'title',
+         right: 'month,listWeek,listDay'
+
+      },
+      views:
+      {
+         listWeek:{buttonText: 'List Week'},
+         month:{buttonText: 'Month'},
+         listDay:{buttonText: 'Today\'s Sale'}
+      },
+      businessHours: [ // specify an array instead
+         {
+            dow: [ 1, 2, 3, 4, 5 ], // Monday, Tuesday, Wednesday
+            startTime: '08:00', // 8am
+            endTime: '17:00' // 5pm
+         }
+      ],
+      eventSources: [
+         "{{ route('admin.workflow.sale.get_deliveries') }}"
+      ],
+      eventLimit: true,
+      editable: true
+   })
+});
+</script>
 @endsection

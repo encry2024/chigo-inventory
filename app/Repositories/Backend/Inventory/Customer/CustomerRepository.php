@@ -83,6 +83,7 @@ class CustomerRepository extends BaseRepository
       $customer->email = $data['email'];
       $customer->note = $data['note'];
       $customer->other_category = $data['other_category'];
+      $customer->customer_type_id = $data['customer_type'];
 
       DB::transaction(function () use ($customer, $data) {
          if ($customer->save()) {
@@ -104,6 +105,7 @@ class CustomerRepository extends BaseRepository
       $customer->email = $input['email'];
       $customer->other_category = $input['other_category'];
       $customer->note = $input['note'];
+      $customer->customer_type_id = $input['customer_type'];
       $customer->address = $input['address'];
 
       return $customer;

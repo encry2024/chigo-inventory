@@ -9,6 +9,7 @@ use App\Repositories\Backend\Workflow\Sale\SaleRepository;
 use App\Http\Requests\Backend\Workflow\Sale\ManageSalesWorkflowRequest;
 use App\Http\Requests\Backend\Workflow\Sale\StoreSalesWorkflowRequest;
 use App\Models\Inventory\Customer\Customer;
+use App\Models\Inventory\Customer\CustomerService;
 use App\Models\Inventory\Item\Aircon\Aircon;
 
 class SaleController extends Controller
@@ -112,5 +113,46 @@ class SaleController extends Controller
       $this->sales->delete($sale);
 
       return redirect()->route('admin.inventory.workflow.sale.deleted')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.deleted'));
+   }
+
+   public function updateStatus(Sale $sale, ManageSalesWorkflowRequest $request)
+   {
+      $sale->status = $request->get('status');
+      $sale->save();
+
+      $customer_service = new CustomerService();
+      $customer_service->sale_id = $sale->id;
+      $customer_service->service_date = date("Y-m-d", strtotime($sale->customer->customer_type->time_before_service));
+      $customer_service->save();
+
+      return redirect()->back()->withFlashSuccess('Sale\'s status was successfully updated.');
+   }
+
+   public function fetchDeliverySales()
+   {
+      $jsonData = array();
+      $sales = Sale::all();
+
+      foreach($sales as $sale) {
+         $jsonData[] = array(
+            'title'  => $sale->customer->company_name,
+            'start'  => $sale->date_needed,
+            'url'    => route('admin.workflow.sale.for_checkout', $sale->id)
+         );
+      }
+
+      return json_encode($jsonData);
+   }
+
+   public function saleForCheckout(Sale $sale)
+   {
+      return view('backend.workflow.sale.delivery_receipt')->withSale($sale);
+   }
+
+   public function generateGatepass()
+   {
+      $sales = Sale::with(['aircon_sales.aircon'])->where('date_needed', date('Y-m-d'))->get();
+
+      return view('backend.workflow.sale.gatepass', compact('sales'));
    }
 }

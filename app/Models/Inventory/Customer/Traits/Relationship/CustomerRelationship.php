@@ -22,4 +22,9 @@ trait CustomerRelationship
       return $this->hasMany(config('inventory.peripherals'));
    }
 
+   public function customer_type()
+   {
+      return $this->belongsTo(config('inventory.customer_type'));
+   }
+
 }

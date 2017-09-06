@@ -5,11 +5,19 @@ use App\Models\Inventory\Item\Category\Category;
 use App\Models\Inventory\Item\Peripherals\Peripheral;
 use App\Models\Inventory\Customer\Customer;
 use App\Models\Inventory\Technician\Technician;
+use App\Models\Inventory\Customer\CustomerType;
 
 return [
    'customers_table' => 'customers',
 
    'customer' => Customer::class,
+
+   /*
+   * CustomerType table used to store Customer to CustomerType Relationship
+   */
+   'customer_type' => CustomerType::class,
+
+   'customer_types_table' => 'customer_types',
 
    /*
    * Aircons table used to store aircons
