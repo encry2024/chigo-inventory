@@ -53,6 +53,9 @@ return [
    ],
 
    'technical_config' => [
+
+      'aircon' => Aircon::class,
+
       'technical' => Technical::class,
 
       'technicals_table' => 'technicals',

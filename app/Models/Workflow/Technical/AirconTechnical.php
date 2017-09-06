@@ -3,9 +3,12 @@
 namespace App\Models\Workflow\Technical;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Workflow\Technical\Traits\Relationship\AirconTechnicalRelationship;
+
 
 class AirconTechnical extends Model
 {
+   use AirconTechnicalRelationship;
    //
    protected $table;
 

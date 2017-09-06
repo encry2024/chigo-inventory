@@ -96,7 +96,9 @@ class SaleRepository extends BaseRepository
                $aircon_sale->sale_id   = $sale->id;
 
                if($aircon_sale->save()) {
-                  $aircon = Aircon::find($aircon_sale->aircon_id)->update(['customer_id', '=', $data['customer']]);
+                  $aircon = Aircon::find($aircon_sale->aircon_id);
+                  $aircon->customer_id = $data['customer'];
+                  $aircon->save();
                }
             }
 

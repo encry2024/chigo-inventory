@@ -13,11 +13,13 @@ trait SaleAttribute
    */
    public function getActiveLabelAttribute()
    {
-      if ($this->isActive()) {
-         return "<label class='label label-success'>".trans('labels.general.deployable').'</label>';
+      if($this->status == 0) {
+         return "<label class='label label-info'>Open</label>";
+      } elseif ($this->status == 1) {
+         return "<label class='label label-warning'>Incomplete Payment</label>";
+      } elseif ($this->status == 2) {
+         return "<label class='label label-success'>Close</label>";
       }
-
-      return "<label class='label label-danger'>".trans('labels.general.no').'</label>';
    }
 
    /**
@@ -119,7 +121,6 @@ trait SaleAttribute
 
       return
       $this->getShowButtonAttribute().
-      $this->getEditButtonAttribute().
       $this->getDeleteButtonAttribute();
    }
 

@@ -114,8 +114,7 @@ class AirconRepository extends BaseRepository
                foreach ($airconFile->toArray() as $key => $value) {
                   $insert[] = [
                      'name' => '-',
-                     'user_id' => 0,
-                     'category_id' => 0,
+                     'customer_id' => 0,
                      'manufacturer' => '-',
                      'price' => '0.0',
                      'horsepower' => '0.0',

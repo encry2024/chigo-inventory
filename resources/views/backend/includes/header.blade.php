@@ -3,7 +3,7 @@
    <a href="{{ route('frontend.index') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini">
-         {{ substr(app_name(), 0, 1) }}
+         CHIGO Inventory CRM
       </span>
 
       <!-- logo for regular state and mobile devices -->
@@ -11,7 +11,7 @@
          CHIGO Inventory CRM
       </span>
    </a>
-   
+
    <nav class="navbar navbar-static-top" role="navigation">
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
          <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>

@@ -35,6 +35,9 @@ class SaleTableController extends Controller
       return Datatables::of(
          $this->sales->getForDataTable($request->get('status'), $request->get('trashed')))
          ->escapeColumns([])
+         ->editColumn('status', function ($sale) {
+            return $sale->active_label;
+         })
          ->addColumn('user', function ($sale) {
             return $sale->user->count() ?
             $sale->user->full_name :

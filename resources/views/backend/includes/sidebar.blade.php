@@ -77,14 +77,6 @@
          </li>
 
          <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
-
-         <li class="{{ active_class(Active::checkUriPattern('admin/workflow/sale*')) }}">
-            <a href="{{ route('admin.workflow.sale.generate_gatepass') }}">
-               <i class="fa fa-print" aria-hidden="true"></i>
-               <span>Generate Gatepass</span>
-            </a>
-         </li>
-
          @role(1)
          <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
             <a href="#">

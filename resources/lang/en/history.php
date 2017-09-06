@@ -43,7 +43,7 @@ return [
                'restored'            => 'restored aircon',
                'permanently_deleted' => 'permanently deleted aircon',
                'updated'             => 'updated aircon',
-               'uploaded'            => 'Data was successfully imported'
+               'uploaded'            => 'excel was successfully imported'
             ],
          ],
       ],

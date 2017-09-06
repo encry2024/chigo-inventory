@@ -119,7 +119,6 @@ trait TechnicalAttribute
 
       return
       $this->getShowButtonAttribute().
-      $this->getEditButtonAttribute().
       $this->getDeleteButtonAttribute();
    }
 

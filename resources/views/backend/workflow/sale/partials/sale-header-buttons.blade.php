@@ -1,7 +1,10 @@
 <div class="pull-right mb-10 hidden-sm hidden-xs">
    {{ link_to_route('admin.workflow.sale.index', trans('menus.backend.workflows.sales.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
+   {{ link_to_route('admin.workflow.sale.generate_gatepass', 'Generate Gatepass', [], ['class' => 'btn btn-info btn-xs']) }}
+   @role(! 5)
    {{ link_to_route('admin.workflow.sale.create', trans('menus.backend.workflows.sales.create'), [], ['class' => 'btn btn-success btn-xs']) }}
    {{ link_to_route('admin.workflow.sale.deleted', trans('menus.backend.workflows.sales.deleted'), [], ['class' => 'btn btn-danger btn-xs']) }}
+   @endauth
 </div><!--pull right-->
 
 <div class="pull-right mb-10 hidden-lg hidden-md">
