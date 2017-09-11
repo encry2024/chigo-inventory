@@ -76,6 +76,14 @@ return [
             'restored'            => 'The technician was successfully restored.',
             'deleted_permanently' => 'The technician was deleted permanently.',
             'updated'             => 'The technician was successfully updated.'
+         ],
+
+         'referral' => [
+            'created'             => 'The agent referral was successfully created.',
+            'deleted'             => 'The agent referral was successfully deleted.',
+            'restored'            => 'The agent referral was successfully restored.',
+            'deleted_permanently' => 'The agent referral was deleted permanently.',
+            'updated'             => 'The agent referral was successfully updated.'
          ]
       ],
    ],

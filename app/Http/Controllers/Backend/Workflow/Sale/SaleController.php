@@ -11,6 +11,8 @@ use App\Http\Requests\Backend\Workflow\Sale\StoreSalesWorkflowRequest;
 use App\Models\Inventory\Customer\Customer;
 use App\Models\Inventory\Customer\CustomerService;
 use App\Models\Inventory\Item\Aircon\Aircon;
+use App\Models\Inventory\Referral\Referral;
+use App\Models\Inventory\Referral\ReferralReport;
 
 class SaleController extends Controller
 {
@@ -41,8 +43,9 @@ class SaleController extends Controller
    {
       $customers = Customer::all();
       $aircons = Aircon::whereCustomerId(0)->get();
+      $referrals = Referral::all();
 
-      return view('backend.workflow.sale.create', compact('customers', 'aircons'));
+      return view('backend.workflow.sale.create', compact('customers', 'aircons', 'referrals'));
    }
 
    /**
@@ -118,7 +121,14 @@ class SaleController extends Controller
    public function updateStatus(Sale $sale, ManageSalesWorkflowRequest $request)
    {
       $sale->status = $request->get('status');
-      $sale->save();
+      if($sale->save()) {
+         if($sale->status == 2) {
+            $referral_report = new ReferralReport();
+            $referral_report->sale_id = $sale->id;
+            $referral_report->referral_id = $sale->customer->referral->id;
+            $referral_report->save();
+         }
+      }
 
       $customer_service = new CustomerService();
       $customer_service->sale_id = $sale->id;

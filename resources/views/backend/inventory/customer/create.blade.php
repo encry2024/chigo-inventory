@@ -22,11 +22,6 @@
    </div><!-- /.box-header -->
 
    <div class="box-body">
-      <div class="alert alert-info">
-         <i class="fa fa-info-circle"></i> You will be redirected to <b>Create Workflow</b> page after creating a customer.
-      </div>
-
-
       <div class="form-group">
          {{ Form::label('company_name', trans('validation.attributes.backend.inventory.customers.company_name'), ['class' => 'col-lg-2 control-label']) }}
 
@@ -96,6 +91,28 @@
             </select>
          </div><!--col-lg-10-->
       </div><!--form control-->
+
+      <div class="form-group">
+         {{ Form::label('referral', trans('validation.attributes.backend.inventory.customers.referral'), ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-10">
+            <select data-placeholder="Choose the referral..." id="referralDropdown" name="referral" class="form-control chosen-select">
+               <option value=""></option>
+               <option value="0">No Referral</option>
+               @foreach($referrals as $referral)
+               <option value="{{ $referral->id }}">{{ $referral->name }}</option>
+               @endforeach
+            </select>
+         </div><!--col-lg-10-->
+      </div><!--form control-->
+
+      <div class="form-group">
+         {{ Form::label('discount', trans('validation.attributes.backend.inventory.customers.discount'), ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-10">
+            {{ Form::text('discount', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.backend.inventory.customers.discount')]) }}
+         </div><!--col-lg-10-->
+      </div><!--form control-->
    </div><!--box-->
 
    <div class="box box-info">
@@ -113,4 +130,10 @@
    </div><!--box-->
 
    {{ Form::close() }}
+
+   <script type="text/javascript">
+   $(document).ready(function() {
+      $('.chosen-select').chosen();
+   });
+   </script>
    @endsection

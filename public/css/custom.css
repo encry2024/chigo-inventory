@@ -19,10 +19,149 @@
    display: block;
 }
 
-@media print {
+.receiptContainer {
+   position: absolute;
+}
 
+.airconQty {
+   position: absolute;
+   top: 39rem;
+   left: 10rem;
+}
+
+.airconDescription {
+   position: absolute;
+   top: 39rem;
+   left: 28rem;
+   max-width: 320px;
+   width: 300px;
+}
+
+.airconPrice {
+   position: absolute;
+   top: 39rem;
+   left: 66rem;
+   max-width: 220px;
+   width: 300px;
+}
+
+.airconAmount {
+   position: absolute;
+   top: 39rem;
+   left: 76rem;
+   max-width: 220px;
+   width: 300px;
+}
+
+.removeFromReceipt {
+   position: absolute;
+   left: 85rem;
+   top: 39rem;
+}
+
+.customerName {
+   position: absolute;
+   top: 27rem;
+   left: 25rem;
+}
+
+.customerAddress {
+   position: absolute;
+   top: 29rem;
+   left: 25rem;
+}
+
+.salesAgent {
+   position: absolute;
+   top: 28rem;
+   left: 76rem;
+}
+
+.terms {
+   position: absolute;
+   left: 69rem;
+   top: 30.55rem;
+}
+
+.dateNeeded {
+   position: absolute;
+   left: 69rem;
+   top: 26rem;
+}
+
+.totalAmount {
+   position: absolute;
+   top: 61rem;
+   left: 78rem;
+}
+
+@media print {
    #printBtn, .main-footer, #box-header {
       display: none;
+   }
+
+   img {
+      font-size: 5px;
+   }
+
+   .totalAmount {
+      position: absolute;
+      top: 39rem;
+      left: 53rem;
+   }
+
+   .airconQty {
+      position: absolute;
+      top: 24rem;
+      left: 7rem;
+   }
+
+   .airconDescription {
+      position: absolute;
+      top: 24rem;
+      left: 15rem;
+   }
+
+   .airconPrice {
+      position: absolute;
+      top: 24rem;
+      left: 46rem;
+   }
+
+   .airconAmount {
+      position: absolute;
+      top: 24rem;
+      left: 55rem;
+   }
+
+   .customerName {
+      position: absolute;
+      top: 15rem;
+      left: 20rem;
+   }
+
+   .customerAddress {
+      position: absolute;
+      top: 17rem;
+      left: 20rem;
+   }
+
+   .salesAgent {
+      position: absolute;
+      top: 16rem;
+      left: 51rem;
+   }
+
+   .terms {
+      position: absolute;
+      top: 18rem;
+      left: 47rem;
+   }
+
+   .dateNeeded {
+      position: absolute;
+      top: 14.5rem;
+      left: 46.5rem;
    }
 
    .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
@@ -64,7 +203,6 @@
    .col-lg-1 {
       width: 8.333333333333332%;
    }
-
 }
 
 tr:first-child {

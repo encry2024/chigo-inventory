@@ -166,4 +166,31 @@ class TechnicalController extends Controller
 
       return json_encode($jsonData);
    }
+
+   public function fetchTechnicalForReceipt()
+   {
+      $jsonData = array();
+      $technicals = Technical::all();
+
+      foreach($technicals as $technical) {
+         $jsonData[] = array(
+            'title'  => $technical->customer->company_name,
+            'start'  => $technical->start_date_schedule . ' ' . date('H:i:s', strtotime($technical->start_time_schedule)),
+            'end'    => $technical->end_date_schedule . ' ' . date('H:i:s', strtotime($technical->end_time_schedule)),
+            'url'    => route('admin.workflow.technical.create_receipt', $technical->id)
+         );
+      }
+
+      return json_encode($jsonData);
+   }
+
+   public function createReceipt(Technical $technical, ManageTechnicalWorkflowRequest $request)
+   {
+      return view('backend.workflow.technical.delivery_receipt')->withTechnical($technical);
+   }
+
+   public function showCalendar()
+   {
+      return view('backend.workflow.technical.validate_for_receipt');
+   }
 }

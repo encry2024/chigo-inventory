@@ -71,6 +71,12 @@ class HistoryTypeTableSeeder extends Seeder
             'name'       => 'Technician',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
+         ],
+         [
+            'id'         => 9,
+            'name'       => 'Referral',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
          ]
       ];
 

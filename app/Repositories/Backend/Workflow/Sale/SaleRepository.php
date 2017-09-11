@@ -90,15 +90,20 @@ class SaleRepository extends BaseRepository
 
       DB::transaction(function () use ($sale, $data) {
          if ($sale->save()) {
-            foreach((array) $data['aircon'] as $aircon ) {
-               $aircon_sale = new AirconSale();
-               $aircon_sale->aircon_id = $aircon;
-               $aircon_sale->sale_id   = $sale->id;
+            if(count($data['aircon']) != 0) {
+               $sale->aircon = 1;
+               $sale->save();
+               
+               foreach((array) $data['aircon'] as $aircon ) {
+                  $aircon_sale = new AirconSale();
+                  $aircon_sale->aircon_id = $aircon;
+                  $aircon_sale->sale_id   = $sale->id;
 
-               if($aircon_sale->save()) {
-                  $aircon = Aircon::find($aircon_sale->aircon_id);
-                  $aircon->customer_id = $data['customer'];
-                  $aircon->save();
+                  if($aircon_sale->save()) {
+                     $aircon = Aircon::find($aircon_sale->aircon_id);
+                     $aircon->customer_id = $data['customer'];
+                     $aircon->save();
+                  }
                }
             }
 

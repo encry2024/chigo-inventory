@@ -30,7 +30,8 @@ class UpdateCustomerRequest extends Request
          'address'         => ['required', 'max:191'],
          'email'           => ['required', 'unique:customers,email,' . Request::get('customer_id')],
          'note'            => ['max:255'],
-         'other_category'  => ['max:50']
+         'other_category'  => ['max:50'],
+         'customer_type_id'=> ['required']
       ];
    }
 }

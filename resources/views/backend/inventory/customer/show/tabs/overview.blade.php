@@ -20,6 +20,21 @@
    </tr>
 
    <tr>
+      <th>{{ trans('labels.backend.inventory.customer.tabs.content.overview.customer_type') }}</th>
+      <td>{{ $customer->customer_type->name }}</td>
+   </tr>
+
+   <tr>
+      <th>{{ trans('labels.backend.inventory.customer.tabs.content.overview.discount') }}</th>
+      <td>{{ ($customer->discount * 100) }}%</td>
+   </tr>
+
+   <tr>
+      <th>{{ trans('labels.backend.inventory.customer.tabs.content.overview.referral') }}</th>
+      <td>{{ $customer->referral->name }}</td>
+   </tr>
+
+   <tr>
       <th>{{ trans('labels.backend.inventory.customer.tabs.content.overview.created_at') }}</th>
       <td>{{ date('F d, Y h:i A', strtotime($customer->created_at)) }} ({{ $customer->created_at->diffForHumans() }})</td>
    </tr>

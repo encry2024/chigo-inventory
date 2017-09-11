@@ -177,6 +177,49 @@ return [
             ],
          ],
 
+         'referral'  => [
+            'management'   => 'Agent Referral Management',
+            'availables'   => 'Available Referrals',
+
+            'id'           => 'ID',
+            'name'         => 'Name',
+
+            'create'       => 'Create Referral',
+            'edit'         => 'Edit Referral',
+            'delete'       => 'Delete Referral',
+
+            'deleted'      => 'Delete Referral',
+            'view'         => 'View :referral',
+
+            'table'        => [
+               'id'           => 'ID',
+               'name'         => 'Name',
+               'note'         => 'Note',
+               'address'      => 'Address',
+               'created_at'   => 'Date Created',
+               'updated_at'   => 'Last Updated'
+            ],
+
+            'tabs' => [
+               'titles' => [
+                  'overview'     => 'Overview',
+                  'history'   => 'History',
+               ],
+
+               'content' => [
+                  'overview' => [
+                     'id'                 => 'ID',
+                     'name'               => 'Name',
+                     'address'            => 'Address',
+                     'created_at'         => 'Date Created',
+                     'last_updated'       => 'Last Updated',
+                     'deleted_at'         => 'Date Deleted',
+                     'notes'              => 'Note'
+                  ],
+               ],
+            ],
+         ],
+
          'aircon' => [
             'management'   => 'Aircon Management',
             'availables'   => 'Available Aircons',
@@ -263,7 +306,10 @@ return [
                      'company_name'        => 'Company Name',
                      'email'               => 'Email',
                      'note'                => 'Note',
-                     'address'             => 'Address'
+                     'address'             => 'Address',
+                     'discount'            => 'Discount %',
+                     'customer_type'       => 'Customer Type',
+                     'referral'            => 'Referred By'
                   ],
                ],
             ],

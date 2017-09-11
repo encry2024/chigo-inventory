@@ -42,9 +42,23 @@ Route::group([
    });
 
    Route::group([
+      'namespace' => 'Referral',
+   ], function() {
+      Route::post('referral/get', 'ReferralTableController')->name('referral.get');
+
+      Route::get('referral/deleted', 'ReferralStatusController@getDeleted')->name('referral.deleted');
+
+      Route::resource('referral', 'ReferralController');
+
+      Route::group(['prefix' => 'referral/{deletedReferral}'], function () {
+         Route::get('delete', 'ReferralStatusController@delete')->name('referral.delete-permanently');
+         Route::get('restore', 'ReferralStatusController@restore')->name('referral.restore');
+      });
+   });
+
+   Route::group([
       'namespace' => 'Customer',
    ], function() {
-      //Route::get('/', 'CustomerController@index')->name('index');
       Route::get('customer/deleted', 'CustomerStatusController@getDeleted')->name('customer.deleted');
 
       Route::post('customer/get', 'CustomerTableController')->name('customer.get');

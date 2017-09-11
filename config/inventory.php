@@ -6,6 +6,7 @@ use App\Models\Inventory\Item\Peripherals\Peripheral;
 use App\Models\Inventory\Customer\Customer;
 use App\Models\Inventory\Technician\Technician;
 use App\Models\Inventory\Customer\CustomerType;
+use App\Models\Inventory\Referral\Referral;
 
 return [
    'customers_table' => 'customers',
@@ -61,5 +62,8 @@ return [
       'technician' => Technician::class,
 
       'technicians_table' => 'technicians',
-   ]
+   ],
+
+   'referral' => Referral::class,
+   'referrals_table' => 'referrals'
 ];

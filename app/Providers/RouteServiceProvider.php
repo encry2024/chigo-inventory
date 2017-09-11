@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 use App\Models\Access\User\User;
+
 use App\Models\Inventory\Item\Aircon\Aircon;
 use App\Models\Inventory\Customer\Customer;
 use App\Models\Inventory\Technician\Technician;
+use App\Models\Inventory\Referral\Referral;
+
 use App\Models\Workflow\Sale\Sale;
 use App\Models\Workflow\Technical\Technical;
 
@@ -75,6 +78,12 @@ class RouteServiceProvider extends ServiceProvider
          $technician = new Technician();
 
          return Technician::withTrashed()->where($technician->getRouteKeyName(), $value)->first();
+      });
+
+      $this->bind('deletedReferral', function ($value) {
+         $referral = new Referral();
+
+         return Referral::withTrashed()->where($referral->getRouteKeyName(), $value)->first();
       });
 
       parent::boot();

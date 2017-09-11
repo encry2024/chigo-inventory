@@ -74,6 +74,14 @@ return [
             'cant_restore'          => 'This technician is not deleted so it can not be restored.',
             'restore_error'         => 'There was a problem restoring this technician. Please try again.',
             'delete_first'          => 'This technician must be deleted first before it can be destroyed permanently.'
+         ],
+
+         'referrals' => [
+            'create_error'          => 'There was a problem creating this agent referral. Please try again.',
+            'delete_error'          => 'There was a problem deleting this agent referral. Please try again.',
+            'cant_restore'          => 'This agent referral is not deleted so it can not be restored.',
+            'restore_error'         => 'There was a problem restoring this agent referral. Please try again.',
+            'delete_first'          => 'This agent referral must be deleted first before it can be destroyed permanently.'
          ]
       ],
 

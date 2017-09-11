@@ -44,6 +44,14 @@ return [
             'view'   => 'View Category'
          ],
 
+         'referral' => [
+            'title'        => 'Agent Referral Management',
+            'all'          => 'All Referral',
+            'create'       => 'Create Agent Referral',
+            'deleted'      => 'Deleted Agent Referral',
+            'view'         => 'View Agent Referral',
+         ],
+
          'customer' => [
             'title'        => 'Customer Management',
             'all'          => 'All Customers',
@@ -108,7 +116,8 @@ return [
             'create'    => 'Create Technical Workflow',
             'deleted'   => 'Deleted Technical Workflow',
             'edit'      => 'Edit Technical Workflow',
-            'view'      => 'View Technical Workflow'
+            'view'      => 'View Technical Workflow',
+            'receipt'   => 'Create Technical Receipt'
          ]
       ],
 

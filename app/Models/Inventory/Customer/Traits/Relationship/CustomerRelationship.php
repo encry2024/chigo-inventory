@@ -27,4 +27,9 @@ trait CustomerRelationship
       return $this->belongsTo(config('inventory.customer_type'));
    }
 
+   public function referral()
+   {
+      return $this->belongsTo(config('inventory.referral'));
+   }
+
 }

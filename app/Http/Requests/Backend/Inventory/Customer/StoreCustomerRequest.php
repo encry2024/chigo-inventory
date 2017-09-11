@@ -31,6 +31,7 @@ class StoreCustomerRequest extends Request
          'email'          => ['required', 'email', Rule::unique('customers')],
          'other_category' => 'max:50',
          'address'        => 'required',
+         'referral'       => 'required'
       ];
    }
 }

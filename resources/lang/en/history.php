@@ -46,6 +46,14 @@ return [
                'uploaded'            => 'excel was successfully imported'
             ],
          ],
+
+         'referrals' => [
+            'created'               => 'created agent referral',
+            'deleted'               => 'deleted agent referral',
+            'restored'              => 'restored agent referral',
+            'permanently_deleted'   => 'permanently deleted agent referral',
+            'updated'               => 'updated agent referral',
+         ]
       ],
 
       'customer' => [

@@ -70,6 +70,26 @@
             {{ Form::text('other_category', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.backend.inventory.customers.other_category')]) }}
          </div><!--col-lg-10-->
       </div><!--form control-->
+
+      <div class="form-group">
+         {{ Form::label('customer_type_id', trans('validation.attributes.backend.inventory.customers.customer_type'), ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-10">
+            <select class="form-control" name="customer_type_id">
+               <option value="1">Residential</option>
+               <option value="2">Commercial</option>
+               <option value="3">Business</option>
+            </select>
+         </div><!--col-lg-10-->
+      </div><!--form control-->
+
+      <div class="form-group">
+         {{ Form::label('discount', trans('validation.attributes.backend.inventory.customers.discount'), ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-10">
+            {{ Form::text('discount', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.backend.inventory.customers.discount')]) }}
+         </div><!--col-lg-10-->
+      </div><!--form control-->
    </div><!--box-->
 
    <div class="box box-info">

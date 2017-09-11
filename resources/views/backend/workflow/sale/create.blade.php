@@ -31,7 +31,20 @@
             <select data-placeholder="Choose a Customer..." id="customerDropdown" name="customer" class="form-control chosen-select">
                <option value=""></option>
                @foreach($customers as $customer)
-               <option value="{{ $customer->id }}">{{ $customer->company_name }} {{ $customer->note }}</option>
+               <option value="{{ $customer->id }}">{{ $customer->company_name }}</option>
+               @endforeach
+            </select>
+         </div><!--col-lg-10-->
+      </div><!--form control-->
+
+      <div class="form-group">
+         {{ Form::label('referral_id', trans('validation.attributes.backend.workflow.sales.referral'), ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-10">
+            <select data-placeholder="Choose a Referral..." id="referralDropdown" name="referral" class="form-control chosen-select">
+               <option value=""></option>
+               @foreach($referrals as $referral)
+               <option value="{{ $referral->id }}">{{ $referral->name }}</option>
                @endforeach
             </select>
          </div><!--col-lg-10-->
@@ -41,7 +54,7 @@
          {{ Form::label('aircon', trans('validation.attributes.backend.inventory.aircons.serial_number'), ['class' => 'col-lg-2 control-label']) }}
 
          <div class="col-lg-10">
-            <select data-placeholder="Choose an Aircon..." id="airconDropdown" name="aircon[]" multiple class="form-control chosen-select">
+            <select data-placeholder="Choose an Aircon..." id="airconDropdown" name="aircon[]" multiple class="form-control chosen-select aircon-select">
                <option value=""></option>
                @foreach($aircons as $aircon)
                <option value="{{ $aircon->id }}">{{ $aircon->name }} - {{ $aircon->serial_number }} - {{ $aircon->door_type }}</option>
@@ -105,11 +118,49 @@
       </div><!-- /.box-body -->
    </div><!--box-->
 
+   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <label id="#sampleValue"></label>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
    {{ Form::close() }}
 
    <script type="text/javascript">
    $(document).ready(function() {
       $('.chosen-select').chosen();
+      // var sampleValue = document.getElementById("sampleValue");
+      //
+      // $('#airconDropdown').chosen().change(function() {
+      //    $("a.search-choice-close").click(function() {
+      //       // $("#exampleModal").attr('id', 'sample');
+      //       if ($('li').hasClass('result-selected')) {
+      //          $('li').removeClass('result-selected');
+      //       }
+      //    });
+      //
+      //    if($('li').hasClass("active-result")) {
+      //
+      //    } else if ($('li').hasClass('result-selected')) {
+      //       $("#exampleModal").modal("show");
+      //    }
+      //
+      //
+      // });
    });
    </script>
    @endsection

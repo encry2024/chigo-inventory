@@ -83,7 +83,8 @@ class CustomerRepository extends BaseRepository
       $customer->email = $data['email'];
       $customer->note = $data['note'];
       $customer->other_category = $data['other_category'];
-      $customer->customer_type_id = $data['customer_type'];
+      $customer->customer_type_id = $data['customer_type_id'];
+      $customer->discount = $data['discount'] / 100;
 
       DB::transaction(function () use ($customer, $data) {
          if ($customer->save()) {
@@ -107,6 +108,8 @@ class CustomerRepository extends BaseRepository
       $customer->note = $input['note'];
       $customer->customer_type_id = $input['customer_type'];
       $customer->address = $input['address'];
+      $customer->discount = $input['discount'] / 100;
+      $customer->referral_id = $input['referral'];
 
       return $customer;
    }

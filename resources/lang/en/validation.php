@@ -127,7 +127,8 @@ return [
                'created_at'      => 'Date Added',
                'updated_at'      => 'Last Update',
                'notes'           => 'Notes',
-               'date_needed'     => 'Date Needed'
+               'date_needed'     => 'Date Needed',
+               'referral'        => 'Referral'
             ],
 
             'technicals' => [
@@ -142,6 +143,13 @@ return [
          ],
 
          'inventory' => [
+            'referrals'  => [
+               'id'        => 'ID',
+               'name'      => 'Referral Name',
+               'address'   => 'Address',
+               'notes'     => 'Notes'
+            ],
+
             'customers' => [
                'company_name'             => 'Company/Client Name',
                'address'                  => 'Address',
@@ -150,7 +158,9 @@ return [
                'note'                     => 'Note',
                'email'                    => 'Email',
                'aircons'                  => 'Aircons',
-               'customer_type'            => 'Customer Type'
+               'customer_type'            => 'Customer Type',
+               'discount'                 => 'Discount',
+               'referral'                 => 'Referral'
             ],
 
             'aircons' => [

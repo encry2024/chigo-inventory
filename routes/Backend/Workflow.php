@@ -42,6 +42,13 @@ Route::group([
 
       Route::get('technical/schedules', 'TechnicalController@fetchTechnicalSchedules')->name('technical.fetch_technical_schedules');
 
+
+      Route::get('technical/fetch-technical-schedules', 'TechnicalController@fetchTechnicalForReceipt')->name('technical.for_receipt');
+
+      Route::get('technical/show-calendar', 'TechnicalController@showCalendar')->name('technical.show_calendar');
+
+      Route::get('technical/{technical}/receipt', 'TechnicalController@createReceipt')->name('technical.create_receipt');
+
       Route::get('technical/gate_pass', function() {
          return view('backend.workflow.gatepass');
       });

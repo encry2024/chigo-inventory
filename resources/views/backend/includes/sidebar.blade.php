@@ -60,6 +60,13 @@
             </a>
          </li>
 
+         <li class="{{ active_class(Active::checkUriPattern('admin/inventory/referral*')) }}">
+            <a href="{{ route('admin.inventory.referral.index') }}">
+               <i class="fa fa-users"></i>
+               <span>{{ trans('menus.backend.inventory.referral.title') }}</span>
+            </a>
+         </li>
+
          <li class="header">{{ trans('menus.backend.sidebar.business_workflow') }}</li>
 
          <li class="{{ active_class(Active::checkUriPattern('admin/workflow/sale*')) }}">

@@ -38,6 +38,11 @@ return [
             ]
          ],
 
+         'referrals'  => [
+            'delete_permanently' => 'Delete Permanently',
+            'restore_referral'     => 'Restore Agent Referral',
+         ],
+
          'customers' => [
             'delete_permanently' => 'Delete Permanently',
             'restore_customer'   => 'Restore Customer',

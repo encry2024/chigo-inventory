@@ -9,6 +9,7 @@ use App\Repositories\Backend\Inventory\Customer\CustomerRepository;
 use App\Http\Requests\Backend\Inventory\Customer\ManageCustomerRequest;
 use App\Http\Requests\Backend\Inventory\Customer\StoreCustomerRequest;
 use App\Http\Requests\Backend\Inventory\Customer\UpdateCustomerRequest;
+use App\Models\Inventory\Referral\Referral;
 
 class CustomerController extends Controller
 {
@@ -35,7 +36,9 @@ class CustomerController extends Controller
    */
    public function create()
    {
-      return view('backend.inventory.customer.create');
+      $referrals = Referral::all();
+
+      return view('backend.inventory.customer.create', compact('referrals'));
    }
 
    /**
@@ -54,7 +57,9 @@ class CustomerController extends Controller
             'note',
             'other_category',
             'email',
-            'customer_type'
+            'customer_type',
+            'discount',
+            'referral'
          )
       ]);
 
@@ -100,7 +105,9 @@ class CustomerController extends Controller
             'email',
             'note',
             'other_category',
-            'address'
+            'address',
+            'discount',
+            'customer_type_id'
          )
       ]);
 

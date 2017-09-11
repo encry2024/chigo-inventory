@@ -28,6 +28,11 @@ return [
                'delete_aircon_confirm'  => 'Are you sure you want to delete this aircon permanently? Anywhere in the application that references this aircon\'s id will most likely cause an error. Proceed at your own risk. This can not be un-done.',
             ]
          ],
+
+         'referral' => [
+            'delete_referral_confirm'  => 'Are you sure you want to delete this agent referral permanently? Anywhere in the application that references this referral\'s ID will most likely cause an error. Proceed at your own risk. This can not be un-done.',
+            'restore_referral_confirm'     => 'Restore this agent referral to its original state?',
+         ]
       ],
 
       'workflow' => [
