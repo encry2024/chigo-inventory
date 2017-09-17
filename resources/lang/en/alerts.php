@@ -60,6 +60,16 @@ return [
                'uploaded'            => 'The excel file for aircons was successfully uploaded.',
                'change_log'          => 'Aircon :aircon was :changed_log'
             ],
+
+            'peripherals' => [
+               'created'             => 'The peripheral was successfully created.',
+               'deleted'             => 'The peripheral was successfully deleted.',
+               'restored'            => 'The peripheral was successfully restored.',
+               'deleted_permanently' => 'The peripheral was deleted permanently.',
+               'updated'             => 'The peripheral was successfully updated.',
+               'uploaded'            => 'The excel file for peripherals was successfully uploaded.',
+               'change_log'          => 'Peripheral :peripheral was :changed_log'
+            ]
          ],
 
          'customers' => [

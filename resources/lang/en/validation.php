@@ -143,6 +143,14 @@ return [
          ],
 
          'inventory' => [
+            'peripherals'  => [
+               'id'        => 'ID',
+               'description'  => 'Peripheral Name',
+               'serial_number'=> 'Serial Number',
+               'quantity'     => 'Quantity',
+               'price'        => 'Price'
+            ],
+
             'referrals'  => [
                'id'        => 'ID',
                'name'      => 'Referral Name',

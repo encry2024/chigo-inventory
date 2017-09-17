@@ -20,8 +20,10 @@
    </div><!-- /.box-header -->
 
    <div class="box-body">
-      <form action="" class="form-horizontal">
+      <form action="" class="form-horizontal" style="margin-bottom: 40rem;">
+         <div class="">
          <img src="{{ asset('RECEIPT.jpg') }}" alt="">
+         </div>
       </form>
 
       <label class="customerName">{{ $sale->customer->company_name }}</label>
@@ -44,6 +46,22 @@
       </div>
       <?php $receiptLocation += 2; ?>
       @endforeach
+
+      @if(count($sale->peripheral_sales) != 0)
+         @foreach($sale->peripheral_sales as $peripheral_sale)
+         <div class="receiptContainer" style="top: {{ $receiptLocation }}rem;" id="receiptContainer">
+            <?php $total_sale += ($peripheral_sale->peripheral->price * $peripheral_sale->quantity) - ($peripheral_sale->peripheral->price * $peripheral_sale->quantity * $sale->customer->discount); ?>
+            <label class="airconQty">{{ $peripheral_sale->quantity }}</label>
+            <label class="airconDescription" >{{ $peripheral_sale->peripheral->description }} -- {{ $peripheral_sale->peripheral->serial_number }} -- Discount [ {{ $sale->customer->discount * 100 }}% ]</label>
+            <label class=""></label>
+            <label class="airconPrice">{{ number_format($peripheral_sale->peripheral->price, 2) }}</label>
+            <label class="airconAmount">{{ number_format($peripheral_sale->peripheral->price * $peripheral_sale->quantity - ($peripheral_sale->peripheral->price * $sale->customer->discount), 2) }}</label>
+            <button class="btn btn-xs btn-danger removeFromReceipt" name="button" id="removeItem">Remove from receipt {{ $receiptLocation }}</button>
+            <br>
+         </div>
+         <?php $receiptLocation += 3.5; ?>
+         @endforeach
+      @endif
 
 
       <label class="totalAmount" id="total_amount">{{ number_format($total_sale, 2) }}</label>

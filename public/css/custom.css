@@ -96,7 +96,7 @@
 }
 
 @media print {
-   #printBtn, .main-footer, #box-header {
+   #printBtn, .main-footer, #box-header, img {
       display: none;
    }
 

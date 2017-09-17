@@ -5,6 +5,7 @@ namespace App\Repositories\Backend\Workflow\Sale;
 use App\Models\Workflow\Sale\Sale;
 use App\Models\Inventory\Item\Aircon\Aircon;
 use App\Models\Workflow\Sale\AirconSale\AirconSale;
+use App\Models\Workflow\Sale\PeripheralSale\PeripheralSale;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
@@ -93,7 +94,7 @@ class SaleRepository extends BaseRepository
             if(count($data['aircon']) != 0) {
                $sale->aircon = 1;
                $sale->save();
-               
+
                foreach((array) $data['aircon'] as $aircon ) {
                   $aircon_sale = new AirconSale();
                   $aircon_sale->aircon_id = $aircon;
@@ -104,6 +105,21 @@ class SaleRepository extends BaseRepository
                      $aircon->customer_id = $data['customer'];
                      $aircon->save();
                   }
+               }
+            }
+
+            if(count($data['getPeripherals']) != 0) {
+               $sale->parts = 1;
+               $sale->save();
+
+               foreach($data['getPeripherals'] as $peripheral) {
+                  $getValue = explode('-', $peripheral);
+
+                  $peripheral_sale = new PeripheralSale();
+                  $peripheral_sale->sale_id = $sale->id;
+                  $peripheral_sale->peripheral_id = $getValue[0];
+                  $peripheral_sale->quantity = $getValue[1];
+                  $peripheral_sale->save();
                }
             }
 

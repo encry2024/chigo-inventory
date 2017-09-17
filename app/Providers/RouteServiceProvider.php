@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Access\User\User;
 
 use App\Models\Inventory\Item\Aircon\Aircon;
+use App\Models\Inventory\Item\Peripheral\Peripheral;
 use App\Models\Inventory\Customer\Customer;
 use App\Models\Inventory\Technician\Technician;
 use App\Models\Inventory\Referral\Referral;
@@ -84,6 +85,12 @@ class RouteServiceProvider extends ServiceProvider
          $referral = new Referral();
 
          return Referral::withTrashed()->where($referral->getRouteKeyName(), $value)->first();
+      });
+
+      $this->bind('deletedPeripheral', function ($value) {
+         $peripheral = new Peripheral();
+
+         return Peripheral::withTrashed()->where($peripheral->getRouteKeyName(), $value)->first();
       });
 
       parent::boot();

@@ -11,6 +11,7 @@ use App\Http\Requests\Backend\Workflow\Sale\StoreSalesWorkflowRequest;
 use App\Models\Inventory\Customer\Customer;
 use App\Models\Inventory\Customer\CustomerService;
 use App\Models\Inventory\Item\Aircon\Aircon;
+use App\Models\Inventory\Item\Peripheral\Peripheral;
 use App\Models\Inventory\Referral\Referral;
 use App\Models\Inventory\Referral\ReferralReport;
 
@@ -44,8 +45,9 @@ class SaleController extends Controller
       $customers = Customer::all();
       $aircons = Aircon::whereCustomerId(0)->get();
       $referrals = Referral::all();
+      $peripherals = Peripheral::all();
 
-      return view('backend.workflow.sale.create', compact('customers', 'aircons', 'referrals'));
+      return view('backend.workflow.sale.create', compact('customers', 'aircons', 'referrals', 'peripherals'));
    }
 
    /**
@@ -63,7 +65,8 @@ class SaleController extends Controller
             'aircon',
             'note',
             'terms',
-            'date_needed'
+            'date_needed',
+            'getPeripherals'
             )
          ]
       );

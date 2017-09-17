@@ -53,6 +53,13 @@
             </a>
          </li>
 
+         <li class="{{ active_class(Active::checkUriPattern('admin/inventory/item/peripheral*')) }}">
+            <a href="{{ route('admin.inventory.item.peripheral.index') }}">
+               <i class="fa fa-cogs"></i>
+               <span>{{ trans('menus.backend.inventory.peripheral.title') }}</span>
+            </a>
+         </li>
+
          <li class="{{ active_class(Active::checkUriPattern('admin/inventory/customer*')) }}">
             <a href="{{ route('admin.inventory.customer.index') }}">
                <i class="fa fa-users"></i>

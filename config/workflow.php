@@ -3,9 +3,11 @@
 use App\Models\Workflow\Sale\Sale;
 use App\Models\Inventory\Customer\Customer;
 use App\Models\Inventory\Item\Aircon\Aircon;
+use App\Models\Inventory\Item\Peripheral\Peripheral;
 use App\Models\Workflow\Technical\Technical;
 use App\Models\Inventory\Technician\Technician;
 use App\Models\Workflow\Sale\AirconSale\AirconSale;
+use App\Models\Workflow\Sale\PeripheralSale\PeripheralSale;
 use App\Models\Workflow\Technical\AirconTechnical;
 
 return [
@@ -39,12 +41,20 @@ return [
       'aircon' => Aircon::class,
 
       /*
+      *  Workflow Peripheral table
+      */
+      'peripheral' => Peripheral::class,
+
+      /*
       * Workflow Sales table used to make Relationship with Aircons
       */
       'aircons_table' => 'aircons',
 
-      'aircon_sales' => AirconSale::class,
-      'aircon_sales_table' => 'aircon_sales'
+      'aircon_sales'       => AirconSale::class,
+      'aircon_sales_table' => 'aircon_sales',
+
+      'peripheral_sales'         => PeripheralSale::class,
+      'peripheral_sales_table'   => 'peripheral_sales'
    ],
 
    'aircon_sale_config' => [

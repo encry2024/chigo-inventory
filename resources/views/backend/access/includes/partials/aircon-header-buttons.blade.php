@@ -1,9 +1,9 @@
 <div class="pull-right mb-10 hidden-sm hidden-xs">
    {{ link_to_route('admin.inventory.item.aircon.index', trans('menus.backend.inventory.aircon.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
-   {{-- {{ link_to_route('admin.inventory.item.aircon.log_pending_aircon', trans('menus.backend.inventory.aircon.log_pending_aircon'), [], ['class' => 'btn btn-primary btn-xs']) }} --}}
-   {{ link_to_route('admin.inventory.item.aircon.check_in.page', trans('menus.backend.inventory.aircon.check_in'), [], ['class' => 'btn btn-primary btn-xs']) }}
-   {{ link_to_route('admin.inventory.item.aircon.check_out.page', trans('menus.backend.inventory.aircon.check_out'), [], ['class' => 'btn btn-primary btn-xs']) }}
    {{ link_to_route('admin.inventory.item.aircon.checked_out_aircons', trans('menus.backend.inventory.aircon.view_check_out'), [], ['class' => 'btn btn-primary btn-xs']) }}
+   {{-- {{ link_to_route('admin.inventory.item.aircon.log_pending_aircon', trans('menus.backend.inventory.aircon.log_pending_aircon'), [], ['class' => 'btn btn-primary btn-xs']) }} --}}
+   {{ link_to_route('admin.inventory.item.aircon.check_in.page', trans('menus.backend.inventory.aircon.check_in'), [], ['class' => 'btn btn-info btn-xs']) }}
+   {{ link_to_route('admin.inventory.item.aircon.check_out.page', trans('menus.backend.inventory.aircon.check_out'), [], ['class' => 'btn btn-info btn-xs']) }}
    @role(!5)
    {{ link_to_route('admin.inventory.item.aircon.import', trans('menus.backend.inventory.aircon.import'), [], ['class' => 'btn btn-success btn-xs']) }}
    {{ link_to_route('admin.inventory.item.aircon.create', trans('menus.backend.inventory.aircon.create'), [], ['class' => 'btn btn-success btn-xs']) }}

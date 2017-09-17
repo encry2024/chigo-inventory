@@ -87,7 +87,6 @@ class AirconRepository extends BaseRepository
       $aircon->size = $data['size'];
       $aircon->brand_name = $data['brand_name'];
       $aircon->feature = $data['feature'];
-      $aircon->manufacturer = $data['manufacturer'];
 
       DB::transaction(function () use ($aircon, $data) {
          if ($aircon->save()) {

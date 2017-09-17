@@ -31,4 +31,9 @@ trait SaleRelationship
    {
       return $this->hasMany(config('workflow.sale_config.aircon_sales'));
    }
+
+   public function peripheral_sales()
+   {
+      return $this->hasMany(config('workflow.sale_config.peripheral_sales'));
+   }
 }

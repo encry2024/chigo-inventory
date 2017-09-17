@@ -45,6 +45,15 @@ return [
                'updated'             => 'updated aircon',
                'uploaded'            => 'excel was successfully imported'
             ],
+
+            'peripherals' => [
+               'created'             => 'created aircon',
+               'deleted'             => 'deleted aircon',
+               'restored'            => 'restored aircon',
+               'permanently_deleted' => 'permanently deleted peripheral',
+               'updated'             => 'updated peripheral',
+               'uploaded'            => 'excel was successfully imported'
+            ]
          ],
 
          'referrals' => [

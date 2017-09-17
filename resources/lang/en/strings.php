@@ -26,6 +26,11 @@ return [
          'items' => [
             'aircons' => [
                'delete_aircon_confirm'  => 'Are you sure you want to delete this aircon permanently? Anywhere in the application that references this aircon\'s id will most likely cause an error. Proceed at your own risk. This can not be un-done.',
+            ],
+
+            'peripheral' => [
+               'delete_peripheral_confirm'  => 'Are you sure you want to delete this aircon permanently? Anywhere in the application that references this aircon\'s id will most likely cause an error. Proceed at your own risk. This can not be un-done.',
+               'restore_peripheral_confirm' => 'Restore this peripheral to its original state?',
             ]
          ],
 

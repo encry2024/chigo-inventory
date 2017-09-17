@@ -29,6 +29,12 @@ return [
 
       'inventory' => [
          'items' => [
+            'peripherals' => [
+               'delete_permanently' => 'Delete Permanently',
+               'restore_peripheral' => 'Restore Peripheral',
+               'activate'           => 'Activate'
+            ],
+
             'aircons' => [
                'delete_permanently' => 'Delete Permanently',
                'restore_aircon'     => 'Restore Aircon',

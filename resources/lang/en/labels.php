@@ -132,6 +132,46 @@ return [
       ],
 
       'inventory' => [
+         'peripheral'=> [
+            'management' => 'Peripherals Management',
+            'availables'  => 'Available Peripherals',
+
+            'create'     => 'Create Peripherals',
+            'edit'       => 'Edit Peripherals',
+            'deleted'    => 'Deleted Peripherals',
+
+            'view'       => 'View Peripherals',
+
+            'table'      => [
+               'id'              => 'ID',
+               'description'     => 'Description',
+               'serial_number'   => 'Serial Number',
+               'quantity'        => 'Quantity',
+               'price'           => 'Price',
+               'date_created'    => 'Date Created',
+               'last_updated'    => 'Date Updated'
+            ],
+
+            'tabs' => [
+               'titles' => [
+                  'overview'     => 'Overview',
+                  'history'      => 'History',
+               ],
+
+               'content' => [
+                  'overview' => [
+                     'id'              => 'ID',
+                     'description'     => 'Description',
+                     'serial_number'   => 'Serial Number',
+                     'quantity'        => 'Quantity',
+                     'price'           => 'Price',
+                     'created_at'      => 'Date Created',
+                     'last_updated'    => 'Last Updated'
+                  ],
+               ],
+            ],
+         ],
+
          'technician' => [
             'management' => 'Technician Management',
             'availables' => 'Available Technicians',

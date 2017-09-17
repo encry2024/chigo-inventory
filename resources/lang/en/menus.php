@@ -39,6 +39,7 @@ return [
 
       'inventory' => [
          'title' => 'Inventory Management',
+
          'category' => [
             'title'  => 'Category Management',
             'view'   => 'View Category'
@@ -79,7 +80,7 @@ return [
             'view_check_out'        => 'View Checked-Out Aircons'
          ],
 
-         'peripherals' => [
+         'peripheral' => [
             'title'     => 'Peripherals Management',
             'all'       => 'All Peripherals',
             'create'    => 'Create Peripheral',

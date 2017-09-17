@@ -60,8 +60,32 @@
                <option value="{{ $aircon->id }}">{{ $aircon->name }} - {{ $aircon->serial_number }} - {{ $aircon->door_type }}</option>
                @endforeach
             </select>
+
          </div><!--col-lg-10-->
       </div><!--form control-->
+
+      <div class="form-group">
+         {{ Form::label('peripheral', trans('validation.attributes.backend.inventory.peripherals.description'), ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-7">
+            <select data-placeholder="Choose a Peripheral..." id="peripheralDropdown" name="aircon[]" class="form-control chosen-select peripheral-select">
+               <option value=""></option>
+               @foreach($peripherals as $peripheral)
+               <option value="{{ $peripheral->id }}">{{ $peripheral->description }} - {{ $peripheral->serial_number }}</option>
+               @endforeach
+            </select>
+         </div><!--col-lg-10-->
+
+         <div class="col-lg-2">
+            <input type="text" name="quantity" placeholder="Enter quantity" class="form-control" id="quantity">
+         </div><!--col-lg-2-->
+
+         <a class="btn btn-success" id="add_selected_peripheral"><i class="fa fa-plus"></i></a>
+      </div><!--form control-->
+
+      <div id="selectedPeripheralContainer">
+      </div>
+
 
       <div class="form-group">
          {{ Form::label('agent_name', trans('validation.attributes.backend.workflow.sales.sales_agent'), ['class' => 'col-lg-2 control-label']) }}
@@ -128,11 +152,11 @@
                </button>
             </div>
             <div class="modal-body">
-               <label id="#sampleValue"></label>
+               <input type="text" name="itemQuantity">
             </div>
             <div class="modal-footer">
                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button type="button" class="btn btn-primary">Save changes</button>
+               <a class="btn btn-primary" data-dismiss="modal" >Save changes</a>
             </div>
          </div>
       </div>
@@ -142,25 +166,50 @@
 
    <script type="text/javascript">
    $(document).ready(function() {
+      var selected_peripheral = '',
+      peripheral_quantity  =  0,
+      quantity_field = document.getElementById('quantity'),
+      peripheral_container = $('#selectedPeripheralContainer');
+
       $('.chosen-select').chosen();
-      // var sampleValue = document.getElementById("sampleValue");
-      //
-      // $('#airconDropdown').chosen().change(function() {
-      //    $("a.search-choice-close").click(function() {
-      //       // $("#exampleModal").attr('id', 'sample');
-      //       if ($('li').hasClass('result-selected')) {
-      //          $('li').removeClass('result-selected');
-      //       }
-      //    });
-      //
-      //    if($('li').hasClass("active-result")) {
-      //
-      //    } else if ($('li').hasClass('result-selected')) {
-      //       $("#exampleModal").modal("show");
-      //    }
-      //
-      //
-      // });
+
+      /*
+      *  Get the ID of the selected peripheral item.
+      */
+      $('#peripheralDropdown').chosen().change(function() {
+         selected_peripheral = $(this).val();
+      });
+
+      /*
+      *  Upon clicking the add button.
+      *  Append the selected items on the <div> element to show the selected Peripherals
+      *  to the user.
+      */
+      $('#add_selected_peripheral').on('click', function() {
+         peripheral_quantity = quantity_field.value;
+
+         var get_select_peripheral_name = '{{ route("admin.inventory.item.peripheral.get_selected_peripheral_name", ":selected_peripheral_id") }}';
+         get_select_peripheral_name = get_select_peripheral_name.replace(':selected_peripheral_id', selected_peripheral);
+
+         /*
+         *  Send the ID to the URL to check it in the database and retrieve it's description.
+         */
+         $.getJSON(get_select_peripheral_name, function(data) {
+            peripheral_container.append(
+               '<div class="form-group">' +
+               '<label class="col-lg-2"></label>' +
+               '<div class="col-lg-7">' +
+               '<input type="text" name="chosen_peripheral[]" placeholder="Enter quantity" class="form-control" id="quantity" value="' + data + '" disabled>' +
+               '</div>' +
+               '<div class="col-lg-2">' +
+               '<input type="text" name="inputted_quantity[]" placeholder="Enter quantity" class="form-control" id="quantity" value="' + peripheral_quantity + '"  disabled>' +
+               '</div>' +
+               '<a class="btn btn-danger remove_selected_peripheral" id="remove_selected_peripheral"><i class="fa fa-minus"></i></a>' +
+               '<input name="getPeripherals[]" type="hidden" value="'+ selected_peripheral + '-' + peripheral_quantity + '">' +
+               '</div>'
+            );
+         });
+      });
    });
    </script>
    @endsection
