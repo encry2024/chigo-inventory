@@ -4,6 +4,7 @@ namespace App\Repositories\Backend\Workflow\Sale;
 
 use App\Models\Workflow\Sale\Sale;
 use App\Models\Inventory\Item\Aircon\Aircon;
+use App\Models\Inventory\Item\Peripheral\Peripheral;
 use App\Models\Workflow\Sale\AirconSale\AirconSale;
 use App\Models\Workflow\Sale\PeripheralSale\PeripheralSale;
 use Illuminate\Support\Facades\DB;
@@ -119,7 +120,12 @@ class SaleRepository extends BaseRepository
                   $peripheral_sale->sale_id = $sale->id;
                   $peripheral_sale->peripheral_id = $getValue[0];
                   $peripheral_sale->quantity = $getValue[1];
-                  $peripheral_sale->save();
+
+                  if($peripheral_sale->save()) {
+                     $peripheral = Peripheral::find($peripheral_sale->peripheral_id);
+                     $peripheral->quantity = $peripheral->quantity - $getValue[1];
+                     $peripheral->save();
+                  }
                }
             }
 
