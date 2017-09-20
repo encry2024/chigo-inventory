@@ -47,7 +47,7 @@
       <?php $receiptLocation += 2; ?>
       @endforeach
 
-      @if(count($sale->peripheral_sales) != 0)
+      @if($sale->parts != 0)
          @foreach($sale->peripheral_sales as $peripheral_sale)
          <div class="receiptContainer" style="top: {{ $receiptLocation }}rem;" id="receiptContainer">
             <?php $total_sale += ($peripheral_sale->peripheral->price * $peripheral_sale->quantity) - ($peripheral_sale->peripheral->price * $peripheral_sale->quantity * $sale->customer->discount); ?>
