@@ -56,9 +56,8 @@ class SaleController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-   public function store(Request $request)
+   public function store(StoreSalesWorkflowRequest $request)
    {
-      dd($request->all());
       $this->sales->create([
          'data' => $request->only(
             'customer',
