@@ -68,7 +68,7 @@
          {{ Form::label('peripheral', trans('validation.attributes.backend.inventory.peripherals.description'), ['class' => 'col-lg-2 control-label']) }}
 
          <div class="col-lg-7">
-            <select data-placeholder="Choose a Peripheral..." id="peripheralDropdown" name="aircon[]" class="form-control chosen-select peripheral-select">
+            <select data-placeholder="Choose a Peripheral..." id="peripheralDropdown" name="peripheral" class="form-control chosen-select peripheral-select">
                <option value=""></option>
                @foreach($peripherals as $peripheral)
                <option value="{{ $peripheral->id }}">{{ $peripheral->description }} - {{ $peripheral->serial_number }}</option>
