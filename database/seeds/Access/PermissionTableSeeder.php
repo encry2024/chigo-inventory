@@ -39,6 +39,114 @@ class PermissionTableSeeder extends Seeder
       $viewBackend->updated_at = Carbon::now();
       $viewBackend->save();
 
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'view-technical';
+      $viewBackend->display_name = 'View Technical';
+      $viewBackend->sort = 2;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'manage-technical';
+      $viewBackend->display_name = 'Manage Technical';
+      $viewBackend->sort = 3;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'view-sales';
+      $viewBackend->display_name = 'View Sales';
+      $viewBackend->sort = 4;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'manage-sales';
+      $viewBackend->display_name = 'Manage Sales';
+      $viewBackend->sort = 5;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'view-customer';
+      $viewBackend->display_name = 'View Customer';
+      $viewBackend->sort = 6;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'manage-customer';
+      $viewBackend->display_name = 'Manage Customer';
+      $viewBackend->sort = 7;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'view-inventory';
+      $viewBackend->display_name = 'View Inventory';
+      $viewBackend->sort = 8;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'manage-inventory';
+      $viewBackend->display_name = 'Manage Inventory';
+      $viewBackend->sort = 9;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'view-workflow';
+      $viewBackend->display_name = 'View Workflow';
+      $viewBackend->sort = 10;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'manage-workflow';
+      $viewBackend->display_name = 'Manage Workflow';
+      $viewBackend->sort = 11;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'view-collection';
+      $viewBackend->display_name = 'View Collection';
+      $viewBackend->sort = 10;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'manage-collection';
+      $viewBackend->display_name = 'Manage Collection';
+      $viewBackend->sort = 11;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
       $this->enableForeignKeys();
    }
 }
