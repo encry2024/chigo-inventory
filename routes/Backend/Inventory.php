@@ -31,7 +31,7 @@ Route::group([
          Route::get('aircon/check-out', 'AirconController@checkOutAircon')->name('aircon.check_out.page');
          Route::post('aircon/check-out', 'AirconController@postCheckOutAircon')->name('aircon.check_out.post');
 
-         Route::get('aircon/get/checked-out', 'AirconController@checkedOutAircon')->name('aircon.checked_out_aircons');
+         Route::get('aircon/checked-out', 'AirconController@checkedOutAircon')->name('aircon.checked_out_aircons');
          Route::get('aircon/view/pending', 'AirconController@pendingAircons')->name('aircon.view.pending');
          Route::get('aircon/{customer_id}/associated', 'AirconController@fetchAirconByCustomerId')->name('aircon.fetch_by_customer');
 
