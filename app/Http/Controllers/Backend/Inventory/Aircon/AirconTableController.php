@@ -13,12 +13,12 @@ use App\Http\Requests\Backend\Inventory\Aircon\ManageAirconRequest;
 class AirconTableController extends Controller
 {
    /**
-   * @var UserRepository
+   * @var AirconRepository
    */
    protected $aircons;
 
    /**
-   * @param UserRepository $users
+   * @param AirconRepository $aircons
    */
    public function __construct(AirconRepository $aircons)
    {
@@ -26,22 +26,22 @@ class AirconTableController extends Controller
    }
 
    /**
-   * @param ManageUserRequest $request
+   * @param ManageAirconRequest $request
    *
    * @return mixed
    */
    public function __invoke(ManageAirconRequest $request)
    {
       return Datatables::of(
-         $this->aircons->getForDataTable($request->get('status'), $request->get('trashed')))
-         ->escapeColumns(['name', 'serial_number'])
-         ->editColumn('status', function ($aircon) {
-            return $aircon->active_label;
-         })
-         ->addColumn('actions', function ($user) {
-            return $user->action_buttons;
-         })
-         ->withTrashed()
-         ->make(true);
-      }
+      $this->aircons->getForDataTable($request->get('status'), $request->get('trashed')))
+      ->escapeColumns(['name', 'serial_number'])
+      ->editColumn('status', function ($aircon) {
+         return $aircon->active_label;
+      })
+      ->addColumn('actions', function ($user) {
+         return $user->action_buttons;
+      })
+      ->withTrashed()
+      ->make(true);
    }
+}
