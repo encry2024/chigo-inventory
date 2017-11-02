@@ -14,7 +14,7 @@ class StoreTechnicianRequest extends Request
    */
    public function authorize()
    {
-      return access()->allow('view-backend');
+      return access()->hasPermissions(['view-backend', 'view-technician', 'manage-technician'], true);
    }
 
    /**

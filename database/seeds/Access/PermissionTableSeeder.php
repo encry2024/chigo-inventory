@@ -133,7 +133,7 @@ class PermissionTableSeeder extends Seeder
       $viewBackend = new $permission_model();
       $viewBackend->name = 'view-collection';
       $viewBackend->display_name = 'View Collection';
-      $viewBackend->sort = 10;
+      $viewBackend->sort = 12;
       $viewBackend->created_at = Carbon::now();
       $viewBackend->updated_at = Carbon::now();
       $viewBackend->save();
@@ -142,7 +142,43 @@ class PermissionTableSeeder extends Seeder
       $viewBackend = new $permission_model();
       $viewBackend->name = 'manage-collection';
       $viewBackend->display_name = 'Manage Collection';
-      $viewBackend->sort = 11;
+      $viewBackend->sort = 13;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'view-technician';
+      $viewBackend->display_name = 'View Technician';
+      $viewBackend->sort = 14;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'manage-technician';
+      $viewBackend->display_name = 'Manage Technician';
+      $viewBackend->sort = 15;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'view-referral';
+      $viewBackend->display_name = 'View Referral';
+      $viewBackend->sort = 16;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'manage-referral';
+      $viewBackend->display_name = 'Manage Referral';
+      $viewBackend->sort = 17;
       $viewBackend->created_at = Carbon::now();
       $viewBackend->updated_at = Carbon::now();
       $viewBackend->save();

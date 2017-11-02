@@ -6,38 +6,38 @@ use Closure;
 
 /**
  * Class RouteNeedsRole.
- */
+   */
 class RouteNeedsRole
 {
-    /**
-     * @param $request
-     * @param Closure $next
-     * @param $role
-     * @param bool $needsAll
-     *
-     * @return mixed
-     */
-    public function handle($request, Closure $next, $role, $needsAll = false)
-    {
-        /*
+   /**
+    * @param $request
+    * @param Closure $next
+    * @param $role
+    * @param bool $needsAll
+    *
+    * @return mixed
+    */
+   public function handle($request, Closure $next, $role, $needsAll = false)
+   {
+      /*
          * Roles array
          */
-        if (strpos($role, ';') !== false) {
+      if (strpos($role, ';') !== false) {
             $roles = explode(';', $role);
             $access = access()->hasRoles($roles, ($needsAll === 'true' ? true : false));
-        } else {
+      } else {
             /**
              * Single role.
-             */
+               */
             $access = access()->hasRole($role);
-        }
+      }
 
-        if (! $access) {
+      if (! $access) {
             return redirect()
-                ->route(homeRoute())
-                ->withFlashDanger(trans('auth.general_error'));
-        }
+               ->route(homeRoute())
+               ->withFlashDanger(trans('auth.general_error'));
+      }
 
-        return $next($request);
-    }
+      return $next($request);
+   }
 }

@@ -12,16 +12,12 @@ Route::group([
       Route::post('sales/get', 'SaleTableController')->name('sale.get');
 
       Route::get('sale/deactivated', 'SaleController@getDeactivated')->name('sale.deactivated');
-
       Route::get('sale/deleted', 'SaleStatusController@getDeleted')->name('sale.deleted');
+      Route::get('sale/deliveries', 'SaleController@fetchDeliverySales')->name('sale.get_deliveries');
+      Route::get('sale/{sale}/for-checkout', 'SaleController@saleForCheckout')->name('sale.for_checkout');
+      Route::get('sale/generate/gatepass', 'SaleController@generateGatepass')->name('sale.generate_gatepass');
 
       Route::patch('sale/{sale}/update_status', 'SaleController@updateStatus')->name('sale.update_status');
-
-      Route::get('sale/deliveries', 'SaleController@fetchDeliverySales')->name('sale.get_deliveries');
-
-      Route::get('sale/{sale}/for-checkout', 'SaleController@saleForCheckout')->name('sale.for_checkout');
-
-      Route::get('sale/generate/gatepass', 'SaleController@generateGatepass')->name('sale.generate_gatepass');
 
       Route::resource('/sale', 'SaleController');
 
