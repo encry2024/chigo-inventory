@@ -124,11 +124,18 @@ class SaleController extends Controller
    public function updateStatus(Sale $sale, ManageSalesWorkflowRequest $request)
    {
       $sale->status = $request->get('status');
+
       if($sale->save()) {
          if($sale->status == 2) {
             $referral_report = new ReferralReport();
             $referral_report->sale_id = $sale->id;
-            $referral_report->referral_id = $sale->customer->referral->id;
+
+            if(count($sale->customer->referral) != 0) {
+               $referral_report->referral_id = $sale->customer->referral->id;
+               $referral_report->save();
+            }
+
+            $referral_report->referral_id = 0;
             $referral_report->save();
          }
       }

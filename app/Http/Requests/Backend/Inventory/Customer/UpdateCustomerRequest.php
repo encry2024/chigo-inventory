@@ -26,7 +26,8 @@ class UpdateCustomerRequest extends Request
    {
       return [
          'company_name'    => ['required', 'max:191', 'unique:customers,company_name,' . Request::get('customer_id')],
-         'contact_number'  => ['required', 'max:191', 'unique:customers,contact_number,' . Request::get('customer_id')],
+         'contact_number'  => ['required', 'max:11', 'min:10', 'unique:customers,contact_number,' . Request::get('customer_id')],
+         'alternative_contact_number'  => ['required', 'max:9', 'min:7', 'unique:customers,alternative_contact_number,' . Request::get('customer_id')],
          'address'         => ['required', 'max:191'],
          'email'           => ['required', 'unique:customers,email,' . Request::get('customer_id')],
          'note'            => ['max:255'],

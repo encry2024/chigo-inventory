@@ -183,6 +183,24 @@ class PermissionTableSeeder extends Seeder
       $viewBackend->updated_at = Carbon::now();
       $viewBackend->save();
 
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'view-report';
+      $viewBackend->display_name = 'View Report';
+      $viewBackend->sort = 18;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
+      $permission_model = config('access.permission');
+      $viewBackend = new $permission_model();
+      $viewBackend->name = 'manage-report';
+      $viewBackend->display_name = 'Manage Report';
+      $viewBackend->sort = 19;
+      $viewBackend->created_at = Carbon::now();
+      $viewBackend->updated_at = Carbon::now();
+      $viewBackend->save();
+
       $this->enableForeignKeys();
    }
 }

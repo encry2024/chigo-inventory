@@ -162,6 +162,7 @@ return [
                'company_name'             => 'Company/Client Name',
                'address'                  => 'Address',
                'contact_number'           => 'Contact Number',
+               'alternative_contact_number'    => 'Alternative Contact Number',
                'other_category'           => 'Other Category',
                'note'                     => 'Note',
                'email'                    => 'Email',

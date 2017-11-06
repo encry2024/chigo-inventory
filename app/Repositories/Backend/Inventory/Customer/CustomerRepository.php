@@ -79,6 +79,7 @@ class CustomerRepository extends BaseRepository
 
       $customer->company_name = $data['company_name'];
       $customer->contact_number = $data['contact_number'];
+      $customer->alternative_contact_number = $data['alternative_contact_number'];
       $customer->address = $data['address'];
       $customer->email = $data['email'];
       $customer->note = $data['note'];
@@ -103,6 +104,7 @@ class CustomerRepository extends BaseRepository
       $customer = new $customer;
       $customer->company_name = $input['company_name'];
       $customer->contact_number = $input['contact_number'];
+      $customer->alternative_contact_number = $input['alternative_contact_number'];
       $customer->email = $input['email'];
       $customer->other_category = $input['other_category'];
       $customer->note = $input['note'];

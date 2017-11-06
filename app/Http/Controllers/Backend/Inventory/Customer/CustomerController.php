@@ -53,6 +53,7 @@ class CustomerController extends Controller
          'data' => $request->only(
             'company_name',
             'contact_number',
+            'alternative_contact_number',
             'address',
             'note',
             'other_category',
@@ -102,6 +103,7 @@ class CustomerController extends Controller
          'data' => $request->only(
             'company_name',
             'contact_number',
+            'alternative_contact_number',
             'email',
             'note',
             'other_category',

@@ -27,6 +27,7 @@ class StoreCustomerRequest extends Request
       return [
          'company_name'   => ['required', 'max:191', Rule::unique('customers')],
          'contact_number' => ['required', 'max:11', 'min:10', Rule::unique('customers')],
+         'alternative_contact_number' => ['required', 'max:9', 'min:7', Rule::unique('customers')],
          'note'           => 'max:50',
          'email'          => ['required', 'email', Rule::unique('customers')],
          'other_category' => 'max:50',

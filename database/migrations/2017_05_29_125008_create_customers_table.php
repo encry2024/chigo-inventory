@@ -17,6 +17,7 @@ class CreateCustomersTable extends Migration
          $table->increments('id');
          $table->string('company_name');
          $table->string('contact_number');
+         $table->string('alternative_contact_number');
          $table->string('email')->unique();
          $table->string('note');
          $table->string('other_category');
