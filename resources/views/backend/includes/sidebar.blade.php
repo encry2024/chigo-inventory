@@ -97,6 +97,32 @@
 
          <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
          @role(1)
+         <!-- Sales Management -->
+         <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
+            <a href="#">
+               <i class="fa fa-bar-chart"></i>
+               <span>{{ trans('menus.backend.report.title') }}</span>
+               <i class="fa fa-angle-left pull-right"></i>
+            </a>
+
+            <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/workflow/sale/report'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/workflow/sale/report'), 'display: block;') }}">
+               <li class="{{ active_class(Active::checkUriPattern('admin/workflow/sale/report')) }}">
+                  <a href="{{ route('admin.workflow.sale.report') }}">
+                     <i class="fa fa-circle-o"></i>
+                     <span>{{ trans('labels.backend.workflow.sale.report') }}</span>
+                  </a>
+               </li>
+
+               <li class="{{ active_class(Active::checkUriPattern('admin/workflow/referral/report')) }}">
+                  <a href="{{ route('admin.inventory.referral.report') }}">
+                     <i class="fa fa-circle-o"></i>
+                     <span>{{ trans('labels.backend.inventory.referral.report') }}</span>
+                  </a>
+               </li>
+            </ul>
+         </li>
+
+         <!-- User Management -->
          <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
             <a href="#">
                <i class="fa fa-key"></i>

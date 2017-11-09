@@ -41,6 +41,7 @@ return [
             'management' => 'Sales Management',
 
             'current_sales' => 'Current Sales Workflow',
+            'report'        => 'Sales Report',
 
             'create' => 'Create Sale',
             'edit'   => 'Edit Sale',
@@ -52,12 +53,13 @@ return [
 
             'table' => [
                'id' => 'ID',
-               'reference_number' => 'Reference Number',
-               'customer_name' => 'Customer Name',
-               'sales_agent' => 'Sales Agent',
-               'status' => 'Status',
-               'date_created' => 'Date Created',
-               'last_updated' => 'Last Updated'
+               'reference_number'   => 'Reference Number',
+               'customer_name'      => 'Customer Name',
+               'sales_agent'        => 'Sales Agent',
+               'status'             => 'Status',
+               'total_income'       => 'Total Income',
+               'date_created'       => 'Date Created',
+               'last_updated'       => 'Last Updated'
             ],
 
             'tabs' => [
@@ -75,6 +77,7 @@ return [
                      'customer_name'      => 'Customer Name',
                      'sales_agent'        => 'Sales Agent',
                      'status'             => 'Status',
+                     'price'              => 'Price',
                      'date_created'       => 'Date Created',
                      'last_updated'       => 'Last Updated',
                      'note'               => 'Note'
@@ -100,7 +103,7 @@ return [
 
             'table' => [
                'id'                 => 'ID',
-               'reference_id'   => 'Reference ID',
+               'reference_id'       => 'Reference ID',
                'customer_name'      => 'Customer Name',
                'technical_agent'    => 'Technical Agent',
                'status'             => 'Status',
@@ -221,6 +224,8 @@ return [
             'management'   => 'Agent Referral Management',
             'availables'   => 'Available Referrals',
 
+            'report'       => 'Referral Agent Report',
+
             'id'           => 'ID',
             'name'         => 'Name',
 
@@ -236,6 +241,7 @@ return [
                'name'         => 'Name',
                'note'         => 'Note',
                'address'      => 'Address',
+               'total_referrals' => 'Total Referrals',
                'created_at'   => 'Date Created',
                'updated_at'   => 'Last Updated'
             ],
@@ -302,7 +308,8 @@ return [
                      'brand_name'      => 'Brand Name',
                      'voltage'         => 'Voltage',
                      'feature'         => 'Feature',
-                     'price'           => 'Price'
+                     'price'           => 'Price',
+                     'selling_price'   => 'Selling Price'
                   ],
                ],
             ],

@@ -100,6 +100,18 @@
       </div><!--form control-->
 
       <div class="form-group">
+         {{ Form::label('selling_price', trans('validation.attributes.backend.inventory.aircons.selling_price'), ['class' => 'col-lg-2 control-label']) }}
+
+         <div class="col-lg-10">
+            <div class="input-group">
+               <div class="input-group-addon">$</div>
+               {{ Form::text('selling_price', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.backend.inventory.aircons.selling_price')]) }}
+
+            </div>
+         </div><!--col-lg-10-->
+      </div><!--form control-->
+
+      <div class="form-group">
          {{ Form::label('status', trans('validation.attributes.backend.access.users.active'), ['class' => 'col-lg-2 control-label']) }}
 
          <div class="col-lg-1">

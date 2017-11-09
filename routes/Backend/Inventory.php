@@ -68,6 +68,7 @@ Route::group([
       Route::post('referral/get', 'ReferralTableController')->name('referral.get');
 
       Route::get('referral/deleted', 'ReferralStatusController@getDeleted')->name('referral.deleted');
+      Route::get('referral/report', 'ReferralController@getReferralReport')->name('referral.report');
 
       Route::resource('referral', 'ReferralController');
 

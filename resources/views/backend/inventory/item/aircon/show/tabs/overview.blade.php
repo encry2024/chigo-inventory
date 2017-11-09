@@ -41,6 +41,11 @@
    </tr>
 
    <tr>
+      <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.selling_price') }}</th>
+      <td>{{ $aircon->selling_price }}</td>
+   </tr>
+
+   <tr>
       <th>{{ trans('labels.backend.inventory.aircon.tabs.content.overview.status') }}</th>
       <td>{!! $aircon->active_label !!}</td>
    </tr>

@@ -16,7 +16,7 @@ class ReferralEventListener
    {
       history()->withType($this->history_slug)
       ->withEntity($event->referral->id)
-      ->withText('trans("history.backend.inventory.referral.created") <strong>{referral}</strong>')
+      ->withText('trans("history.backend.inventory.referrals.created") <strong>{referral}</strong>')
       ->withIcon('plus')
       ->withClass('bg-green')
       ->withAssets([
@@ -32,7 +32,7 @@ class ReferralEventListener
    {
       history()->withType($this->history_slug)
       ->withEntity($event->referral->id)
-      ->withText('trans("history.backend.inventory.referral.updated") <strong>{referral}</strong>')
+      ->withText('trans("history.backend.inventory.referrals.updated") <strong>{referral}</strong>')
       ->withIcon('save')
       ->withClass('bg-aqua')
       ->withAssets([
@@ -48,7 +48,7 @@ class ReferralEventListener
    {
       history()->withType($this->history_slug)
       ->withEntity($event->referral->id)
-      ->withText('trans("history.backend.inventory.referral.deleted") <strong>{referral}</strong>')
+      ->withText('trans("history.backend.inventory.referrals.deleted") <strong>{referral}</strong>')
       ->withIcon('trash')
       ->withClass('bg-maroon')
       ->withAssets([
@@ -64,7 +64,7 @@ class ReferralEventListener
    {
       history()->withType($this->history_slug)
       ->withEntity($event->referral->id)
-      ->withText('trans("history.backend.inventory.referral.restored") <strong>{referral}</strong>')
+      ->withText('trans("history.backend.inventory.referrals.restored") <strong>{referral}</strong>')
       ->withIcon('refresh')
       ->withClass('bg-aqua')
       ->withAssets([
@@ -81,7 +81,7 @@ class ReferralEventListener
    {
       history()->withType($this->history_slug)
       ->withEntity($event->referral->id)
-      ->withText('trans("history.backend.inventory.referral.permanently_deleted") <strong>{referral}</strong>')
+      ->withText('trans("history.backend.inventory.referrals.permanently_deleted") <strong>{referral}</strong>')
       ->withIcon('trash')
       ->withClass('bg-maroon')
       ->withAssets([

@@ -52,7 +52,7 @@
                <select class="form-control" name="status">
                   <option value="0" {{ $sale->status == 0 ? 'selected' : "" }}>Open</option>
                   <option value="1" {{ $sale->status == 1 ? 'selected' : "" }}>Incomplete Payment</option>
-                  <option value="2" {{ $sale->status == 2 ? 'selected' : "" }}>Close</option>
+                  <option value="2" {{ $sale->status == 2 ? 'selected' : "" }}>{{ $sale->status != 2 ? 'Collect' : 'Collected' }}</option>
                </select>
                </div>
                <button class="btn btn-sm btn-primary">Update</button>

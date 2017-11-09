@@ -35,12 +35,12 @@
 
       @foreach($sale->aircon_sales as $aircon_sale)
       <div class="receiptContainer" style="top: {{ $receiptLocation }}rem;" id="receiptContainer">
-         <?php $total_sale += $aircon_sale->aircon->price - ($aircon_sale->aircon->price * $sale->customer->discount); ?>
+         <?php $total_sale += $aircon_sale->aircon->selling_price - ($aircon_sale->aircon->selling_price * $sale->customer->discount); ?>
          <label class="airconQty">1</label>
          <label class="airconDescription" >{{ $aircon_sale->aircon->door_type }} -- {{ $aircon_sale->aircon->serial_number }} -- Discount [ {{ $sale->customer->discount * 100 }}% ]</label>
          <label class=""></label>
-         <label class="airconPrice">{{ number_format($aircon_sale->aircon->price, 2) }}</label>
-         <label class="airconAmount">{{ number_format($aircon_sale->aircon->price - ($aircon_sale->aircon->price * $sale->customer->discount), 2) }}</label>
+         <label class="airconPrice">{{ number_format($aircon_sale->aircon->selling_price, 2) }}</label>
+         <label class="airconAmount">{{ number_format($aircon_sale->aircon->selling_price - ($aircon_sale->aircon->selling_price * $sale->customer->discount), 2) }}</label>
          <button class="btn btn-xs btn-danger removeFromReceipt" name="button" id="removeItem">Remove from receipt {{ $receiptLocation }}</button>
          <br>
       </div>
@@ -50,12 +50,12 @@
       @if($sale->parts != 0)
          @foreach($sale->peripheral_sales as $peripheral_sale)
          <div class="receiptContainer" style="top: {{ $receiptLocation }}rem;" id="receiptContainer">
-            <?php $total_sale += ($peripheral_sale->peripheral->price * $peripheral_sale->quantity) - ($peripheral_sale->peripheral->price * $peripheral_sale->quantity * $sale->customer->discount); ?>
+            <?php $total_sale += ($peripheral_sale->peripheral->selling_price * $peripheral_sale->quantity) - ($peripheral_sale->peripheral->selling_price * $peripheral_sale->quantity * $sale->customer->discount); ?>
             <label class="airconQty">{{ $peripheral_sale->quantity }}</label>
             <label class="airconDescription" >{{ $peripheral_sale->peripheral->description }} -- {{ $peripheral_sale->peripheral->serial_number }} -- Discount [ {{ $sale->customer->discount * 100 }}% ]</label>
             <label class=""></label>
-            <label class="airconPrice">{{ number_format($peripheral_sale->peripheral->price, 2) }}</label>
-            <label class="airconAmount">{{ number_format($peripheral_sale->peripheral->price * $peripheral_sale->quantity - ($peripheral_sale->peripheral->price * $sale->customer->discount), 2) }}</label>
+            <label class="airconPrice">{{ number_format($peripheral_sale->peripheral->selling_price, 2) }}</label>
+            <label class="airconAmount">{{ number_format($peripheral_sale->peripheral->selling_price * $peripheral_sale->quantity - ($peripheral_sale->peripheral->selling_price * $sale->customer->discount), 2) }}</label>
             <button class="btn btn-xs btn-danger removeFromReceipt" name="button" id="removeItem">Remove from receipt {{ $receiptLocation }}</button>
             <br>
          </div>

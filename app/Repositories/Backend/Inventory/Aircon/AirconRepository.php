@@ -82,6 +82,7 @@ class AirconRepository extends BaseRepository
       $aircon->serial_number = $data['serial_number'];
       $aircon->manufacturer = $data['manufacturer'];
       $aircon->price = $data['price'];
+      $aircon->selling_price = $data['selling_price'];
       $aircon->horsepower = $data['horsepower'];
       $aircon->voltage = $data['voltage'];
       $aircon->size = $data['size'];
@@ -112,22 +113,23 @@ class AirconRepository extends BaseRepository
 
                foreach ($airconFile->toArray() as $key => $value) {
                   $insert[] = [
-                     'name' => '-',
-                     'customer_id' => 0,
-                     'manufacturer' => '-',
-                     'price' => '0.0',
-                     'horsepower' => '0.0',
-                     'voltage' => '0.0',
-                     'size' => '0.0',
-                     'brand_name' => '-',
-                     'feature' => '-',
-                     'status' => 2,
+                     'name'             => '-',
+                     'customer_id'      => 0,
+                     'manufacturer'     => '-',
+                     'price'            => '0.0',
+                     'selling_price'    => $value['selling_price'],
+                     'horsepower'       => '0.0',
+                     'voltage'          => '0.0',
+                     'size'             => '0.0',
+                     'brand_name'       => '-',
+                     'feature'          => '-',
+                     'status'           => 2,
                      'container_number' => $value['container_number'],
-                     'batch_code' => $value['batch_code'],
-                     'door_type' => $value['door_type'],
-                     'serial_number' => $value['serial_number'],
-                     'created_at' => date('Y-m-d h:i:s'),
-                     'updated_at' => date('Y-m-d h:i:s')
+                     'batch_code'       => $value['batch_code'],
+                     'door_type'        => $value['door_type'],
+                     'serial_number'    => $value['serial_number'],
+                     'created_at'       => date('Y-m-d h:i:s'),
+                     'updated_at'       => date('Y-m-d h:i:s')
                   ];
                }
 

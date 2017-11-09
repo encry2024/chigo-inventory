@@ -18,7 +18,7 @@ trait SaleAttribute
       } elseif ($this->status == 1) {
          return "<label class='label label-warning'>Incomplete Payment</label>";
       } elseif ($this->status == 2) {
-         return "<label class='label label-success'>Close</label>";
+         return "<label class='label label-success'>Collected</label>";
       }
    }
 

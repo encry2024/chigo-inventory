@@ -31,7 +31,7 @@
 
    <tr>
       <th>{{ trans('labels.backend.inventory.customer.tabs.content.overview.referral') }}</th>
-      <td>{{ $customer->referral->name }}</td>
+      <td>{{ $customer->referral_id ? $customer->referral->name : "No Referral" }}</td>
    </tr>
 
    <tr>

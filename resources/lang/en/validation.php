@@ -178,6 +178,7 @@ return [
                'serial_number'            => 'Serial Number',
                'manufacturer'             => 'Manufacturer',
                'price'                    => 'Price',
+               'selling_price'            => 'Selling Price',
                'horsepower'               => 'Horsepower',
                'voltage'                  => 'Voltage',
                'size'                     => 'Size',

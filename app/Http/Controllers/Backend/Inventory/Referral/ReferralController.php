@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Inventory\Referral;
 
 use App\Models\Inventory\Referral\Referral;
+use App\Models\Inventory\Referral\ReferralReport;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,7 @@ use App\Repositories\Backend\Inventory\Referral\ReferralRepository;
 use App\Http\Requests\Backend\Inventory\Referral\ManageReferralRequest;
 use App\Http\Requests\Backend\Inventory\Referral\StoreReferralRequest;
 use App\Http\Requests\Backend\Inventory\Referral\UpdateReferralRequest;
+use DB;
 
 class ReferralController extends Controller
 {
@@ -114,5 +116,23 @@ class ReferralController extends Controller
       $this->referrals->delete($referral);
 
       return redirect()->route('admin.inventory.referral.deleted')->withFlashSuccess(trans('alerts.backend.inventory.referral.deleted'));
+   }
+
+   public function getReferralReport()
+   {
+      $referral_report = DB::table('referral_reports')
+      ->select('referral_reports.*',
+         DB::raw('COUNT("referral_reports.referral_id") as "total_referral"'),
+         DB::raw('referral_reports.referral_id as "referral_id"'),
+      'referrals.*',
+         DB::raw('referrals.name as "referral_name"'),
+         DB::raw('referrals.id as "ref_id"'))
+      ->leftJoin('referrals', 'referral_reports.referral_id', '=', 'referrals.id')
+      ->groupBy('referral_reports.referral_id')
+      ->get();
+
+      // dd($referral_report);
+
+      return view('backend.inventory.referral.report', compact('referral_report'));
    }
 }

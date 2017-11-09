@@ -121,6 +121,12 @@ class SaleController extends Controller
       return redirect()->route('admin.inventory.workflow.sale.deleted')->withFlashSuccess(trans('alerts.backend.inventory.items.aircons.deleted'));
    }
 
+   /**
+   * Update sale's status
+   *
+   * @param  Sale $sale
+   * @return \Illuminate\Http\Response
+   */
    public function updateStatus(Sale $sale, ManageSalesWorkflowRequest $request)
    {
       $sale->status = $request->get('status');
@@ -129,13 +135,7 @@ class SaleController extends Controller
          if($sale->status == 2) {
             $referral_report = new ReferralReport();
             $referral_report->sale_id = $sale->id;
-
-            if(count($sale->customer->referral) != 0) {
-               $referral_report->referral_id = $sale->customer->referral->id;
-               $referral_report->save();
-            }
-
-            $referral_report->referral_id = 0;
+            $referral_report->referral_id = $sale->customer->referral_id ? $sale->customer->referral_id : 0 ;
             $referral_report->save();
          }
       }
@@ -148,6 +148,10 @@ class SaleController extends Controller
       return redirect()->back()->withFlashSuccess('Sale\'s status was successfully updated.');
    }
 
+   /**
+   * Get sale's delivery
+   *
+   */
    public function fetchDeliverySales()
    {
       $jsonData = array();
@@ -164,15 +168,30 @@ class SaleController extends Controller
       return json_encode($jsonData);
    }
 
+   /**
+   * Show sale's for cheack-out
+   *
+   */
    public function saleForCheckout(Sale $sale)
    {
       return view('backend.workflow.sale.delivery_receipt')->withSale($sale);
    }
 
+   /**
+   * Generate gatepass
+   *
+   */
    public function generateGatepass()
    {
       $sales = Sale::with(['aircon_sales.aircon'])->where('date_needed', date('Y-m-d'))->get();
 
       return view('backend.workflow.sale.gatepass', compact('sales'));
+   }
+
+   public function getSaleReport()
+   {
+      $sales = Sale::whereStatus(2)->get();
+
+      return view('backend.workflow.sale.report', compact('sales'));
    }
 }

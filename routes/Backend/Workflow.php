@@ -16,6 +16,7 @@ Route::group([
       Route::get('sale/deliveries', 'SaleController@fetchDeliverySales')->name('sale.get_deliveries');
       Route::get('sale/{sale}/for-checkout', 'SaleController@saleForCheckout')->name('sale.for_checkout');
       Route::get('sale/generate/gatepass', 'SaleController@generateGatepass')->name('sale.generate_gatepass');
+      Route::get('sale/report', 'SaleController@getSaleReport')->name('sale.report');
 
       Route::patch('sale/{sale}/update_status', 'SaleController@updateStatus')->name('sale.update_status');
 
@@ -37,12 +38,8 @@ Route::group([
       Route::post('technical/confirm_schedules', 'TechnicalController@confirmSchedules')->name('technical.confirm_schedules');
 
       Route::get('technical/schedules', 'TechnicalController@fetchTechnicalSchedules')->name('technical.fetch_technical_schedules');
-
-
       Route::get('technical/fetch-technical-schedules', 'TechnicalController@fetchTechnicalForReceipt')->name('technical.for_receipt');
-
       Route::get('technical/show-calendar', 'TechnicalController@showCalendar')->name('technical.show_calendar');
-
       Route::get('technical/{technical}/receipt', 'TechnicalController@createReceipt')->name('technical.create_receipt');
 
       Route::get('technical/gate_pass', function() {
