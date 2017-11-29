@@ -15,6 +15,10 @@ use App\Models\Inventory\Item\Peripheral\Peripheral;
 use App\Models\Inventory\Referral\Referral;
 use App\Models\Inventory\Referral\ReferralReport;
 
+/**
+ * Class SaleController
+ */
+
 class SaleController extends Controller
 {
 
@@ -82,7 +86,7 @@ class SaleController extends Controller
    */
    public function show(Sale $sale, ManageSalesWorkflowRequest $request)
    {
-      return view('backend.workflow.sale.show')->withSale($sale);
+        return view('backend.workflow.sale.show')->withSale($sale);
    }
 
    /**
