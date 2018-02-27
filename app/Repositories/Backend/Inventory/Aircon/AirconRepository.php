@@ -102,45 +102,42 @@ class AirconRepository extends BaseRepository
 
     public function import(Model $aircon, array $input)
     {
+        set_time_limit(0);
+
         $data = $input['data'];
 
         DB::transaction(function () use ($aircon, $data) {
-            $path = $data['aircon_file']->getRealPath();
+            $path = $data['aircon_file']->getClientOriginalName();
 
-            $airconFile = Excel::load($path, function($reader) {})->get();
+            $airconFile = Excel::load($path, function($reader) {});
 
-            if(!empty($airconFile) && $airconFile->count()) {
-
-            foreach (array_chunk($airconFile->toArray(), 1000) as $key => $value) {
-                $insert[] = [
-                    'name'             => isset($value['name']) ? $value['name'] : '-',
-                    'customer_id'      => 0,
-                    'manufacturer'     => isset($value['manufacturer']) ? $value['manufacturer']: '-',
-                    'price'            => isset($value['price']) ? $value['price'] : '0.0' ,
-                    'selling_price'    => isset($value['selling_price']) ? $value['selling_price'] : '0.0',
-                    'horsepower'       => isset($value['horsepower']) ? $value['horsepower']: '0.0' ,
-                    'voltage'          => isset($value['voltage']) ? $value['voltage'] : '0.0',
-                    'size'             => isset($value['size']) ? $value['size'] : '0.0',
-                    'brand_name'       => isset($value['brand_name']) ? $value['brand_name'] : '-',
-                    'feature'          => isset($value['feature']) ? $value['feature'] : '-',
-                    'status'           => 2,
-                    'container_number' => isset($value['container_number']) ? $value['container_number'] : '-',
-                    'batch_code'       => isset($value['batch_code']) ? $value['batch_code'] : '-',
-                    'door_type'        => isset($value['door_type']) ? $value['door_type'] : '-',
-                    'serial_number'    => isset($value['serial_number']) ? $value['serial_number'] : '-',
-                    'created_at'       => date('Y-m-d h:i:s'),
-                    'updated_at'       => date('Y-m-d h:i:s')
-                ];
-            }
-
-                if(!empty($insert)) {
-                    Aircon::insert($insert);
+            Excel::filter('chunk')->load($path)->chunk(1000, function($results) {
+                foreach ($results as $result) {
+                    Aircon::insert([
+                        'name'             => isset($result['name']) ? $result['name'] : '-',
+                        'customer_id'      => 0,
+                        'manufacturer'     => isset($result['manufacturer']) ? $result['manufacturer']: '-',
+                        'price'            => isset($result['price']) ? $result['price'] : '0.0' ,
+                        'selling_price'    => isset($result['selling_price']) ? $result['selling_price'] : '0.0',
+                        'horsepower'       => isset($result['horsepower']) ? $result['horsepower']: '0.0' ,
+                        'voltage'          => isset($result['voltage']) ? $result['voltage'] : '0.0',
+                        'size'             => isset($result['size']) ? $result['size'] : '0.0',
+                        'brand_name'       => isset($result['brand_name']) ? $result['brand_name'] : '-',
+                        'feature'          => isset($result['feature']) ? $result['feature'] : '-',
+                        'status'           => 2,
+                        'container_number' => isset($result['container_number']) ? $result['container_number'] : '-',
+                        'batch_code'       => isset($result['batch_code']) ? $result['batch_code'] : '-',
+                        'door_type'        => isset($result['door_type']) ? $result['door_type'] : '-',
+                        'serial_number'    => isset($result['serial_number']) ? $result['serial_number'] : '-',
+                        'created_at'       => date('Y-m-d h:i:s'),
+                        'updated_at'       => date('Y-m-d h:i:s')
+                    ]);
                 }
+            });
 
-                event(new AirconUploaded($aircon));
+            event(new AirconUploaded($aircon));
 
-                return true;
-            }
+            return true;
 
             throw new GeneralException(trans('exceptions.backend.inventory.items.aircons.upload_error'));
         });
