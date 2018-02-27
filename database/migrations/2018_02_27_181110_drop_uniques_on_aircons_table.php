@@ -14,8 +14,8 @@ class DropUniquesOnAirconsTable extends Migration
     public function up()
     {
         Schema::table('aircons', function (Blueprint $table) {
-            $table->dropUnique('serial_number');
-            $table->dropUnique('philippines_serial_number');
+            $table->dropUnique(['serial_number']);
+            $table->dropUnique(['philippines_serial_number']);
         });
     }
 
