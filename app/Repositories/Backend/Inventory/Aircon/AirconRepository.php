@@ -111,7 +111,7 @@ class AirconRepository extends BaseRepository
 
             if(!empty($airconFile) && $airconFile->count()) {
 
-            foreach (array_chunk($airconFile, 1000) as $key => $value) {
+            foreach (array_chunk($airconFile->toArray()) as $key => $value) {
                 $insert[] = [
                     'name'             => isset($value['name']) ? $value['name'] : '-',
                     'customer_id'      => 0,
