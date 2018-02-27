@@ -133,14 +133,13 @@ class AirconRepository extends BaseRepository
                 ];
             }
 
-test
-            if(!empty($insert)) {
-                Aircon::insert($insert);
-            }
+                if(!empty($insert)) {
+                    Aircon::insert($insert);
+                }
 
-            event(new AirconUploaded($aircon));
+                event(new AirconUploaded($aircon));
 
-            return true;
+                return true;
             }
 
             throw new GeneralException(trans('exceptions.backend.inventory.items.aircons.upload_error'));
