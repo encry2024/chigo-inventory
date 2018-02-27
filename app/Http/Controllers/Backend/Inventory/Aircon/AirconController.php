@@ -190,7 +190,7 @@ class AirconController extends Controller
       return view('backend.inventory.item.aircon.check_out');
    }
 
-   public function postCheckOutAircon(Request $request)
+public function postCheckOutAircon(Request $request)
    {
       $aircon = Aircon::whereSerialNumber($request->get('serial_number'))->first();
       $log = "";

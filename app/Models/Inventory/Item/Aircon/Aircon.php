@@ -14,7 +14,7 @@ class Aircon extends Model
    SoftDeletes,
    AirconAttribute;
 
-   protected $fillable = ['name', 'serial_number', 'manufacturer', 'size', 'voltage', 'horsepower',
+   protected $fillable = ['name', 'serial_number', 'philippines_serial_number', 'manufacturer', 'size', 'voltage', 'horsepower',
    'price', 'selling_price', 'status', 'feature', 'brand_name', 'container_number', 'batch_code', 'door_type'];
 
    /**

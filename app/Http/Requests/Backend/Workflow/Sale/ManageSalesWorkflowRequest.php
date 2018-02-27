@@ -13,7 +13,7 @@ class ManageSalesWorkflowRequest extends Request
    */
    public function authorize()
    {
-      return access()->hasPermissions(['view-backend', 'view-workflow'], true);
+      return access()->hasPermissions(['view-backend', 'view-workflow', 'view-sales', 'manage-sales'], true);
    }
 
    /**
