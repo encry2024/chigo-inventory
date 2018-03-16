@@ -107,7 +107,7 @@ class AirconRepository extends BaseRepository
         $data = $input['data'];
 
         DB::transaction(function () use ($aircon, $data) {
-            $path = $data['aircon_file']->getClientOriginalName();
+            $path = $data['aircon_file']->getRealPath();
 
             $airconFile = Excel::load($path, function($reader) {});
 
